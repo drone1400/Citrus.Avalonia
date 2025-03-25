@@ -1,3 +1,4 @@
+using Avalonia;
 using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
 using ReactiveUI;
@@ -10,6 +11,10 @@ namespace Citrus.Avalonia.Sandbox
         {
             AvaloniaXamlLoader.Load(this);
             this.WhenActivated(disposables => { });
+            
+            #if DEBUG
+                this.AttachDevTools();
+            #endif
         }
     }
 }

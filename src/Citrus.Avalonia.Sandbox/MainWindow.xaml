@@ -1,8 +1,19 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sandbox="clr-namespace:Citrus.Avalonia.Sandbox"
         Background="{DynamicResource ThemeBackgroundColor}"
         x:Class="Citrus.Avalonia.Sandbox.MainWindow"
-        Width="950" Height="630">
+        Title="{Binding Title}"
+        Width="1200" Height="800"
+        MinWidth="1000" MinHeight="800">
+    <Design.DesignStyle>
+        <SimpleTheme/>
+    </Design.DesignStyle>
+    
+    <Design.DataContext>
+        <sandbox:MainWindowViewModel />
+    </Design.DataContext>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -23,6 +34,7 @@
                 </MenuItem>
                 <MenuItem Header="Enabled" IsEnabled="True" />
             </MenuItem>
+            <MenuItem Header="Switch palette" Command="{Binding ChangeThemePalette}" />
             <MenuItem Header="Switch theme" Command="{Binding ChangeTheme}" />
         </Menu>
         <Grid Grid.Row="1" Margin="5">
@@ -67,8 +79,16 @@
                         </ProgressBar>
                         
                         <!-- Text boxes and text areas -->
-                        <TextBox Watermark="This is the simple watermark example."
+                        <TextBox Watermark="Validation message below textbox"
                                  Text="{Binding Path=Message}" />
+                        <TextBox Watermark="Validation message tooltip"
+                                 Text="{Binding Path=Message}">
+                            <TextBox.Styles>
+                                <Style Selector="DataValidationErrors">
+                                    <Setter Property="Theme" Value="{DynamicResource TooltipDataValidationErrors}" />
+                                </Style>
+                            </TextBox.Styles>
+                        </TextBox>
                         <TextBox UseFloatingWatermark="True"
                                  Watermark="This is the floating watermark example."
                                  Text="If you enter some text, it will float to the top." />

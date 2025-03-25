@@ -1,0 +1,72 @@
+// NOTE - items that are tabbed are more or less done, rest need to be implemented....
+// NOTE: should also implement DataGrid at some point soon...
+
+AdornerLayer
+AutoCompleteBox
+        Button
+ButtonSpinner
+        Calendar
+        CalendarButton
+        CalendarDatePicker
+        CalendarDayButton
+        CalendarItem
+CaptionButtons
+Carousel
+        CheckBox
+        ComboBox
+        ComboBoxItem
+ContextMenu
+        DataValidatioNErrors
+DatePicker
+DateTimePickerShared
+DropDownButton
+EmbeddableControlRoot
+        Expander
+FluentControls
+FlyoutPresenter
+GridSplitter
+HeaderedContentControl
+HyperlinkButton
+        ItemsControl
+Label
+        ListBox
+        ListBoxItem
+ManagedFileChooser
+        Menu
+MenuFlyoutPresenter
+        MenuItem
+MenuScrollViewer
+NotificationCard
+NumericUpDown
+OverlayPopupHost
+PathIcon
+PopupRoot
+        ProgressBar
+        RadioButton
+RefreshContainer
+RefreshVisualizer
+RepeatButton
+        ScrollBar
+        ScrollViewer
+SelectableTextBlock
+Separator
+        Slider
+SplitButton
+SplitView
+        TabControl
+        TabItem
+TabStrip
+TabStripItem
+        TextBox
+TextSelectionHandle
+ThemeVariantScope
+TimePicker
+TitleBar
+        ToggleButton
+ToggleSwitch
+        ToolTip
+TransitioningContentControl
+        TreeView
+        TreeViewItem
+Window
+WindowNotificationManager
