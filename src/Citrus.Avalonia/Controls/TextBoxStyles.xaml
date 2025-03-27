@@ -16,20 +16,35 @@
     <ControlTheme x:Key="SimpleTextBoxClearButtonTheme"
                   BasedOn="{StaticResource {x:Type Button}}"
                   TargetType="Button">
+        <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderLowBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Margin" Value="6" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="ClipToBounds" Value="True" />
         <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="Width" Value="{Binding $self.Bounds.Height}" />
+        <!-- <Setter Property="Height" Value="20" /> -->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="PART_ButtonLayoutBorder"
-                            Background="Transparent"
-                            BorderThickness="{TemplateBinding BorderThickness}">
+                            Margin="{TemplateBinding Padding}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
                         <Path x:Name="PART_GlyphElement"
-                              Width="10"
-                              Height="10"
+                              Margin="6"
                               HorizontalAlignment="Center"
                               VerticalAlignment="Center"
                               Data="{StaticResource TextBoxClearButtonData}"
-                              Fill="{DynamicResource ThemeForegroundColor}"
+                              Fill="{TemplateBinding Foreground}"
                               Stretch="Uniform" />
                     </Border>
                 </ControlTemplate>
@@ -40,29 +55,43 @@
     <ControlTheme x:Key="SimplePasswordBoxRevealButtonTheme"
                   BasedOn="{StaticResource {x:Type Button}}"
                   TargetType="ToggleButton">
+        <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderLowBrush}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Margin" Value="6" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="ClipToBounds" Value="True" />
         <Setter Property="Cursor" Value="Arrow" />
+        <Setter Property="Width" Value="{Binding $self.Bounds.Height}" />
+        <!-- <Setter Property="Height" Value="20" /> -->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
                     <Border x:Name="PART_ButtonLayoutBorder"
-                            Width="12"
-                            Background="Transparent">
+                            Margin="{TemplateBinding Padding}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
                         <Panel>
                             <Path x:Name="PART_GlyphElement_Reveal"
-                                  Width="12"
-                                  Height="8"
+                                  Margin="6"
                                   HorizontalAlignment="Center"
                                   VerticalAlignment="Center"
                                   Data="{DynamicResource PasswordBoxRevealButtonData}"
-                                  Fill="{DynamicResource ThemeForegroundColor}"
+                                  Fill="{TemplateBinding Foreground}"
                                   Stretch="Uniform" />
                             <Path x:Name="PART_GlyphElement_Hide"
-                                  Width="12"
-                                  Height="12"
+                                  Margin="6"
                                   HorizontalAlignment="Center"
                                   VerticalAlignment="Center"
                                   Data="{DynamicResource PasswordBoxHideButtonData}"
-                                  Fill="{DynamicResource ThemeForegroundColor}"
+                                  Fill="{TemplateBinding Foreground}"
                                   Stretch="Uniform" />
                         </Panel>
                     </Border>
@@ -223,35 +252,41 @@
             <Setter Property="Opacity" Value="1" />
         </Style>
 
-        <Style Selector="^.clearButton[AcceptsReturn=False][IsReadOnly=False]:focus:not(TextBox:empty)">
+        <Style Selector="^.ClearButton[AcceptsReturn=False][IsReadOnly=False]:focus:not(TextBox:empty)">
             <Setter Property="InnerRightContent">
                 <Template>
                     <Button Command="{Binding $parent[TextBox].Clear}"
-                            Focusable="False"
-                            Theme="{StaticResource SimpleTextBoxClearButtonTheme}"
-                            ClipToBounds="True" />
+                            Theme="{StaticResource SimpleTextBoxClearButtonTheme}"/>
                 </Template>
             </Setter>
         </Style>
 
-        <Style Selector="^.revealPasswordButton[AcceptsReturn=False][IsReadOnly=False]:not(TextBox:empty)">
+        <Style Selector="^.RevealPasswordButton[AcceptsReturn=False][IsReadOnly=False]:not(TextBox:empty)">
             <Setter Property="InnerRightContent">
                 <Template>
-                    <Panel Margin="4,0">
-                        <Panel.Styles>
+                    <ToggleButton IsChecked="{Binding $parent[TextBox].RevealPassword, Mode=TwoWay}"
+                                  Theme="{StaticResource SimplePasswordBoxRevealButtonTheme}">
+                        <ToggleButton.Styles>
                             <Style Selector="ToggleButton[IsChecked=True]">
-                                <Setter Property="(ToolTip.Tip)" Value="Hide Password" />
+                                <Setter Property="(ToolTip.Tip)">
+                                    <Template>
+                                        <!-- TODO localize the tooltips... -->
+                                        <TextBlock  Text="Hide Password" 
+                                                    Foreground="{DynamicResource ThemeForegroundBrush}"/>
+                                    </Template>
+                                </Setter>
                             </Style>
                             <Style Selector="ToggleButton[IsChecked=False]">
-                                <Setter Property="(ToolTip.Tip)" Value="Show Password" />
+                                <Setter Property="(ToolTip.Tip)">
+                                    <Template>
+                                        <!-- TODO localize the tooltips... -->
+                                        <TextBlock  Text="Show Password" 
+                                                    Foreground="{DynamicResource ThemeForegroundBrush}"/>
+                                    </Template>
+                                </Setter>
                             </Style>
-                        </Panel.Styles>
-                        <ToggleButton Background="Transparent"
-                                      Focusable="False"
-                                      IsChecked="{Binding $parent[TextBox].RevealPassword, Mode=TwoWay}"
-                                      Theme="{StaticResource SimplePasswordBoxRevealButtonTheme}"
-                                      ClipToBounds="True" />
-                    </Panel>
+                        </ToggleButton.Styles>
+                    </ToggleButton>
                 </Template>
             </Setter>
         </Style>
