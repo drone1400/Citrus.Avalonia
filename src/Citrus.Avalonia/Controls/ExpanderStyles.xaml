@@ -129,6 +129,9 @@
             <Style Selector="^:expanded /template/ ToggleButton#PART_toggle">
                 <Setter Property="Theme" Value="{StaticResource SimpleExpanderToggleButtonDownTheme}" />
             </Style>
+            <Style Selector="^:disabled /template/ ToggleButton#PART_toggle">
+                <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
+            </Style>
         </Style>
         <Style Selector="^[ExpandDirection=Up]">
             <Setter Property="Template">
@@ -161,6 +164,9 @@
             <Style Selector="^:expanded /template/ ToggleButton#PART_toggle">
                 <Setter Property="Theme" Value="{StaticResource SimpleExpanderToggleButtonUpTheme}" />
             </Style>
+            <Style Selector="^:disabled /template/ ToggleButton#PART_toggle">
+                <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
+            </Style>
         </Style>
         <Style Selector="^[ExpandDirection=Right]">
             <Setter Property="Template">
@@ -192,6 +198,9 @@
             </Setter>
             <Style Selector="^:expanded /template/ ToggleButton#PART_toggle">
                 <Setter Property="Theme" Value="{StaticResource SimpleExpanderToggleButtonRightTheme}" />
+            </Style>
+            <Style Selector="^:disabled /template/ ToggleButton#PART_toggle">
+                <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
             </Style>
         </Style>
         <Style Selector="^[ExpandDirection=Left]">
