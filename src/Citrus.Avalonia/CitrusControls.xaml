@@ -11,6 +11,7 @@
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/DataValidationErrors.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ExpanderStyles.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ItemsControl.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Label.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ListBoxStyles.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/MenuStyles.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/NumericUpDownStyles.xaml" />
