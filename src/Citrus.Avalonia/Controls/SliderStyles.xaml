@@ -19,7 +19,7 @@
             <Setter Property="MinHeight" Value="20" />
             <Setter Property="Template">
                 <ControlTemplate>
-                    <Grid Name="grid">
+                    <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto"
@@ -61,6 +61,7 @@
                 </ControlTemplate>
             </Setter>
         </Style>
+        
         <Style Selector="^:vertical">
             <Setter Property="MinWidth" Value="20" />
             <Setter Property="MinHeight" Value="40" />
@@ -121,7 +122,7 @@
         <Style Selector="^ /template/ TickBar">
             <Setter Property="Ticks" Value="{TemplateBinding Ticks}" />
         </Style>
-        <Style Selector="^:disabled /template/ Grid#grid">
+        <Style Selector="^:disabled">
             <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
         </Style>
     </ControlTheme>
