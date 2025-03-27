@@ -28,7 +28,7 @@ GridSplitter
 HeaderedContentControl
 HyperlinkButton
         ItemsControl
-Label
+        Label
         ListBox
         ListBoxItem
 ManagedFileChooser
@@ -37,7 +37,7 @@ MenuFlyoutPresenter
         MenuItem
 MenuScrollViewer
 NotificationCard
-NumericUpDown
+NumericUpDown [ !!!! currently has some issues... ]
 OverlayPopupHost
 PathIcon
 PopupRoot
