@@ -31,6 +31,10 @@
                 </Border>
             </ControlTemplate>
         </Setter>
+        
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
+        </Style>
     </ControlTheme>
     
     <converters:MarginMultiplierConverter x:Key="LeftMarginConverter"
