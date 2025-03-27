@@ -6,6 +6,7 @@
         <!-- <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" /> -->
         <Setter Property="FontFamily" Value="Ubuntu" />
         <Setter Property="FontSize" Value="14" />
+        <Setter Property="VerticalAlignment" Value="Center" />
         
         <Style Selector="^.Heading">
             <Setter Property="Margin" Value="0 10 0 5" />
