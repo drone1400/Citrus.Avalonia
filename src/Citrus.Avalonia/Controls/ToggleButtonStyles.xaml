@@ -28,14 +28,13 @@
             </ControlTemplate>
         </Setter>
         
-        <Style Selector="^:checked /template/ ContentPresenter#PART_ContentPresenter">
+        <Style Selector="^:checked">
             <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}" />
         </Style>
-        <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="{DynamicResource ThemeBorderHighBrush}" />
+        <Style Selector="^:pointerover">
+            <Setter Property="Background" Value="{DynamicResource HighlightHoverBrush}" />
         </Style>
-        <Style Selector="^:pressed  /template/ ContentPresenter#PART_ContentPresenter">
+        <Style Selector="^:pressed">
             <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
         </Style>
         <Style Selector="^:disabled">
@@ -43,23 +42,17 @@
         </Style>
         
         <!-- Primary button -->
-        <Style Selector="^.Primary">
-            <Setter Property="Background" Value="{DynamicResource ThemeBorderHighBrush}" />
-        </Style>
-        <Style Selector="^.Primary">
-            <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
-        </Style>
-        <Style Selector="^.Primary">
-            <Setter Property="CornerRadius" Value="5" />
-        </Style>
-        <Style Selector="^.Primary:pointerover /template/ ContentPresenter">
-            <Setter Property="Background" Value="{DynamicResource ThemeBorderHighBrush}" />
-        </Style>
-        <Style Selector="^.Primary:pressed /template/ ContentPresenter">
+        <Style Selector="^.Primary:checked">
             <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush}" />
         </Style>
-        <Style Selector="^.Primary:checked /template/ ContentPresenter">
+        <Style Selector="^.Primary:pointerover">
+            <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush4}" />
+        </Style>
+        <Style Selector="^.Primary:pressed">
             <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush}" />
+        </Style>
+        <Style Selector="^.Primary:disabled">
+            <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
         </Style>
     </ControlTheme>
 </ResourceDictionary>
