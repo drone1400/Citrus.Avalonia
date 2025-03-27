@@ -3,10 +3,14 @@
                     xmlns:converters="clr-namespace:Avalonia.Controls.Converters;assembly=Avalonia.Controls">
     <converters:StringFormatConverter x:Key="StringFormatConverter" />
 
+    <!-- TODO... maybe make the progress text partially change color when the progress indicator is behind it? -->
+    <!-- that might be tricky to do... will have to look into it later... -->
+    
     <ControlTheme x:Key="{x:Type ProgressBar}"
                   TargetType="ProgressBar">
         <Setter Property="Background" Value="{DynamicResource ThemeBorderLowBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource ThemeAccentBrush}" />
+        <Setter Property="Margin" Value="0,5"/>
         <Setter Property="Template">
             <ControlTemplate TargetType="ProgressBar">
                 <Grid>
@@ -104,5 +108,10 @@
             <Setter Property="Height"
                     Value="{Binding TemplateSettings.ContainerWidth, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
+        
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
+        </Style>
+        
     </ControlTheme>
 </ResourceDictionary>
