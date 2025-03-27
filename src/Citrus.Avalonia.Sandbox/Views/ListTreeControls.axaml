@@ -1,0 +1,111 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sandbox="clr-namespace:Citrus.Avalonia.Sandbox"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Citrus.Avalonia.Sandbox.Views.ListTreeControls"
+             Background="{DynamicResource ThemeBackgroundColor}">
+
+    <Design.DesignStyle>
+        <SimpleTheme />
+    </Design.DesignStyle>
+
+    <Design.DataContext>
+        <sandbox:MainWindowViewModel />
+    </Design.DataContext>
+
+    <Grid ColumnDefinitions="*,*">
+        <Border Classes="Card" Grid.Column="0">
+            <StackPanel Spacing="10">
+                <Label Classes="Heading"
+                       Content="ListBox" />
+
+                <!-- ListBox -->
+                <ListBox>
+                    <ListBoxItem>
+                        <StackPanel>
+                            <TextBlock Text="Lorem ipsum dolor sit amet"
+                                       TextWrapping="Wrap" />
+                            <TextBlock Classes="Caption"
+                                       TextWrapping="Wrap"
+                                       Text="Consectetur adipiscing elit. Curabitur quis lectus dui." />
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem IsSelected="True">
+                        <StackPanel>
+                            <TextBlock Text="Nam pharetra venenatis semper"
+                                       TextWrapping="Wrap" />
+                            <TextBlock Classes="Caption"
+                                       TextWrapping="Wrap"
+                                       Text="Cras leo purus, aliquet id ultricies id, tempus mauris." />
+                        </StackPanel>
+                    </ListBoxItem>
+                </ListBox>
+
+                <ListBox IsEnabled="False">
+                    <ListBoxItem>
+                        <StackPanel>
+                            <TextBlock Text="Lorem ipsum dolor sit amet"
+                                       TextWrapping="Wrap" />
+                            <TextBlock Classes="Caption"
+                                       TextWrapping="Wrap"
+                                       Text="Consectetur adipiscing elit. Curabitur quis lectus dui." />
+                        </StackPanel>
+                    </ListBoxItem>
+                    <ListBoxItem IsSelected="True">
+                        <StackPanel>
+                            <TextBlock Text="Nam pharetra venenatis semper"
+                                       TextWrapping="Wrap" />
+                            <TextBlock Classes="Caption"
+                                       TextWrapping="Wrap"
+                                       Text="Cras leo purus, aliquet id ultricies id, tempus mauris." />
+                        </StackPanel>
+                    </ListBoxItem>
+                </ListBox>
+
+            </StackPanel>
+        </Border>
+
+        <Border Classes="Card" Grid.Column="1">
+            <StackPanel Spacing="10">
+                <Label Classes="Heading"
+                       Content="TreeView" />
+
+                <Grid ColumnDefinitions="*,10,*"
+                      RowDefinitions="Auto,Auto">
+                    <Label Grid.Row="0" Grid.Column="0" Content="Enabled"/>
+                    <TreeView Grid.Row="1" Grid.Column="0">
+                        <TreeViewItem Header="Fruit" IsSelected="True">
+                            <TreeViewItem Header="Lime" />
+                            <TreeViewItem Header="Orange" />
+                            <TreeViewItem Header="Apple" />
+                        </TreeViewItem>
+                        <TreeViewItem Header="Colors" IsExpanded="True">
+                            <TreeViewItem Header="Red" />
+                            <TreeViewItem Header="Orange" />
+                            <TreeViewItem Header="Green" />
+                        </TreeViewItem>
+                    </TreeView>
+
+                    <Label Grid.Row="0" Grid.Column="2" Content="Disabled"/>
+                    <TreeView Grid.Row="1" Grid.Column="2"
+                              IsEnabled="False">
+                        <TreeViewItem Header="Fruit" IsSelected="True">
+                            <TreeViewItem Header="Lime" />
+                            <TreeViewItem Header="Orange" />
+                            <TreeViewItem Header="Apple" />
+                        </TreeViewItem>
+                        <TreeViewItem Header="Colors" IsExpanded="True">
+                            <TreeViewItem Header="Red" />
+                            <TreeViewItem Header="Orange" IsSelected="True" />
+                            <TreeViewItem Header="Green" />
+                        </TreeViewItem>
+                    </TreeView>
+                </Grid>
+            </StackPanel>
+
+
+        </Border>
+    </Grid>
+</UserControl>

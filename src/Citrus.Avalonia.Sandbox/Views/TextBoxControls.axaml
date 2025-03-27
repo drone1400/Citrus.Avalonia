@@ -1,0 +1,84 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sandbox="clr-namespace:Citrus.Avalonia.Sandbox"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="800"
+             x:Class="Citrus.Avalonia.Sandbox.Views.TextBoxControls"
+             Background="{DynamicResource ThemeBackgroundColor}">
+    <Design.DesignStyle>
+        <SimpleTheme />
+    </Design.DesignStyle>
+
+    <Design.DataContext>
+        <sandbox:MainWindowViewModel />
+    </Design.DataContext>
+
+    <Grid ColumnDefinitions="*,*">
+        <Border Classes="Card" Grid.Column="0">
+            <StackPanel Spacing="10">
+                <!-- TextBox -->
+                <TextBox Text="Just a normal TextBox" />
+                <TextBox IsEnabled="False"
+                         Text="A disabled TextBox" />
+                <TextBox Classes="Badge"
+                         Text="A TextBox with the Badge class" />
+                <TextBox Classes="PrimaryBadge"
+                         Text="A TextBox with the PrimaryBadge class" />
+                <TextBox Classes="ClearButton"
+                         Text="A TextBox with the ClearButton class" />
+                
+                <TextBox Height="60"
+                         AcceptsReturn="True"
+                         Text="This is the large text area with some selected text.&#10;This is another line!"
+                         SelectionStart="0"
+                         SelectionEnd="15" />
+                
+                <TextBox Height="80"
+                         AcceptsReturn="True"
+                         Text="This is the large text area with a very very very very very very very very very very very very very very very very very very very very long line!&#10;There are more lines!&#10;This is another line.&#10;This is yet another line!"/>
+                
+            </StackPanel>
+        </Border>
+        
+        <Border Classes="Card" Grid.Column="1">
+            <StackPanel Spacing="10">
+                <!-- More TextBox -->
+                <TextBox Watermark="TextBox with validation message below textbox"
+                         Text="{Binding Path=Message}" />
+                <TextBox Watermark="TextBox with validation message tooltip"
+                         Text="{Binding Path=Message}">
+                    <TextBox.Styles>
+                        <Style Selector="DataValidationErrors">
+                            <Setter Property="Theme" Value="{DynamicResource TooltipDataValidationErrors}" />
+                        </Style>
+                    </TextBox.Styles>
+                </TextBox>
+
+                <TextBox UseFloatingWatermark="True"
+                         Watermark="TextBox with floating watermark."
+                         Text="If you enter some text, it will float to the top." />
+                <TextBox UseFloatingWatermark="True"
+                         IsEnabled="False"
+                         Watermark="TextBox with floating watermark, but disabled."
+                         Text="If you enter some text, it will float to the top." />
+
+                <Label Content="This is a password TextBox:" />
+                <TextBox Text="MyPassword"
+                         PasswordChar="*" />
+                <Label Content="This is a password TextBox with a RevealPasswordButton class" />
+                <TextBox Classes="RevealPasswordButton"
+                         Text="MyPassword"
+                         PasswordChar="*" />
+                
+                <Label Content="This is a disabled password TextBox with a RevealPasswordButton class" />
+                <TextBox Classes="RevealPasswordButton"
+                         IsEnabled="False"
+                         Text="MyPassword"
+                         PasswordChar="*" />
+            </StackPanel>
+        </Border>
+    </Grid>
+
+
+</UserControl>

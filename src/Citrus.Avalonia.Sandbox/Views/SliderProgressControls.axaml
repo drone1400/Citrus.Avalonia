@@ -1,0 +1,181 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sandbox="clr-namespace:Citrus.Avalonia.Sandbox"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Citrus.Avalonia.Sandbox.Views.SliderProgressControls"
+             Background="{DynamicResource ThemeBackgroundColor}">
+    <Design.DesignStyle>
+        <SimpleTheme />
+    </Design.DesignStyle>
+
+    <Design.DataContext>
+        <sandbox:MainWindowViewModel />
+    </Design.DataContext>
+
+    <Grid ColumnDefinitions="*,*">
+        <Border Classes="Card" Grid.Column="0">
+            <StackPanel>
+                <Label Classes="Heading"
+                       Content="Horizontal Sliders" />
+                
+                <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto, *" Margin="0,10">
+                    <Label Grid.Row="0" Grid.Column="0" Content="Enabled Slider" />
+                    <Slider Grid.Row="0" Grid.Column="1"
+                            Name="slider1"
+                            Orientation="Horizontal"
+                            Minimum="0"
+                            Maximum="100"
+                            Value="35" />
+                    <Label Grid.Row="1" Grid.Column="0" Content="Disabled Slider" />
+                    <Slider Grid.Row="1" Grid.Column="1"
+                            IsEnabled="False"
+                            Orientation="Horizontal"
+                            Minimum="0"
+                            Maximum="100"
+                            Value="{Binding #slider1.Value}" />
+                </Grid>
+                
+                <Label Classes="Heading"
+                       Content="Vertical Sliders" />
+                
+                <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*, *" Margin="0,0,0, 10">
+                    <Label Grid.Row="0" Grid.Column="0" Content="Enabled Slider" />
+                    <Slider Grid.Row="1" Grid.Column="0"
+                            Name="slider2"
+                            Height="200"
+                            Orientation="Vertical"
+                            Minimum="0"
+                            Maximum="100"
+                            Value="35" />
+                    <Label Grid.Row="0" Grid.Column="1" Content="Disabled Slider" />
+                    <Slider Grid.Row="1" Grid.Column="1"
+                            IsEnabled="False"
+                            Height="200"
+                            Orientation="Vertical"
+                            Minimum="0"
+                            Maximum="100"
+                            Value="{Binding #slider2.Value}" />
+                </Grid>
+            </StackPanel>
+        </Border>
+        <Border Classes="Card" Grid.Column="1">
+            <StackPanel>
+                <Label Classes="Heading"
+                       Content="Horizontal Progress Bars" />
+                
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" 
+                      ColumnDefinitions="Auto, *" 
+                      Margin="0,10">
+                    <Label Grid.Row="0" Grid.Column="0" Content="Enabled" />
+                    <ProgressBar Grid.Row="0" Grid.Column="1"
+                                 Height="20"
+                                 Orientation="Horizontal"
+                                 Minimum="0"
+                                 Maximum="100"
+                                 Value="{Binding #slider1.Value}" />
+                    <Label Grid.Row="1" Grid.Column="0" Content="Disabled" />
+                    <ProgressBar Grid.Row="1" Grid.Column="1"
+                                 IsEnabled="False"
+                                 Height="20"
+                                 Orientation="Horizontal"
+                                 Minimum="0"
+                                 Maximum="100"
+                                 Value="{Binding #slider1.Value}" />
+                    <Label Grid.Row="2" Grid.Column="0" Content="Enabled, ProgressText" />
+                    <ProgressBar Grid.Row="2" Grid.Column="1"
+                                 ShowProgressText="True"
+                                 Height="20"
+                                 Orientation="Horizontal"
+                                 Minimum="0"
+                                 Maximum="100"
+                                 Value="{Binding #slider1.Value}" />
+                    <Label Grid.Row="3" Grid.Column="0" Content="Disabled, ProgressText" />
+                    <ProgressBar Grid.Row="3" Grid.Column="1"
+                                 ShowProgressText="True"
+                                 IsEnabled="False"
+                                 Height="20"
+                                 Orientation="Horizontal"
+                                 Minimum="0"
+                                 Maximum="100"
+                                 Value="{Binding #slider1.Value}" />
+                    <Label Grid.Row="4" Grid.Column="0" Content="Enabled, Indeterminate" />
+                    <ProgressBar Grid.Row="4" Grid.Column="1"
+                                 IsIndeterminate="True"
+                                 Height="20"
+                                 Orientation="Horizontal"
+                                 Minimum="0"
+                                 Maximum="100"
+                                 Value="{Binding #slider1.Value}" />
+                    <Label Grid.Row="5" Grid.Column="0" Content="Disabled, Indeterminate" />
+                    <ProgressBar Grid.Row="5" Grid.Column="1"
+                                 IsIndeterminate="True"
+                                 IsEnabled="False"
+                                 Height="20"
+                                 Orientation="Horizontal"
+                                 Minimum="0"
+                                 Maximum="100"
+                                 Value="{Binding #slider1.Value}" />
+                </Grid>
+                
+                <Label Classes="Heading"
+                       Content="Vertical Progress Bars" />
+                
+                <Grid RowDefinitions="Auto,Auto" 
+                      ColumnDefinitions="*,*,*,*,*,*" 
+                      Margin="0,0,0, 10">
+                    <ProgressBar Grid.Row="1" Grid.Column="0"
+                                 Width="20"
+                                 Height="200"
+                                 Orientation="Vertical"
+                                 Minimum="0"
+                                 Maximum="100"
+                                 Value="{Binding #slider2.Value}" />
+                    <ProgressBar Grid.Row="1" Grid.Column="1"
+                                 IsEnabled="False"
+                                 Width="20"
+                                 Height="200"
+                                 Orientation="Vertical"
+                                 Minimum="0"
+                                 Maximum="100"
+                                 Value="{Binding #slider2.Value}" />
+                    <ProgressBar Grid.Row="1" Grid.Column="2"
+                                 ShowProgressText="True"
+                                 Width="20"
+                                 Height="200"
+                                 Orientation="Vertical"
+                                 Minimum="0"
+                                 Maximum="100"
+                                 Value="{Binding #slider2.Value}" />
+                    <ProgressBar Grid.Row="1" Grid.Column="3"
+                                 ShowProgressText="True"
+                                 IsEnabled="False"
+                                 Width="20"
+                                 Height="200"
+                                 Orientation="Vertical"
+                                 Minimum="0"
+                                 Maximum="100"
+                                 Value="{Binding #slider2.Value}" />
+                    <ProgressBar Grid.Row="1" Grid.Column="4"
+                                 IsIndeterminate="True"
+                                 Width="20"
+                                 Height="200"
+                                 Orientation="Vertical"
+                                 Minimum="0"
+                                 Maximum="100"
+                                 Value="{Binding #slider2.Value}" />
+                    <ProgressBar Grid.Row="1" Grid.Column="5"
+                                 IsIndeterminate="True"
+                                 IsEnabled="False"
+                                 Width="20"
+                                 Height="200"
+                                 Orientation="Vertical"
+                                 Minimum="0"
+                                 Maximum="100"
+                                 Value="{Binding #slider2.Value}" />
+                </Grid>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
