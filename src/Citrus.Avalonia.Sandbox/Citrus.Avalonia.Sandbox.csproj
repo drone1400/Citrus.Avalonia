@@ -33,6 +33,7 @@
   
   <ItemGroup>
     <ProjectReference Include="..\Citrus.Avalonia\Citrus.Avalonia.csproj" />
+    <ProjectReference Include="..\Citrus.Avalonia.DataGrid\Citrus.Avalonia.DataGrid.csproj" />
   </ItemGroup>
 
   <Target Name="Preview">

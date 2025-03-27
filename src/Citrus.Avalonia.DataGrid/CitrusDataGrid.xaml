@@ -1,0 +1,16 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <MergeResourceInclude Source="avares://Citrus.Avalonia.DataGrid/DataGridResources.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia.DataGrid/Controls/DataGrid.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia.DataGrid/Controls/DataGridCell.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia.DataGrid/Controls/DataGridColumnHeader.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia.DataGrid/Controls/DataGridRow.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia.DataGrid/Controls/DataGridRowGroupHeader.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia.DataGrid/Controls/DataGridRowHeader.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Styles.Resources>
+</Styles>

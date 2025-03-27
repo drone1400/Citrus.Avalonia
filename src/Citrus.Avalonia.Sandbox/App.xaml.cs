@@ -3,9 +3,12 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Avalonia.Markup.Xaml.Styling;
 using Avalonia.Styling;
 using Avalonia.Themes.Fluent;
 using Avalonia.Themes.Simple;
+using Citrus.Avalonia.Sandbox.ViewModels;
+using Citrus.Avalonia.Sandbox.Views;
 
 namespace Citrus.Avalonia.Sandbox
 {
@@ -19,9 +22,13 @@ namespace Citrus.Avalonia.Sandbox
     public class App : Application
     {
         private readonly Styles _styles = new Styles();
-        private CitrusTheme? _citrusTheme;
-        private SimpleTheme? _simpleTheme;
-        private FluentTheme? _fluentTheme;
+        private CitrusTheme? _citrusTheme = null;
+        private SimpleTheme? _simpleTheme = null;
+        private FluentTheme? _fluentTheme = null;
+
+        private StyleInclude? _resDataGridFluent = null;
+        private StyleInclude? _resDataGridSimple = null;
+        private StyleInclude? _resDataGridCitrus = null;
         
         private object? _currentThemeObj = null;
         
@@ -34,8 +41,17 @@ namespace Citrus.Avalonia.Sandbox
             this._citrusTheme = new CitrusTheme();
             this._fluentTheme = new FluentTheme();
             this._simpleTheme = new SimpleTheme();
+
+            Uri uriDataGridFluent = new Uri("avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml");
+            Uri uriDataGridSimple = new Uri("avares://Avalonia.Controls.DataGrid/Themes/Simple.xaml");
+            Uri uriDataGridCitrus = new Uri("avares://Citrus.Avalonia.DataGrid/CitrusDataGrid.xaml");
+            
+            this._resDataGridFluent = new StyleInclude(uriDataGridFluent) { Source = uriDataGridFluent };
+            this._resDataGridSimple = new StyleInclude(uriDataGridSimple) { Source = uriDataGridSimple };
+            this._resDataGridCitrus = new StyleInclude(uriDataGridCitrus) { Source = uriDataGridCitrus };
             
             this._styles.Add(this._citrusTheme);
+            this._styles.Add(this._resDataGridCitrus);
             this._currentThemeObj = this._citrusTheme;
             this._mainWindowViewModel = new MainWindowViewModel();
             this._mainWindowViewModel.Title = "Sandbox - Citrus Theme";
@@ -64,16 +80,19 @@ namespace Citrus.Avalonia.Sandbox
             if (Application.Current is not App app) return;
             if (this._mainWindowViewModel == null) return;
             
-            if (ReferenceEquals(this._currentThemeObj, this._citrusTheme) && this._fluentTheme != null) {
+            if (ReferenceEquals(this._currentThemeObj, this._citrusTheme) && this._fluentTheme != null && this._resDataGridFluent != null) {
                 this._styles[0] = this._fluentTheme;
+                this._styles[1] = this._resDataGridFluent;
                 this._currentThemeObj = this._fluentTheme;
                 this._mainWindowViewModel.Title = "Sandbox - Fluent Theme";
-            } else if (ReferenceEquals(this._currentThemeObj, this._fluentTheme) && this._simpleTheme != null) {
+            } else if (ReferenceEquals(this._currentThemeObj, this._fluentTheme) && this._simpleTheme != null && this._resDataGridSimple != null) {
                 this._styles[0] = this._simpleTheme;
+                this._styles[1] = this._resDataGridSimple;
                 this._currentThemeObj = this._simpleTheme;
                 this._mainWindowViewModel.Title = "Sandbox - Simple Theme";
-            } else if (this._citrusTheme != null) {
+            } else if (this._citrusTheme != null && this._resDataGridCitrus != null) {
                 this._styles[0] = this._citrusTheme;
+                this._styles[1] = this._resDataGridCitrus;
                 this._currentThemeObj = this._citrusTheme;
                 this._mainWindowViewModel.Title = "Sandbox - Citrus Theme";
             }

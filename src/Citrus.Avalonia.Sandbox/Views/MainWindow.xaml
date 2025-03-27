@@ -2,8 +2,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:sandbox="clr-namespace:Citrus.Avalonia.Sandbox"
         xmlns:views="clr-namespace:Citrus.Avalonia.Sandbox.Views"
+        xmlns:viewModels="clr-namespace:Citrus.Avalonia.Sandbox.ViewModels"
         Background="{DynamicResource ThemeBackgroundColor}"
-        x:Class="Citrus.Avalonia.Sandbox.MainWindow"
+        x:Class="Citrus.Avalonia.Sandbox.Views.MainWindow"
         Title="{Binding Title}"
         Width="1200" Height="800"
         MinWidth="1000" MinHeight="800">
@@ -12,7 +13,7 @@
     </Design.DesignStyle>
     
     <Design.DataContext>
-        <sandbox:MainWindowViewModel />
+        <viewModels:MainWindowViewModel />
     </Design.DataContext>
     
     <Grid>
@@ -56,6 +57,9 @@
             </TabItem>
             <TabItem Header="Other Controls">
                 <views:OtherControls />
+            </TabItem>
+            <TabItem Header="Data Grid">
+                <views:DataGridControls />
             </TabItem>
             <TabItem Header="Disabled page" IsEnabled="False">
             </TabItem>

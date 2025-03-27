@@ -1,0 +1,185 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:Citrus.Avalonia.Sandbox.ViewModels"
+             xmlns:converters="clr-namespace:Citrus.Avalonia.Sandbox.Converters"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Citrus.Avalonia.Sandbox.Views.DataGridControls"
+             Background="{DynamicResource ThemeBackgroundColor}">
+
+    <Design.DesignStyle>
+        <SimpleTheme />
+    </Design.DesignStyle>
+
+    <Design.DataContext>
+        <viewModels:MainWindowViewModel />
+    </Design.DataContext>
+
+    <UserControl.Resources>
+        <converters:DoubleStringConverter x:Key="DoubleStringConverter" />
+        <converters:IntStringConverter x:Key="IntStringConverter" />
+    </UserControl.Resources>
+
+    <Grid ColumnDefinitions="*,*">
+        <Border Classes="Card" Grid.Column="0">
+            <StackPanel Spacing="10">
+                <Label Classes="Heading"
+                       Content="Normal Data Grid" />
+                <DataGrid
+                    ItemsSource="{Binding SomeData}">
+                    <DataGrid.Styles>
+                        <Style Selector="DataValidationErrors">
+                            <Setter Property="Theme" Value="{DynamicResource TooltipDataValidationErrors}" />
+                        </Style>
+                    </DataGrid.Styles>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Header="Name"
+                            Width="*"
+                            Binding="{Binding Name, Mode=TwoWay}"
+                            x:DataType="viewModels:SampleDataViewModel" />
+                        <DataGridTextColumn
+                            Header="Category"
+                            Width="*"
+                            Binding="{Binding Category, Mode=TwoWay}"
+                            x:DataType="viewModels:SampleDataViewModel" />
+                        <DataGridCheckBoxColumn
+                            Header="Bool"
+                            Width="*"
+                            Binding="{Binding BoolValue, Mode=TwoWay}"
+                            x:DataType="viewModels:SampleDataViewModel" />
+                        <DataGridTextColumn
+                            Header="Int"
+                            Width="*"
+                            Binding="{Binding IntValue, Mode=TwoWay, 
+                            Converter={StaticResource IntStringConverter} }"
+                            x:DataType="viewModels:SampleDataViewModel" />
+                        <DataGridTextColumn
+                            Header="Double"
+                            Width="*"
+                            Binding="{Binding DoubleValue, Mode=TwoWay,
+                            Converter={StaticResource DoubleStringConverter}}"
+                            x:DataType="viewModels:SampleDataViewModel" />
+                    </DataGrid.Columns>
+                </DataGrid>
+                
+                <Label Classes="Heading"
+                       Content="Grouping Data Grid" />
+                <DataGrid
+                    ItemsSource="{Binding SomeCollectionViewData}">
+                    <DataGrid.Styles>
+                        <Style Selector="DataValidationErrors">
+                            <Setter Property="Theme" Value="{DynamicResource TooltipDataValidationErrors}" />
+                        </Style>
+                    </DataGrid.Styles>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Header="Name"
+                            Width="*"
+                            Binding="{Binding Name, Mode=TwoWay}"
+                            x:DataType="viewModels:SampleDataViewModel" />
+                        <DataGridTextColumn
+                            Header="Category"
+                            Width="*"
+                            Binding="{Binding Category, Mode=TwoWay}"
+                            x:DataType="viewModels:SampleDataViewModel" />
+                        <DataGridCheckBoxColumn
+                            Header="Bool"
+                            Width="*"
+                            Binding="{Binding BoolValue, Mode=TwoWay}"
+                            x:DataType="viewModels:SampleDataViewModel" />
+                        <DataGridTextColumn
+                            Header="Int"
+                            Width="*"
+                            Binding="{Binding IntValue, Mode=TwoWay, 
+                            Converter={StaticResource IntStringConverter} }"
+                            x:DataType="viewModels:SampleDataViewModel" />
+                        <DataGridTextColumn
+                            Header="Double"
+                            Width="*"
+                            Binding="{Binding DoubleValue, Mode=TwoWay,
+                            Converter={StaticResource DoubleStringConverter}}"
+                            x:DataType="viewModels:SampleDataViewModel" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </Border>
+
+        <Border Classes="Card" Grid.Column="1">
+            <StackPanel Spacing="10">
+                <Label Classes="Heading"
+                       Content="Disabled Data Grid" />
+                <DataGrid
+                    IsEnabled="False"
+                    ItemsSource="{Binding SomeData}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Header="Name"
+                            Width="*"
+                            Binding="{Binding Name, Mode=TwoWay}"
+                            x:DataType="viewModels:SampleDataViewModel" />
+                        <DataGridTextColumn
+                            Header="Category"
+                            Width="*"
+                            Binding="{Binding Category, Mode=TwoWay}"
+                            x:DataType="viewModels:SampleDataViewModel" />
+                        <DataGridCheckBoxColumn
+                            Header="Bool"
+                            Width="*"
+                            Binding="{Binding BoolValue, Mode=TwoWay}"
+                            x:DataType="viewModels:SampleDataViewModel" />
+                        <DataGridTextColumn
+                            Header="Int"
+                            Width="*"
+                            Binding="{Binding IntValue, Mode=TwoWay, 
+                            Converter={StaticResource IntStringConverter} }"
+                            x:DataType="viewModels:SampleDataViewModel" />
+                        <DataGridTextColumn
+                            Header="Double"
+                            Width="*"
+                            Binding="{Binding DoubleValue, Mode=TwoWay,
+                            Converter={StaticResource DoubleStringConverter}}"
+                            x:DataType="viewModels:SampleDataViewModel" />
+                    </DataGrid.Columns>
+                </DataGrid>
+                
+                <Label Classes="Heading"
+                       Content="Disabled Grouping Data Grid" />
+                <DataGrid
+                    IsEnabled="False"
+                    ItemsSource="{Binding SomeCollectionViewData}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Header="Name"
+                            Width="*"
+                            Binding="{Binding Name, Mode=TwoWay}"
+                            x:DataType="viewModels:SampleDataViewModel" />
+                        <DataGridTextColumn
+                            Header="Category"
+                            Width="*"
+                            Binding="{Binding Category, Mode=TwoWay}"
+                            x:DataType="viewModels:SampleDataViewModel" />
+                        <DataGridCheckBoxColumn
+                            Header="Bool"
+                            Width="*"
+                            Binding="{Binding BoolValue, Mode=TwoWay}"
+                            x:DataType="viewModels:SampleDataViewModel" />
+                        <DataGridTextColumn
+                            Header="Int"
+                            Width="*"
+                            Binding="{Binding IntValue, Mode=TwoWay, 
+                            Converter={StaticResource IntStringConverter} }"
+                            x:DataType="viewModels:SampleDataViewModel" />
+                        <DataGridTextColumn
+                            Header="Double"
+                            Width="*"
+                            Binding="{Binding DoubleValue, Mode=TwoWay,
+                            Converter={StaticResource DoubleStringConverter}}"
+                            x:DataType="viewModels:SampleDataViewModel" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,50 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="DataGridColumnHeaderForegroundBrush" Color="{DynamicResource HighlightForegroundColor}" />
+    <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundBrush" Color="{DynamicResource ThemeAccentColor2}" />
+    <SolidColorBrush x:Key="DataGridColumnHeaderHoveredBackgroundBrush" Color="{DynamicResource ThemeAccentColor4}" />
+    <SolidColorBrush x:Key="DataGridColumnHeaderPressedBackgroundBrush" Color="{DynamicResource HighlightColor}" />
+    <SolidColorBrush x:Key="DataGridColumnHeaderDraggedBackgroundBrush" Color="{DynamicResource ThemeControlHighlightMidColor}" />
+
+    <SolidColorBrush x:Key="DataGridRowGroupHeaderForegroundBrush" Color="{DynamicResource ThemeForegroundColor}" />
+    <SolidColorBrush x:Key="DataGridRowGroupHeaderBackgroundBrush" Color="{DynamicResource ThemeControlMidColor}" />
+    <SolidColorBrush x:Key="DataGridRowGroupHeaderPressedBackgroundBrush" Color="{DynamicResource HighlightColor}" />
+    <SolidColorBrush x:Key="DataGridRowGroupHeaderHoveredBackgroundBrush" Color="{DynamicResource HighlightHoverColor}" />
+    <SolidColorBrush x:Key="DataGridRowHoveredBackgroundColor" Color="{DynamicResource HighlightHoverColor}" />
+    <SolidColorBrush x:Key="DataGridRowInvalidBrush" Color="{DynamicResource ErrorColor}" />
+
+    <SolidColorBrush x:Key="DataGridRowSelectedForegroundBrush" Color="{DynamicResource HighlightForegroundColor}" />
+    <SolidColorBrush x:Key="DataGridRowSelectedBackgroundBrush" Color="{DynamicResource ThemeAccentColor}" />
+    <SolidColorBrush x:Key="DataGridRowSelectedHoveredBackgroundBrush" Color="{DynamicResource HighlightHoverColor}" />
+    <SolidColorBrush x:Key="DataGridRowSelectedUnfocusedBackgroundBrush" Color="{DynamicResource ThemeAccentColor}" />
+    <SolidColorBrush x:Key="DataGridRowSelectedHoveredUnfocusedBackgroundBrush" Color="{DynamicResource HighlightHoverColor}" />
+
+    <SolidColorBrush x:Key="DataGridCellFocusVisualPrimaryBrush" Color="#00000000" />
+    <SolidColorBrush x:Key="DataGridCellFocusVisualSecondaryBrush" Color="#00000000" />
+    <SolidColorBrush x:Key="DataGridCellInvalidBrush" Color="{DynamicResource ErrorColor}" />
+
+    <SolidColorBrush x:Key="DataGridGridLinesBrush" Opacity="0.4" Color="{DynamicResource ThemeForegroundLowColor}" />
+    <SolidColorBrush x:Key="DataGridDetailsPresenterBackgroundBrush" Color="{DynamicResource ThemeBackgroundColor}" />
+    <SolidColorBrush x:Key="DataGridTransparentBrush" Color="#00000000" />
+    
+    <!-- .... -->
+    
+    <x:Double x:Key="ListAccentFullOpacity">1.0</x:Double>
+    <x:Double x:Key="ListAccentLowOpacity">0.6</x:Double>
+    <x:Double x:Key="ListAccentMediumOpacity">0.8</x:Double>
+    <x:Double x:Key="DataGridSortIconMinWidth">32</x:Double>
+
+    <StreamGeometry x:Key="DataGridSortIconDescendingPath">M1875 1011l-787 787v-1798h-128v1798l-787 -787l-90 90l941 941l941 -941z</StreamGeometry>
+    <StreamGeometry x:Key="DataGridSortIconAscendingPath">M1965 947l-941 -941l-941 941l90 90l787 -787v1798h128v-1798l787 787z</StreamGeometry>
+    <StreamGeometry x:Key="DataGridRowGroupHeaderIconClosedPath">M515 93l930 931l-930 931l90 90l1022 -1021l-1022 -1021z</StreamGeometry>
+    <StreamGeometry x:Key="DataGridRowGroupHeaderIconOpenedPath">M109 486 19 576 1024 1581 2029 576 1939 486 1024 1401z</StreamGeometry>
+
+    <StaticResource x:Key="DataGridRowBackgroundBrush" ResourceKey="DataGridTransparentBrush" />
+    <StaticResource x:Key="DataGridRowSelectedBackgroundOpacity" ResourceKey="ListAccentFullOpacity" />
+    <StaticResource x:Key="DataGridRowSelectedHoveredBackgroundOpacity" ResourceKey="ListAccentFullOpacity" />
+    <StaticResource x:Key="DataGridRowSelectedUnfocusedBackgroundOpacity" ResourceKey="ListAccentFullOpacity" />
+    <StaticResource x:Key="DataGridRowSelectedHoveredUnfocusedBackgroundOpacity" ResourceKey="ListAccentFullOpacity" />
+    <StaticResource x:Key="DataGridCellBackgroundBrush" ResourceKey="DataGridTransparentBrush" />
+    <StaticResource x:Key="DataGridCurrencyVisualPrimaryBrush" ResourceKey="DataGridTransparentBrush" />
+    <StaticResource x:Key="DataGridFillerColumnGridLinesBrush" ResourceKey="DataGridTransparentBrush" />
+</ResourceDictionary>
