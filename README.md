@@ -15,6 +15,12 @@ Since I am developing it to use it in my Martridge project, I also added some mi
 | ![](doc/picture5.png)   | ![](doc/picture6.png) |
 | ![](doc/picture7.png)   |                       |
 
+### Known Issues / TODO
+Urgent things to fix:
+- ListBox text does not use the right Foreground color with dark themes
+- DataGrid text does not use the right Foreground color with dark themes
+- NumericUpDown seems broken...
+
 ### Getting Started
 
 Since this is not the official distribution, the NuGet package is not available.
