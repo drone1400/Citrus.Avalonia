@@ -1,0 +1,219 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sandbox="clr-namespace:Citrus.Avalonia.Sandbox"
+             xmlns:viewModels="clr-namespace:Citrus.Avalonia.Sandbox.ViewModels"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Citrus.Avalonia.Sandbox.Views.SpinnerButtonControls"
+             Background="{DynamicResource ThemeBackgroundColor}">
+
+    <Design.DesignStyle>
+        <SimpleTheme />
+    </Design.DesignStyle>
+
+    <Design.DataContext>
+        <viewModels:MainWindowViewModel />
+    </Design.DataContext>
+
+    <Grid ColumnDefinitions="*,*">
+        <Border Classes="Card" Grid.Column="0">
+            <StackPanel Spacing="10">
+                <Grid ColumnDefinitions="*,10,*">
+                    <ButtonSpinner Grid.Column="0"
+                                   Content="ButtonSpinner">
+                    </ButtonSpinner>
+                    <ButtonSpinner Grid.Column="2"
+                                   IsEnabled="False"
+                                   Content="Disabled ButtonSpinner" />
+                </Grid>
+                
+                <Grid ColumnDefinitions="*,10,*">
+                    <ButtonSpinner Grid.Column="0"
+                                   Classes="LeftSideSpinner"
+                                   Content="LeftSideSpinner">
+                    </ButtonSpinner>
+                    <ButtonSpinner Grid.Column="2"
+                                   Classes="LeftSideSpinner"
+                                   IsEnabled="False"
+                                   Content="Disabled LeftSideSpinner" />
+                </Grid>
+                
+                <Grid ColumnDefinitions="*,10,*">
+                    <ButtonSpinner Grid.Column="0"
+                                   Classes="LeftRightSpinner"
+                                   Content="LeftRightSpinner">
+                    </ButtonSpinner>
+                    <ButtonSpinner Grid.Column="2"
+                                   Classes="LeftRightSpinner"
+                                   IsEnabled="False"
+                                   Content="Disabled LeftRightSpinner" />
+                </Grid>
+                
+                <Grid ColumnDefinitions="*,10,*">
+                    <ButtonSpinner Grid.Column="0"
+                                   Classes="UpDownSpinner"
+                                   Content="UpDownSpinner">
+                    </ButtonSpinner>
+                    <ButtonSpinner Grid.Column="2"
+                                   Classes="UpDownSpinner"
+                                   IsEnabled="False"
+                                   Content="Disabled UpDownSpinner" />
+                </Grid>
+                
+                <Grid ColumnDefinitions="*,10,*">
+                    <ButtonSpinner Grid.Column="0"
+                                   Content="ButtonSpinner Errors">
+                        <DataValidationErrors.Error>
+                            <system:Exception />
+                        </DataValidationErrors.Error>
+                    </ButtonSpinner>
+                    <ButtonSpinner Grid.Column="2"
+                                   Content="ButtonSpinner Errors"
+                                   IsEnabled="False">
+                        <DataValidationErrors.Error>
+                            <system:Exception />
+                        </DataValidationErrors.Error>
+                    </ButtonSpinner>
+                </Grid>
+                <Grid ColumnDefinitions="*,10,*">
+                    <ButtonSpinner Grid.Column="0"
+                                   Content="ButtonSpinner Errors">
+                        <DataValidationErrors.Error>
+                            <system:Exception />
+                        </DataValidationErrors.Error>
+                        <ButtonSpinner.Styles>
+                            <Style Selector="DataValidationErrors">
+                                <Setter Property="Theme" Value="{DynamicResource TooltipDataValidationErrors}" />
+                            </Style>
+                        </ButtonSpinner.Styles>
+                    </ButtonSpinner>
+                    <ButtonSpinner Grid.Column="2"
+                                   Content="ButtonSpinner Errors"
+                                   IsEnabled="False">
+                        <DataValidationErrors.Error>
+                            <system:Exception />
+                        </DataValidationErrors.Error>
+                        <ButtonSpinner.Styles>
+                            <Style Selector="DataValidationErrors">
+                                <Setter Property="Theme" Value="{DynamicResource TooltipDataValidationErrors}" />
+                            </Style>
+                        </ButtonSpinner.Styles>
+                    </ButtonSpinner>
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <Border Classes="Card" Grid.Column="1">
+            <StackPanel Spacing="10">
+                <Grid ColumnDefinitions="*,10,*">
+                    <NumericUpDown Grid.Column="0"
+                                   Maximum="50"
+                                   Minimum="40"
+                                   Value="42">
+                    </NumericUpDown>
+                    <NumericUpDown Grid.Column="2"
+                                   IsEnabled="False"
+                                   Maximum="50"
+                                   Minimum="40"
+                                   Value="42" />
+                </Grid>
+                
+                <Grid ColumnDefinitions="*,10,*">
+                    <NumericUpDown Grid.Column="0"
+                                   Classes="LeftSideSpinner"
+                                   Maximum="50"
+                                   Minimum="40"
+                                   Value="42">
+                    </NumericUpDown>
+                    <NumericUpDown Grid.Column="2"
+                                   Classes="LeftSideSpinner"
+                                   IsEnabled="False"
+                                   Maximum="50"
+                                   Minimum="40"
+                                   Value="42" />
+                </Grid>
+                
+                <Grid ColumnDefinitions="*,10,*">
+                    <NumericUpDown Grid.Column="0"
+                                   Classes="LeftRightSpinner"
+                                   Maximum="50"
+                                   Minimum="40"
+                                   Value="42">
+                    </NumericUpDown>
+                    <NumericUpDown Grid.Column="2"
+                                   Classes="LeftRightSpinner"
+                                   IsEnabled="False"
+                                   Maximum="50"
+                                   Minimum="40"
+                                   Value="42" />
+                </Grid>
+                
+                <Grid ColumnDefinitions="*,10,*">
+                    <NumericUpDown Grid.Column="0"
+                                   Classes="UpDownSpinner"
+                                   Maximum="50"
+                                   Minimum="40"
+                                   Value="42">
+                    </NumericUpDown>
+                    <NumericUpDown Grid.Column="2"
+                                   Classes="UpDownSpinner"
+                                   IsEnabled="False"
+                                   Maximum="50"
+                                   Minimum="40"
+                                   Value="42" />
+                </Grid>
+                
+                <Grid ColumnDefinitions="*,10,*">
+                    <NumericUpDown Grid.Column="0"
+                                   Maximum="50"
+                                   Minimum="40"
+                                   Value="42">
+                        <DataValidationErrors.Error>
+                            <system:Exception />
+                        </DataValidationErrors.Error>
+                    </NumericUpDown>
+                    <NumericUpDown Grid.Column="2"
+                                   Maximum="50"
+                                   Minimum="40"
+                                   Value="42"
+                                   IsEnabled="False">
+                        <DataValidationErrors.Error>
+                            <system:Exception />
+                        </DataValidationErrors.Error>
+                    </NumericUpDown>
+                </Grid>
+                <Grid ColumnDefinitions="*,10,*">
+                    <NumericUpDown Grid.Column="0"
+                                   Maximum="50"
+                                   Minimum="40"
+                                   Value="42">
+                        <DataValidationErrors.Error>
+                            <system:Exception />
+                        </DataValidationErrors.Error>
+                        <NumericUpDown.Styles>
+                            <Style Selector="DataValidationErrors">
+                                <Setter Property="Theme" Value="{DynamicResource TooltipDataValidationErrors}" />
+                            </Style>
+                        </NumericUpDown.Styles>
+                    </NumericUpDown>
+                    <NumericUpDown Grid.Column="2"
+                                   Maximum="50"
+                                   Minimum="40"
+                                   Value="42"
+                                   IsEnabled="False">
+                        <DataValidationErrors.Error>
+                            <system:Exception />
+                        </DataValidationErrors.Error>
+                        <NumericUpDown.Styles>
+                            <Style Selector="DataValidationErrors">
+                                <Setter Property="Theme" Value="{DynamicResource TooltipDataValidationErrors}" />
+                            </Style>
+                        </NumericUpDown.Styles>
+                    </NumericUpDown>
+                </Grid>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

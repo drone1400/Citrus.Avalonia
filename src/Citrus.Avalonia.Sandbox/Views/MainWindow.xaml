@@ -43,6 +43,9 @@
             <TabItem Header="Common Controls">
                 <views:CommonControls />
             </TabItem>
+            <TabItem Header="Spinner Controls">
+                <views:SpinnerButtonControls />
+            </TabItem>
             <TabItem Header="Text Controls">
                 <views:TextBoxControls />
             </TabItem>

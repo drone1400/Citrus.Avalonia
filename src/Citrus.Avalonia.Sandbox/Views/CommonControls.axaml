@@ -43,7 +43,7 @@
                        ToolTip.Tip="Hello, this is magic!" />
                 <Label IsEnabled="False"
                        Content="A disabled Label" />
-
+                
                 <!-- RadioButton -->
                 <Grid ColumnDefinitions="*,*,*">
                     <RadioButton Grid.Row="0" Grid.Column="0"
@@ -91,11 +91,30 @@
                               IsChecked="True"
                               Content="CheckBox Checked" />
                 </Grid>
+                
+                <!-- ComboBox -->
+                <Grid ColumnDefinitions="*,10,*">
+                    <ComboBox Grid.Column="0" 
+                              SelectedIndex="0">
+                        <ComboBoxItem Content="First option" />
+                        <ComboBoxItem Content="Second option" />
+                        <ComboBoxItem Content="Third option" />
+                    </ComboBox>
+                    <ComboBox Grid.Column="2" 
+                              SelectedIndex="0" 
+                              IsEnabled="False">
+                        <ComboBoxItem Content="First option" />
+                        <ComboBoxItem Content="Second option" />
+                        <ComboBoxItem Content="Third option" />
+                    </ComboBox>
+                </Grid>
             </StackPanel>
         </Border>
 
         <Border Classes="Card" Grid.Column="1">
             <StackPanel Spacing="10">
+                
+                
                 <!-- Buttons -->
                 <Grid ColumnDefinitions="*,10,*">
                     <Button Grid.Column="0"
@@ -151,37 +170,23 @@
                                   Content="Disabled Toggle Primary Button" />
                 </Grid>
                 
-                <!-- ComboBox -->
+                <!-- RepeatButtons -->
                 <Grid ColumnDefinitions="*,10,*">
-                    <ComboBox Grid.Column="0" 
-                              SelectedIndex="0">
-                        <ComboBoxItem Content="First option" />
-                        <ComboBoxItem Content="Second option" />
-                        <ComboBoxItem Content="Third option" />
-                    </ComboBox>
-                    <ComboBox Grid.Column="2" 
-                              SelectedIndex="0" 
-                              IsEnabled="False">
-                        <ComboBoxItem Content="First option" />
-                        <ComboBoxItem Content="Second option" />
-                        <ComboBoxItem Content="Third option" />
-                    </ComboBox>
+                    <RepeatButton Grid.Column="0"
+                                  Content="Enabled Repeat Button" />
+                    <RepeatButton Grid.Column="2"
+                                  IsEnabled="False"
+                                  Content="Disabled Repeat Button" />
                 </Grid>
-
-                <!-- NumericUpDown -->
                 <Grid ColumnDefinitions="*,10,*">
-                    <NumericUpDown Grid.Column="0"
-                               Maximum="50"
-                               Minimum="40"
-                               Value="42" />
-                    <NumericUpDown Grid.Column="2"
-                                   IsEnabled="False"
-                                   Maximum="50"
-                                   Minimum="40"
-                                   Value="42" />
+                    <RepeatButton Grid.Column="0"
+                                  Classes="Primary"
+                                  Content="Enabled Repeat Primary Button" />
+                    <RepeatButton Grid.Column="2"
+                                  IsEnabled="False"
+                                  Classes="Primary"
+                                  Content="Disabled Repeat Primary Button" />
                 </Grid>
-
-                
             </StackPanel>
         </Border>
     </Grid>

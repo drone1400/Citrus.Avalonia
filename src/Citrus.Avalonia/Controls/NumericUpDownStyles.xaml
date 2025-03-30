@@ -80,5 +80,26 @@
         <Style Selector="^:pressed /template/ TextBox">
             <Setter Property="Background" Value="Transparent" />
         </Style>
+
+        <Style Selector="^.LeftSideSpinner">
+            <Style Selector="^ /template/ ButtonSpinner#PART_Spinner > DockPanel">
+                <Setter Property="DockPanel.Dock" Value="Left" />
+            </Style>
+        </Style>
+
+        <Style Selector="^.LeftRightSpinner">
+            <Style Selector="^ /template/ ButtonSpinner#PART_Spinner">
+                <Setter Property="Template" Value="{StaticResource ButtonSpinnerLeftRight}" />
+                <Setter Property="Padding" Value="5,12" />
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
+            </Style>
+        </Style>
+
+        <Style Selector="^.UpDownSpinner">
+            <Style Selector="^ /template/ ButtonSpinner#PART_Spinner">
+                <Setter Property="Template" Value="{StaticResource ButtonSpinnerUpDown}" />
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
+            </Style>
+        </Style>
     </ControlTheme>
 </ResourceDictionary>

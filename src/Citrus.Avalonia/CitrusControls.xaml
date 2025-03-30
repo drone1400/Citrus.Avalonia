@@ -4,6 +4,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/BorderStyles.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ButtonSpinnerStyles.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ButtonStyles.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/CalendarStyles.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/CheckBoxStyles.xaml" />
@@ -17,6 +18,7 @@
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/NumericUpDownStyles.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ProgressBarStyles.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/RadioButtonStyles.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/RepeatButtonStyles.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ScrollBar.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ScrollViewer.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/SliderStyles.xaml" />
