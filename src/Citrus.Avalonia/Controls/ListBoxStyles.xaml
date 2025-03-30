@@ -5,7 +5,7 @@
     <ControlTheme x:Key="{x:Type ListBox}"
                   TargetType="ListBox">
 
-        <!-- <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}" /> -->
+        <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}" />
         <!-- <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}" /> -->
@@ -45,6 +45,7 @@
     <!-- ListBoxItem -->
     <ControlTheme x:Key="{x:Type ListBoxItem}"
                   TargetType="ListBoxItem">
+        <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{DynamicResource ThemeBackgroundBrush}" />
         <Setter Property="BorderThickness" Value="10 0 0 0" />
