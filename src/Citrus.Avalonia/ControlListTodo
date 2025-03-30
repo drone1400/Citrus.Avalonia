@@ -4,7 +4,7 @@
 AdornerLayer
 AutoCompleteBox
         Button
-ButtonSpinner
+        ButtonSpinner
         Calendar
         CalendarButton
         CalendarDatePicker
@@ -37,7 +37,7 @@ MenuFlyoutPresenter
         MenuItem
 MenuScrollViewer
 NotificationCard
-NumericUpDown [ !!!! currently has some issues... ]
+        NumericUpDown
 OverlayPopupHost
 PathIcon
 PopupRoot
@@ -45,7 +45,7 @@ PopupRoot
         RadioButton
 RefreshContainer
 RefreshVisualizer
-RepeatButton
+        RepeatButton
         ScrollBar
         ScrollViewer
 SelectableTextBlock
