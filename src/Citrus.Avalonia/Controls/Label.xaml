@@ -1,5 +1,38 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20" Width="300">
+            <StackPanel Spacing="20">
+                <Label Content="Label"/>
+                
+                <Label Content="Label (disabled)" 
+                       IsEnabled="False"/>
+                
+                <Label Content="Heading Label"
+                       Classes="Heading"/>
+                
+                <Label Content="Heading Label (disabled)"
+                       Classes="Heading"
+                       IsEnabled="False"/>
+                
+                <Label Content="Caption Label"
+                       Classes="Caption"/>
+                
+                <Label Content="Caption Label (disabled)"
+                       Classes="Caption"
+                       IsEnabled="False"/>
+                
+                <Label Content="Accent Label"
+                       Classes="Accent"/>
+                
+                <Label Content="Accent Label (disabled)"
+                       Classes="Accent"
+                       IsEnabled="False"/>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+    
+    
     <ControlTheme x:Key="{x:Type Label}"
                   TargetType="Label">
         <Setter Property="FontFamily" Value="Ubuntu" />

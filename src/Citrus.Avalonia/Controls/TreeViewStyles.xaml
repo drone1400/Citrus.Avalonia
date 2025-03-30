@@ -1,6 +1,27 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:converters="clr-namespace:Avalonia.Controls.Converters;assembly=Avalonia.Controls">
+    <Design.PreviewWith>
+        <Border Padding="20" Width="300" Height="400">
+            <StackPanel Spacing="20">
+                <TreeView>
+                    <TreeViewItem Header="Item Group 1"/>
+                    <TreeViewItem Header="Item Group 2">
+                        <TreeViewItem Header="Item A"/>
+                        <TreeViewItem Header="Item B"/>
+                        <TreeViewItem Header="Item C"/>
+                        <TreeViewItem Header="Item D (disabled)" IsEnabled="False"/>
+                    </TreeViewItem>
+                    <TreeViewItem Header="Item Group 3">
+                        <TreeViewItem Header="Item 1" />
+                        <TreeViewItem Header="Item 2" />
+                    </TreeViewItem>
+                    <TreeViewItem Header="Item Group 4"/>
+                </TreeView>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+    
     <!-- TreeView -->
     <ControlTheme x:Key="{x:Type TreeView}"
                   TargetType="TreeView">

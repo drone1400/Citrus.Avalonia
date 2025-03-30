@@ -4,10 +4,39 @@
     <Design.PreviewWith>
         <Border Padding="20" Width="300">
             <StackPanel Spacing="20">
-                <Expander Content="Sample text sample text"
+                <Expander Content="Expands Down"
+                          ExpandDirection="Down"
                           Header="Expander"/>
                 
-                <Expander Content="Sample text sample text"
+                <Expander Content="Expands Down (disabled)"
+                          ExpandDirection="Down"
+                          Header="Expander disabled"
+                          IsEnabled="False"/>
+                
+                <Expander Content="Expands Up"
+                          ExpandDirection="Up"
+                          Header="Expander"/>
+                
+                <Expander Content="Expands Up (disabled)"
+                          ExpandDirection="Up"
+                          Header="Expander disabled"
+                          IsEnabled="False"/>
+                
+                <Expander Content="Expands Left"
+                          ExpandDirection="Left"
+                          Header="Expander"/>
+                
+                <Expander Content="Expands Left (disabled)"
+                          ExpandDirection="Left"
+                          Header="Expander disabled"
+                          IsEnabled="False"/>
+                
+                <Expander Content="Expands Right"
+                          ExpandDirection="Right"
+                          Header="Expander"/>
+                
+                <Expander Content="Expands Right (disabled)"
+                          ExpandDirection="Right"
                           Header="Expander disabled"
                           IsEnabled="False"/>
             </StackPanel>

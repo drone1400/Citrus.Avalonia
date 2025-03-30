@@ -1,5 +1,40 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Design.PreviewWith>
+        <Border Padding="20" Width="300">
+            <StackPanel Spacing="20">
+                <ToggleButton Content="Sample"/>
+                
+                <ToggleButton Content="Sample (disabled)" 
+                              IsEnabled="False"/>
+                
+                <ToggleButton Content="Sample Primary" 
+                              Classes="Primary"/>
+                
+                <ToggleButton Content="Sample Primary (disabled)"
+                              IsEnabled="False"
+                              Classes="Primary"/>
+                
+                <ToggleButton Content="Sample (checked)"
+                              IsChecked="True"/>
+                
+                <ToggleButton Content="Sample (checked) (disabled)"
+                              IsChecked="True"
+                              IsEnabled="False"/>
+                
+                <ToggleButton Content="Sample Primary (checked)"
+                              IsChecked="True"
+                              Classes="Primary"/>
+                
+                <ToggleButton Content="Sample Primary (checked) (disabled)"
+                              IsChecked="True"
+                              IsEnabled="False"
+                              Classes="Primary"/>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+    
     <ControlTheme x:Key="{x:Type ToggleButton}"
                   TargetType="ToggleButton">
         <Setter Property="Background" Value="{DynamicResource ThemeBorderHighBrush}" />

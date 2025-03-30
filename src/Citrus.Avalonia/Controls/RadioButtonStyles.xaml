@@ -1,5 +1,32 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.PreviewWith>
+        <Border Padding="20" Width="300">
+            <StackPanel Spacing="30">
+                <StackPanel Spacing="20">
+                    <RadioButton Content="Unchecked"
+                                 IsChecked="False" />
+                    <RadioButton Content="Indeterminate" />
+                    <RadioButton Content="Checked"
+                                 IsChecked="True" />
+                </StackPanel>
+
+
+                <StackPanel Spacing="20">
+                    <RadioButton Content="Unchecked"
+                                 IsEnabled="False"
+                                 IsChecked="False" />
+                    <RadioButton Content="Indeterminate"
+                                 IsEnabled="False" />
+                    <RadioButton Content="Checked"
+                                 IsEnabled="False"
+                                 IsChecked="True" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
     <ControlTheme x:Key="{x:Type RadioButton}"
                   TargetType="RadioButton">
         <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />

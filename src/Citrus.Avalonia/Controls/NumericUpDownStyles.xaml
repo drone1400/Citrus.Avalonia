@@ -1,5 +1,33 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20" Width="300">
+            <StackPanel Spacing="20">
+                <NumericUpDown Value="39"
+                               Minimum="0"
+                               Maximum="100"/>
+                
+                <NumericUpDown Value="40"
+                               IsEnabled="False"
+                               Minimum="0"
+                               Maximum="100"/>
+                
+                <NumericUpDown NumberFormat="0.00"
+                               Increment="0.05"
+                               Value="41.68"
+                               Minimum="0.00"
+                               Maximum="100.00"/>
+                
+                <NumericUpDown NumberFormat="0.00"
+                               Increment="0.05"
+                               Value="42.13"
+                               IsEnabled="False"
+                               Minimum="0.00"
+                               Maximum="100.00"/>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+    
     <ControlTheme x:Key="{x:Type NumericUpDown}"
                   TargetType="NumericUpDown">
         <Setter Property="Background" Value="{DynamicResource ThemeBorderLowBrush}" />
