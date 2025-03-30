@@ -138,8 +138,7 @@
                                               VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                                               Content="{TemplateBinding InnerLeftContent}" />
                             <DockPanel x:Name="PART_InnerDockPanel"
-                                       Grid.Column="1" 
-                                       Margin="{TemplateBinding Padding}">
+                                       Grid.Column="1" >
 
                                 <TextBlock Name="PART_FloatingWatermark"
                                            Foreground="{DynamicResource ThemeAccentBrush}"
@@ -157,7 +156,8 @@
                                               IsScrollChainingEnabled="{TemplateBinding (ScrollViewer.IsScrollChainingEnabled)}"
                                               AllowAutoHide="{TemplateBinding (ScrollViewer.AllowAutoHide)}"
                                               BringIntoViewOnFocusChange="{TemplateBinding (ScrollViewer.BringIntoViewOnFocusChange)}">
-                                    <Panel>
+                                    <Panel 
+                                        Margin="{TemplateBinding Padding}">
                                         <TextBlock Name="PART_Watermark"
                                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
