@@ -13,13 +13,7 @@ Since I am developing it to use it in my Martridge project, I also added some mi
 | ![](doc/picture1.png)   | ![](doc/picture2.png) |
 | ![](doc/picture3.png)   | ![](doc/picture4.png) |
 | ![](doc/picture5.png)   | ![](doc/picture6.png) |
-| ![](doc/picture7.png)   |                       |
-
-### Known Issues / TODO
-Urgent things to fix:
-- ListBox text does not use the right Foreground color with dark themes
-- DataGrid text does not use the right Foreground color with dark themes
-- NumericUpDown seems broken...
+| ![](doc/picture7.png)   | ![](doc/picture8.png) |
 
 ### Getting Started
 
