@@ -35,9 +35,9 @@
                          SelectionStart="0"
                          SelectionEnd="15" />
                 
-                <TextBox Height="80"
+                <TextBox Height="180"
                          AcceptsReturn="True"
-                         Text="This is the large text area with a very very very very very very very very very very very very very very very very very very very very long line!&#10;There are more lines!&#10;This is another line.&#10;This is yet another line!"/>
+                         Text="This is the large text area with a very very very very very very very very very very very very very very very very very very very very long line!&#10;There are more lines!&#10;This is another line.&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!"/>
                 
             </StackPanel>
         </Border>
