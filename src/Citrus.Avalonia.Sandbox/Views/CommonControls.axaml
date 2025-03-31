@@ -43,6 +43,21 @@
                        ToolTip.Tip="Hello, this is magic!" />
                 <Label IsEnabled="False"
                        Content="A disabled Label" />
+                <Label Content="A Label with a context menu?! Right click me!">
+                    <Label.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Option 1"/>
+                            <MenuItem Header="Option 2">
+                                <MenuItem Header="Option A"/>
+                                <MenuItem Header="Option B"/>
+                                <MenuItem Header="Option C" IsChecked="True"/>
+                                <MenuItem Header="Option D" IsEnabled="False"/>
+                            </MenuItem>
+                            <MenuItem Header="Option 3"/>
+                            <MenuItem Header="Option 4"/>
+                        </ContextMenu>
+                    </Label.ContextMenu>
+                </Label>
                 
                 <!-- RadioButton -->
                 <Grid ColumnDefinitions="*,*,*">

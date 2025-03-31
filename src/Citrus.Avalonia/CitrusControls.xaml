@@ -9,6 +9,7 @@
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Calendar.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/CheckBox.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ComboBox.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ContextMenu.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/DataValidationErrors.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Expander.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ItemsControl.xaml" />
