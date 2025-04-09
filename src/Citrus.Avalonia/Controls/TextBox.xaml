@@ -173,6 +173,8 @@
                                             </TextBlock.IsVisible>
                                         </TextBlock>
                                         <TextPresenter Name="PART_TextPresenter"
+                                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                       HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                                        CaretBlinkInterval="{TemplateBinding CaretBlinkInterval}"
                                                        CaretBrush="{TemplateBinding CaretBrush}"
                                                        CaretIndex="{TemplateBinding CaretIndex}"
