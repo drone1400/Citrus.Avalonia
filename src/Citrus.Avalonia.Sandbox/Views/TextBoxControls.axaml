@@ -20,6 +20,9 @@
             <StackPanel Spacing="10">
                 <!-- TextBox -->
                 <TextBox Text="Just a normal TextBox" />
+                <TextBox Text="A tall textbox with text centered vertically" 
+                         Height="56" 
+                         VerticalContentAlignment="Center"/>
                 <TextBox IsEnabled="False"
                          Text="A disabled TextBox" />
                 <TextBox Classes="Badge"
