@@ -12,9 +12,13 @@
     <Color x:Key="ThemeBorderLowColor">#333333</Color>
     <Color x:Key="ThemeBorderMidColor">#444444</Color>
     <Color x:Key="ThemeBorderHighColor">#555555</Color>
+    
     <Color x:Key="ThemeControlLowColor">#BBFFFFFF</Color>
     <Color x:Key="ThemeControlMidColor">#44FFFFFF</Color>
+    <Color x:Key="ThemeControlMidHighColor">#66FFFFFF</Color>
     <Color x:Key="ThemeControlHighColor">#88FFFFFF</Color>
+    <Color x:Key="ThemeControlVeryHighColor">#AAFFFFFF</Color>
+    
     <Color x:Key="ThemeControlHighlightLowColor">#BBFFFFFF</Color>
     <Color x:Key="ThemeControlHighlightMidColor">#88FFFFFF</Color>
     <Color x:Key="ThemeControlHighlightHighColor">#44FFFFFF</Color>
@@ -35,7 +39,9 @@
     <SolidColorBrush x:Key="ThemeBorderHighBrush" Color="{DynamicResource ThemeBorderHighColor}"/>
     <SolidColorBrush x:Key="ThemeControlLowBrush" Color="{DynamicResource ThemeControlLowColor}"/>
     <SolidColorBrush x:Key="ThemeControlMidBrush" Color="{DynamicResource ThemeControlMidColor}"/>
+    <SolidColorBrush x:Key="ThemeControlMidHighBrush" Color="{DynamicResource ThemeControlMidHighColor}"/>
     <SolidColorBrush x:Key="ThemeControlHighBrush" Color="{DynamicResource ThemeControlHighColor}"/>
+    <SolidColorBrush x:Key="ThemeControlVeryHighBrush" Color="{DynamicResource ThemeControlVeryHighColor}"/>
     <SolidColorBrush x:Key="ThemeControlHighlightLowBrush" Color="{DynamicResource ThemeControlHighlightLowColor}"/>
     <SolidColorBrush x:Key="ThemeControlHighlightMidBrush" Color="{DynamicResource ThemeControlHighlightMidColor}"/>
     <SolidColorBrush x:Key="ThemeControlHighlightHighBrush" Color="{DynamicResource ThemeControlHighlightHighColor}"/>
@@ -54,6 +60,12 @@
     <SolidColorBrush x:Key="ErrorBrush" Color="{DynamicResource ErrorColor}"/>
     <SolidColorBrush x:Key="ErrorLowBrush" Color="{DynamicResource ErrorLowColor}"/>
 
+    <SolidColorBrush x:Key="NotificationCardBackgroundBrush" Color="#444444" Opacity="0.75"/>
+    <SolidColorBrush x:Key="NotificationCardInformationBackgroundBrush" Color="#007ACC" Opacity="0.75"/>
+    <SolidColorBrush x:Key="NotificationCardSuccessBackgroundBrush" Color="#1F9E45" Opacity="0.75"/>
+    <SolidColorBrush x:Key="NotificationCardWarningBackgroundBrush" Color="#FDB328" Opacity="0.75"/>
+    <SolidColorBrush x:Key="NotificationCardErrorBackgroundBrush" Color="#BD202C" Opacity="0.75"/>
+    
     <SolidColorBrush x:Key="DatePickerFlyoutPresenterHighlightFill" Color="{DynamicResource ThemeAccentColor}" Opacity="0.4" />
     <SolidColorBrush x:Key="TimePickerFlyoutPresenterHighlightFill" Color="{DynamicResource ThemeAccentColor}" Opacity="0.4" />
 
