@@ -30,7 +30,7 @@
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ToggleButton.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ToolTip.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TreeView.xaml" />
-                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Window.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Window.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Styles.Resources>
