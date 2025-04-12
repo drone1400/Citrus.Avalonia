@@ -3,6 +3,7 @@
     <Styles.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/AdornerLayer.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Border.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Button.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ButtonSpinner.xaml" />
@@ -29,6 +30,7 @@
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ToggleButton.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ToolTip.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TreeView.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Window.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Styles.Resources>
