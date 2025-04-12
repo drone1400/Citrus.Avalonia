@@ -4,43 +4,10 @@ using Avalonia;
 using Avalonia.Markup.Xaml;
 using Avalonia.Markup.Xaml.Styling;
 using Avalonia.Styling;
-using Avalonia.Themes.Simple;
+
 namespace Citrus.Avalonia;
 
 public class CitrusTheme : Styles {
-    
-    /// <summary>
-    /// helper class for managing theme palette data
-    /// </summary>
-    public class CitrusPalette {
-        
-        /// <summary>
-        /// Palette Key
-        /// </summary>
-        public string Key { get; }
-        
-        /// <summary>
-        /// URI for palette definition xaml
-        /// </summary>
-        public Uri Uri { get; }
-        public CitrusPalette(string key, Uri uri) {
-            this.Key = key;
-            this.Uri = uri;
-        }
-    }
-
-    private class CitrusPaletteData {
-        public string Key { get; }
-        public Uri Uri { get; }
-        public ResourceInclude ResourceInclude { get; }
-
-        public CitrusPaletteData(string key, Uri uri) {
-            this.Key = key;
-            this.Uri = uri;
-            this.ResourceInclude = new ResourceInclude(uri) { Source = uri, };
-        }
-    }
-    
     private readonly Uri _uriSimpleTheme = new Uri("avares://Avalonia.Themes.Simple/SimpleTheme.xaml");
     private readonly Uri _uriControls = new Uri("avares://Citrus.Avalonia/CitrusControls.xaml");
     // default palettes
@@ -81,11 +48,11 @@ public class CitrusTheme : Styles {
         
         AvaloniaXamlLoader.Load(sp, this);
 
-        this.RegisterPalette("Candy", this._uriCandyPalette);
-        this.RegisterPalette("Citrus", this._uriCitrusPalette);
-        this.RegisterPalette("Magma", this._uriMagmaPalette);
-        this.RegisterPalette("Rust", this._uriRustPalette);
-        this.RegisterPalette("Sea", this._uriSeaPalette);
+        this.RegisterPalette(new CitrusPaletteData(CitrusDefaultPalettes.Citrus.ToString(), this._uriCitrusPalette));
+        this.RegisterPalette(new CitrusPaletteData(CitrusDefaultPalettes.Candy.ToString(), this._uriCandyPalette));
+        this.RegisterPalette(new CitrusPaletteData(CitrusDefaultPalettes.Magma.ToString(), this._uriMagmaPalette));
+        this.RegisterPalette(new CitrusPaletteData(CitrusDefaultPalettes.Rust.ToString(), this._uriRustPalette));
+        this.RegisterPalette(new CitrusPaletteData(CitrusDefaultPalettes.Sea.ToString(), this._uriSeaPalette));
 
         this.SelectPalette("Citrus");
     }
@@ -95,13 +62,19 @@ public class CitrusTheme : Styles {
     /// Allows you to register a new custom color palette using a given URI
     /// </summary>
     /// <param name="key">Color Palette Key</param>
-    /// <param name="uri">Uri to the avares xaml file</param>
+    /// <param name="resource">ResourceInclude of the palette definition</param>
     /// <returns>true if successful, false if key already exists or some other error occurred...</returns>
-    public bool RegisterPalette(string key, Uri uri) {
+    public bool RegisterPalette(string key, ResourceInclude resource) {
         if (this._palettes.ContainsKey(key)) return false;
         
-        // TODO validate URI somehow maybe?...
-        this._palettes.Add(key, new CitrusPaletteData(key, uri));
+        this._palettes.Add(key, new CitrusPaletteData(key, resource));
+        return true;
+    }
+    
+    public bool RegisterPalette(CitrusPaletteData resourceData) {
+        if (this._palettes.ContainsKey(resourceData.Key)) return false;
+        
+        this._palettes.Add(resourceData.Key, resourceData);
         return true;
     }
 
@@ -109,10 +82,10 @@ public class CitrusTheme : Styles {
     /// Gets a list of all the currently registered Palettes
     /// </summary>
     /// <returns>List of <see cref="CitrusPalette"/></returns>
-    public List<CitrusPalette> GetRegisteredPalettes() {
-        List<CitrusPalette> palettes = new List<CitrusPalette>();
+    public List<CitrusPaletteData> GetRegisteredPalettes() {
+        List<CitrusPaletteData> palettes = new List<CitrusPaletteData>();
         foreach (var palette in this._palettes) {
-            palettes.Add(new CitrusPalette(palette.Key, palette.Value.Uri));
+            palettes.Add(palette.Value);
         }
         return palettes;
     }

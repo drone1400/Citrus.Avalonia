@@ -22,6 +22,8 @@ namespace Citrus.Avalonia.Sandbox.ViewModels
             }
         }
         
+        private IList<string> _themePalettes;
+        
         public MainWindowViewModel()
         {
             // This is ReactiveUI.Validation magic, that supports
@@ -33,6 +35,8 @@ namespace Citrus.Avalonia.Sandbox.ViewModels
             this.SomeCollectionViewData = new DataGridCollectionView(this.SomeData);
             this.SomeCollectionViewData.GroupDescriptions.Add(new DataGridPathGroupDescription("Category"));
             this.SomeCollectionViewData.SortDescriptions.Add(new DataGridComparerSortDescription(new MyComparer(), ListSortDirection.Ascending));
+
+            this._themePalettes = (Application.Current as App)!.GetPaletteNames();
         }
 
         public IEnumerable<SampleDataViewModel> SomeData { get; } = new List<SampleDataViewModel>() {
@@ -57,27 +61,36 @@ namespace Citrus.Avalonia.Sandbox.ViewModels
         }
         private string _message = "";
 
-        public AppPalettes SelectedThemePalette {
+        public string SelectedThemePalette {
             get => this._selectedThemePalette;
-            set {
+            private set {
                 this.RaiseAndSetIfChanged(ref this._selectedThemePalette, value);
                 
                 if (Application.Current is not App app) return;
-                app.SetCitrusThemePalette(value.ToString());
+                app.SetCitrusThemePalette(value);
             } 
         }
-        private AppPalettes _selectedThemePalette = AppPalettes.Citrus;
+        private string _selectedThemePalette = "Citrus";
+        private int _selectedPaletteIndex = -1;
         
         // Each time a user clicks 'Switch theme', we load next theme.
         public ReactiveCommand<Unit, Unit> ChangeThemePalette => this._changeThemePalette ??= ReactiveCommand.Create(() => {
-            this.SelectedThemePalette = this.SelectedThemePalette switch {
-                AppPalettes.Citrus => AppPalettes.Sea,
-                AppPalettes.Sea => AppPalettes.Rust,
-                AppPalettes.Rust => AppPalettes.Candy,
-                AppPalettes.Candy => AppPalettes.Magma,
-                AppPalettes.Magma => AppPalettes.Custom,
-                _ => AppPalettes.Citrus,
-            };
+            if (this._selectedPaletteIndex < 0 ||
+                this._selectedPaletteIndex >= this._themePalettes.Count) {
+                for (int i = 0; i < this._themePalettes.Count; i++) {
+                    if (this._themePalettes[i] == this._selectedThemePalette) {
+                        this._selectedPaletteIndex = i;
+                        break;
+                    }
+                }
+                if (this._selectedPaletteIndex < 0)
+                    this._selectedPaletteIndex = 0;
+            }
+
+            this._selectedPaletteIndex++;
+            if (this._selectedPaletteIndex >= this._themePalettes.Count)
+                this._selectedPaletteIndex = 0;
+            this.SelectedThemePalette = this._themePalettes[this._selectedPaletteIndex];
         });
         private ReactiveCommand<Unit, Unit>? _changeThemePalette = null;
         

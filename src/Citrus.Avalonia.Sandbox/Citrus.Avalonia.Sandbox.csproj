@@ -12,6 +12,7 @@
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="11.2.6" />
     <PackageReference Include="Avalonia.Diagnostics" Version="11.2.6" />
+    <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="11.2.6" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="11.2.6" />
     <PackageReference Include="Avalonia.LinuxFramebuffer" Version="11.2.6" />
     <PackageReference Include="Avalonia.Desktop" Version="11.2.6" />
@@ -28,6 +29,12 @@
       <SubType>Designer</SubType>
     </AvaloniaResource>
     <Watch Include="**\*.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="CustomPalettes\*.axaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   
   <ItemGroup>

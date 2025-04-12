@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
@@ -12,13 +14,6 @@ using Citrus.Avalonia.Sandbox.Views;
 
 namespace Citrus.Avalonia.Sandbox
 {
-    public enum AppPalettes {
-        // default theme palettes
-        Citrus, Sea, Rust, Candy, Magma, 
-        // custom palette 
-        Custom
-    }
-    
     public class App : Application
     {
         private readonly Styles _styles = new Styles();
@@ -33,6 +28,8 @@ namespace Citrus.Avalonia.Sandbox
         private object? _currentThemeObj = null;
         
         private MainWindowViewModel? _mainWindowViewModel = null;
+
+        private readonly string _baseAppDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) ?? string.Empty;
 
         public override void Initialize() {
             this.Styles.Add(this._styles);
@@ -53,18 +50,44 @@ namespace Citrus.Avalonia.Sandbox
             this._styles.Add(this._citrusTheme);
             this._styles.Add(this._resDataGridCitrus);
             this._currentThemeObj = this._citrusTheme;
-            this._mainWindowViewModel = new MainWindowViewModel();
-            this._mainWindowViewModel.Title = "Sandbox - Citrus Theme";
 
             // register our custom theme palettes, in this case there is only one
-            this._citrusTheme.RegisterPalette("Custom",
-                new Uri("avares://Citrus.Avalonia.Sandbox/Palette/CustomPalette.xaml"));
+            this._citrusTheme.RegisterPalette(new CitrusPaletteData("CustomPalette", "avares://Citrus.Avalonia.Sandbox/Palette/CustomPalette.xaml"));
+
+            try {
+                DirectoryInfo dinfo = new DirectoryInfo(Path.Combine(this._baseAppDirectory, "CustomPalettes"));
+                FileInfo[] files = dinfo.GetFiles();
+
+                foreach (FileInfo file in files) {
+                    string ext = file.Extension.ToLowerInvariant();
+                    if (ext != ".xaml" && ext != ".axaml")
+                        continue;
+                    try {
+                        string name = file.Name.Substring(0, file.Name.Length - ext.Length);
+                        using FileStream fileStream = new FileStream(file.FullName, FileMode.Open, FileAccess.Read); 
+                        object obj = AvaloniaRuntimeXamlLoader.Load(fileStream);
+                        if (obj is not ResourceDictionary resDic)
+                            continue;
+                        
+                        CitrusPaletteData paletteData = new CitrusPaletteData(name, resDic);
+                        
+                        this._citrusTheme.RegisterPalette(paletteData);
+                    } catch (Exception) {
+
+                    }
+                }
+            } catch (Exception) {
+                
+            }
         }
 
         public override void OnFrameworkInitializationCompleted()
         {
             if (this.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktopLifetime)
             {
+                this._mainWindowViewModel = new MainWindowViewModel();
+                this._mainWindowViewModel.Title = $"Sandbox - Citrus Theme - {this._citrusTheme?.ColorPalette}";
+                
                 desktopLifetime.MainWindow = new MainWindow() { DataContext = this._mainWindowViewModel };
             }
             
@@ -74,6 +97,9 @@ namespace Citrus.Avalonia.Sandbox
         public void SetCitrusThemePalette(string paletteKey) {
             if (this._citrusTheme == null) return;
             this._citrusTheme.ColorPalette = paletteKey;
+            
+            if (this._mainWindowViewModel == null) return;
+            this._mainWindowViewModel.Title = $"Sandbox - Citrus Theme - {this._citrusTheme.ColorPalette}";
         }
 
         public void LoadNextTheme() {
@@ -94,7 +120,7 @@ namespace Citrus.Avalonia.Sandbox
                 this._styles[0] = this._citrusTheme;
                 this._styles[1] = this._resDataGridCitrus;
                 this._currentThemeObj = this._citrusTheme;
-                this._mainWindowViewModel.Title = "Sandbox - Citrus Theme";
+                this._mainWindowViewModel.Title = $"Sandbox - Citrus Theme - {this._citrusTheme.ColorPalette}";
             }
 
             if (app.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktopLifetime) {
@@ -103,6 +129,17 @@ namespace Citrus.Avalonia.Sandbox
                 desktopLifetime.MainWindow.Show();
                 oldWindow?.Close();
             }
+        }
+
+        public IList<string> GetPaletteNames() {
+            IList<string> paletteNames = new List<string>();
+            if (this._citrusTheme == null) 
+                return paletteNames;
+            var palettes = this._citrusTheme.GetRegisteredPalettes();
+            foreach (var palette in palettes) {
+                paletteNames.Add(palette.Key);
+            }
+            return paletteNames;
         }
     }
 }
