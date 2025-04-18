@@ -16,6 +16,5 @@
 
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
-        <PackageReference Include="Avalonia.Themes.Simple" Version="$(AvaloniaVersion)" />
     </ItemGroup>
 </Project>
