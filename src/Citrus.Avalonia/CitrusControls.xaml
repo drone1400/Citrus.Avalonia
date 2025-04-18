@@ -8,15 +8,22 @@
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Button.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ButtonSpinner.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Calendar.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/CalendarButton.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/CalendarDatePicker.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/CalendarDayButton.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/CalendarItem.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/CheckBox.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ComboBox.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ComboBoxItem.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ContextMenu.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/DataValidationErrors.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Expander.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ItemsControl.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Label.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ListBox.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ListBoxItem.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Menu.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/MenuItem.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/NumericUpDown.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ProgressBar.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/RadioButton.xaml" />
@@ -25,12 +32,14 @@
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ScrollViewer.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Slider.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TabControl.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TabItem.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TextBlock.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TextBox.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ToggleButton.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ToolTip.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TreeView.xaml" />
-                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Window.axaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TreeViewItem.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Window.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Styles.Resources>

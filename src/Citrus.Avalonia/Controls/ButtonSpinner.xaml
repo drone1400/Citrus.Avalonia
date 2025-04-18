@@ -31,6 +31,18 @@
             </StackPanel>
         </Border>
     </Design.PreviewWith>
+    
+    <ControlTheme x:Key="SimpleButtonSpinnerRepeatButton"
+                  BasedOn="{StaticResource {x:Type RepeatButton}}"
+                  TargetType="RepeatButton">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Style Selector="^ /template/ RepeatButton:pointerover">
+            <Setter Property="Background" Value="{DynamicResource ThemeControlMidBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}" />
+        </Style>
+    </ControlTheme>
 
     <ControlTemplate
         x:Key="ButtonSpinnerUpDownSide"
@@ -71,7 +83,6 @@
                         </RepeatButton>
                     </UniformGrid>
                     <ContentPresenter Name="PART_ContentPresenter"
-                                      Grid.Column="1"
                                       TabIndex="1"
                                       Padding="{TemplateBinding Padding}"
                                       HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -187,18 +198,6 @@
             </Border>
         </DataValidationErrors>
     </ControlTemplate>
-
-    <ControlTheme x:Key="SimpleButtonSpinnerRepeatButton"
-                  BasedOn="{StaticResource {x:Type RepeatButton}}"
-                  TargetType="RepeatButton">
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderBrush" Value="Transparent" />
-        <Setter Property="IsTabStop" Value="False" />
-        <Style Selector="^ /template/ RepeatButton:pointerover">
-            <Setter Property="Background" Value="{DynamicResource ThemeControlMidBrush}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}" />
-        </Style>
-    </ControlTheme>
 
     <ControlTheme x:Key="{x:Type ButtonSpinner}"
                   TargetType="ButtonSpinner">

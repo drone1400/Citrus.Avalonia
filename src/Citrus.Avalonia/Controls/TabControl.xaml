@@ -46,7 +46,6 @@
         </Border>
     </Design.PreviewWith>
     
-    <!-- TabControl -->
     <ControlTheme x:Key="{x:Type TabControl}"
                   TargetType="TabControl">
         <Setter Property="Background" Value="{DynamicResource ThemeCardBrush}" />
@@ -123,72 +122,5 @@
             <Setter Property="Padding" Value="0 0 4 0" />
         </Style>
     </ControlTheme>
-
-    <!-- TabItem -->
-    <ControlTheme x:Key="{x:Type TabItem}"
-                  TargetType="TabItem">
-        <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
-        <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush2}" />
-        <Setter Property="BorderBrush" Value="Transparent" />
-        <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
-        <!-- <Setter Property="FontSize" Value="12" /> -->
-        <Setter Property="FontSize" Value="{DynamicResource FontSizeLarge}" />
-        <Setter Property="Margin" Value="0 0 0 0" />
-        <Setter Property="Padding" Value="10 0" />
-        <Setter Property="Height" Value="54" />
-        <Setter Property="MinWidth" Value="120" />
-        <Setter Property="Template">
-            <ControlTemplate>
-                <ContentPresenter Name="PART_ContentPresenter"
-                                  Padding="{TemplateBinding Padding}"
-                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                  Background="{TemplateBinding Background}"
-                                  BorderBrush="{TemplateBinding BorderBrush}"
-                                  BorderThickness="{TemplateBinding BorderThickness}"
-                                  Content="{TemplateBinding Header}"
-                                  ContentTemplate="{TemplateBinding HeaderTemplate}"
-                                  CornerRadius="{TemplateBinding CornerRadius}"
-                                  RecognizesAccessKey="True" />
-            </ControlTemplate>
-        </Setter>
-        <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
-        </Style>
-        <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush4}" />
-        </Style>
-        <Style Selector="^:selected /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush2}" />
-            <Setter Property="BorderBrush" Value="{DynamicResource HighlightForegroundBrush}" />
-        </Style>
-        <Style Selector="^:selected:focus /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush3}" />
-        </Style>
-        <Style Selector="^:selected:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush4}" />
-        </Style>
-        <Style Selector="^:selected:focus:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush2}" />
-        </Style>
-        <Style Selector="^[TabStripPlacement=Right]">
-            <Setter Property="BorderThickness" Value="2,0,0,0" />
-            <Setter Property="HorizontalContentAlignment" Value="Left" />
-        </Style>
-        <Style Selector="^[TabStripPlacement=Left]">
-            <Setter Property="BorderThickness" Value="0,0,2,0" />
-            <Setter Property="HorizontalContentAlignment" Value="Right" />
-        </Style>
-        <Style Selector="^[TabStripPlacement=Top]">
-            <Setter Property="BorderThickness" Value="0,0,0,2" />
-        </Style>
-        <Style Selector="^[TabStripPlacement=Bottom]">
-            <Setter Property="BorderThickness" Value="0,2,0,0" />
-        </Style>
-        
-    </ControlTheme>
+    
 </ResourceDictionary>
