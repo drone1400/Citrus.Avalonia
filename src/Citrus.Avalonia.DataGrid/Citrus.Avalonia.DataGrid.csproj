@@ -7,6 +7,7 @@
         <RootNamespace>Citrus.Avalonia.DataGrid</RootNamespace>
         <Nullable>enable</Nullable>
         <AvaloniaVersion>11.2.7</AvaloniaVersion>
+        <IsPackable>false</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>

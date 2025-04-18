@@ -1,56 +1,57 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <AssemblyName>Citrus.Avalonia.Sandbox</AssemblyName>
-    <RootNamespace>Citrus.Avalonia.Sandbox</RootNamespace>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
-    <IsPackable>false</IsPackable>
-    <Nullable>enable</Nullable>
-    <AvaloniaVersion>11.2.7</AvaloniaVersion>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
-    <PackageReference Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
-    <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="$(AvaloniaVersion)" />
-    <PackageReference Include="Avalonia.ReactiveUI" Version="$(AvaloniaVersion)" />
-    <PackageReference Include="Avalonia.LinuxFramebuffer" Version="$(AvaloniaVersion)" />
-    <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
-    <PackageReference Include="Avalonia.Themes.Simple" Version="$(AvaloniaVersion)" />
-    <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
-    <PackageReference Include="ReactiveUI.Validation" Version="4.1.1" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Compile Update="**\*.xaml.cs">
-      <DependentUpon>%(Filename)</DependentUpon>
-    </Compile>
-    <AvaloniaResource Include="**\*.xaml">
-      <SubType>Designer</SubType>
-    </AvaloniaResource>
-    <Watch Include="**\*.xaml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="CustomPalettes\*.axaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  
-  <ItemGroup>
-    <ProjectReference Include="..\Citrus.Avalonia\Citrus.Avalonia.csproj" />
-    <ProjectReference Include="..\Citrus.Avalonia.DataGrid\Citrus.Avalonia.DataGrid.csproj" />
-  </ItemGroup>
-
-  <Target Name="Preview">
-    <Error Condition="$(XamlFile) == ''" Text="Specify /p:XamlFile=path" />
     <PropertyGroup>
-      <PreviewerPort Condition="'$(PreviewerPort)' == ''">6001</PreviewerPort>
-      <FullPathToPreviewXaml>$([System.IO.Path]::GetFullPath('$(XamlFile)'))</FullPathToPreviewXaml>
-      <FileUriToPreviewXaml>file:///$(FullPathToPreviewXaml.Replace('\', '/').TrimStart('/'))</FileUriToPreviewXaml>
+        <TargetFramework>net8.0</TargetFramework>
+        <LangVersion>10</LangVersion>
+        <AssemblyName>Citrus.Avalonia.Sandbox</AssemblyName>
+        <RootNamespace>Citrus.Avalonia.Sandbox</RootNamespace>
+        <Nullable>enable</Nullable>
+        <AvaloniaVersion>11.2.7</AvaloniaVersion>
+        <OutputType>Exe</OutputType>
+        <IsPackable>false</IsPackable>
     </PropertyGroup>
-    <Exec Command="dotnet exec --runtimeconfig $(ProjectRuntimeConfigFilePath) --depsfile $(ProjectDepsFilePath) $(PkgAvalonia)/tools/netcoreapp2.0/designer/Avalonia.Designer.HostApp.dll --method html --html-url http://127.0.0.1:$(PreviewerPort) --transport $(FileUriToPreviewXaml) $(TargetPath)" />
-  </Target>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)"/>
+        <PackageReference Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)"/>
+        <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="$(AvaloniaVersion)"/>
+        <PackageReference Include="Avalonia.ReactiveUI" Version="$(AvaloniaVersion)"/>
+        <PackageReference Include="Avalonia.LinuxFramebuffer" Version="$(AvaloniaVersion)"/>
+        <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)"/>
+        <PackageReference Include="Avalonia.Themes.Simple" Version="$(AvaloniaVersion)"/>
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)"/>
+        <PackageReference Include="ReactiveUI.Validation" Version="4.1.1"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="**\*.xaml.cs">
+            <DependentUpon>%(Filename)</DependentUpon>
+        </Compile>
+        <AvaloniaResource Include="**\*.xaml">
+            <SubType>Designer</SubType>
+        </AvaloniaResource>
+        <Watch Include="**\*.xaml"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="CustomPalettes\*.axaml">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Citrus.Avalonia\Citrus.Avalonia.csproj"/>
+        <ProjectReference Include="..\Citrus.Avalonia.DataGrid\Citrus.Avalonia.DataGrid.csproj"/>
+    </ItemGroup>
+
+    <Target Name="Preview">
+        <Error Condition="$(XamlFile) == ''" Text="Specify /p:XamlFile=path"/>
+        <PropertyGroup>
+            <PreviewerPort Condition="'$(PreviewerPort)' == ''">6001</PreviewerPort>
+            <FullPathToPreviewXaml>$([System.IO.Path]::GetFullPath('$(XamlFile)'))</FullPathToPreviewXaml>
+            <FileUriToPreviewXaml>file:///$(FullPathToPreviewXaml.Replace('\', '/').TrimStart('/'))</FileUriToPreviewXaml>
+        </PropertyGroup>
+        <Exec Command="dotnet exec --runtimeconfig $(ProjectRuntimeConfigFilePath) --depsfile $(ProjectDepsFilePath) $(PkgAvalonia)/tools/netcoreapp2.0/designer/Avalonia.Designer.HostApp.dll --method html --html-url http://127.0.0.1:$(PreviewerPort) --transport $(FileUriToPreviewXaml) $(TargetPath)"/>
+    </Target>
 
 </Project>
