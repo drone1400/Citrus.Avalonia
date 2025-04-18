@@ -1,0 +1,136 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:Citrus.Avalonia.Sandbox.ViewModels"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Citrus.Avalonia.Sandbox.Views.DateTimeControls"
+             Background="{DynamicResource ThemeBackgroundColor}">
+
+    <Design.DesignStyle>
+        <SimpleTheme />
+    </Design.DesignStyle>
+
+    <Design.DataContext>
+        <viewModels:MainWindowViewModel />
+    </Design.DataContext>
+
+    <Grid ColumnDefinitions="*,*">
+        <Border Classes="Card" Grid.Column="0">
+            <Grid ColumnDefinitions="*,*">
+                <StackPanel Grid.Column="0" Spacing="10">
+                    <Label Classes="Heading"
+                           Content="Date Picker" />
+                    
+                    <DatePicker />
+                    
+                    <DatePicker SelectedDate="2025-04-18"/>
+                    
+                    <DatePicker SelectedDate="2025-04-18">
+                        <DataValidationErrors.Error>
+                            <system:Exception>
+                                <x:Arguments>
+                                    <x:String>Data validation error</x:String>
+                                </x:Arguments>
+                            </system:Exception>
+                        </DataValidationErrors.Error>
+                    </DatePicker>
+                    
+                    <DatePicker SelectedDate="2025-04-18">
+                        <DataValidationErrors.Error>
+                            <system:Exception>
+                                <x:Arguments>
+                                    <x:String>Data validation error</x:String>
+                                </x:Arguments>
+                            </system:Exception>
+                        </DataValidationErrors.Error>
+                        <DatePicker.Styles>
+                            <Style Selector="DataValidationErrors">
+                                <Setter Property="Theme" Value="{DynamicResource TooltipDataValidationErrors}" />
+                            </Style>
+                        </DatePicker.Styles>
+                    </DatePicker>
+                    
+                    <DatePicker SelectedDate="2025-04-18" 
+                                IsEnabled="False"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Column="1" Spacing="10">
+                    <Label Classes="Heading"
+                           Content="Time Picker" />
+                    
+                    <TimePicker />
+                    
+                    <TimePicker SelectedTime="13:37"/>
+                    
+                    <TimePicker SelectedTime="13:37" >
+                        <DataValidationErrors.Error>
+                            <system:Exception>
+                                <x:Arguments>
+                                    <x:String>Data validation error</x:String>
+                                </x:Arguments>
+                            </system:Exception>
+                        </DataValidationErrors.Error>
+                    </TimePicker>
+                    
+                    <TimePicker SelectedTime="13:37" >
+                        <DataValidationErrors.Error>
+                            <system:Exception>
+                                <x:Arguments>
+                                    <x:String>Data validation error</x:String>
+                                </x:Arguments>
+                            </system:Exception>
+                        </DataValidationErrors.Error>
+                        <TimePicker.Styles>
+                            <Style Selector="DataValidationErrors">
+                                <Setter Property="Theme" Value="{DynamicResource TooltipDataValidationErrors}" />
+                            </Style>
+                        </TimePicker.Styles>
+                    </TimePicker>
+                    
+                    <TimePicker SelectedTime="13:37" 
+                                IsEnabled="False"/>
+                    
+                    
+                    <Label Classes="Heading"
+                           Content="Time Picker With Seconds" />
+                    
+                    <TimePicker SelectedTime="13:37" UseSeconds="True"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Border Classes="Card" Grid.Column="1">
+            <StackPanel Spacing="10">
+                <Label Classes="Heading"
+                       Content="Calendars" />
+
+                <Grid ColumnDefinitions="*,10,*"
+                      RowDefinitions="Auto,Auto">
+                    <Label Grid.Row="0" Grid.Column="0" Content="Enabled" />
+                    <Calendar Grid.Row="1" Grid.Column="0"
+                              FirstDayOfWeek="Monday" />
+
+                    <Label Grid.Row="0" Grid.Column="2" Content="Disabled" />
+                    <Calendar Grid.Row="1" Grid.Column="2"
+                              IsEnabled="False"
+                              FirstDayOfWeek="Monday" />
+                </Grid>
+                
+                <Grid ColumnDefinitions="*,10,*"
+                      RowDefinitions="Auto,Auto">
+                    <Label Grid.Row="0" Grid.Column="0" Content="Enabled" />
+                    <CalendarDatePicker Grid.Row="1" Grid.Column="0"
+                              FirstDayOfWeek="Monday" />
+
+                    <Label Grid.Row="0" Grid.Column="2" Content="Disabled" />
+                    <CalendarDatePicker Grid.Row="1" Grid.Column="2"
+                                        IsEnabled="False"
+                                        FirstDayOfWeek="Monday" />
+                </Grid>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

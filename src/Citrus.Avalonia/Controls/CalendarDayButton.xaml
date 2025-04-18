@@ -1,4 +1,11 @@
-﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+﻿<!--
+  // (c) Copyright Microsoft Corporation.
+  // This source is subject to the Microsoft Public License (Ms-PL).
+  // Please see http://go.microsoft.com/fwlink/?LinkID=131993 for details.
+  // All other rights reserved.
+-->
+
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ControlTheme x:Key="{x:Type CalendarDayButton}"
                   TargetType="CalendarDayButton">
@@ -61,17 +68,18 @@
         <Style Selector="^:pointerover /template/ Rectangle#Background">
             <Setter Property="IsVisible" Value="True" />
         </Style>
+        
         <Style Selector="^:pressed /template/ Rectangle#Background">
             <Setter Property="IsVisible" Value="True" />
         </Style>
-
+        
         <Style Selector="^:selected /template/ Rectangle#SelectedBackground">
             <Setter Property="IsVisible" Value="True" />
         </Style>
-
-        <Style Selector="^:selected /template/ ContentControl#Content > TextBlock">
+        
+        <Style Selector="^:selected">
             <Setter Property="Opacity" Value="1" />
-            <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
+            <Setter Property="TextElement.Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
         </Style>
 
         <Style Selector="^:disabled /template/ Rectangle#Background">
@@ -90,17 +98,13 @@
         <Style Selector="^:today /template/ Rectangle#TodayBackground">
             <Setter Property="IsVisible" Value="True" />
         </Style>
-
-        <Style Selector="^:today /template/ ContentControl#Content > TextBlock">
+        <Style Selector="^:today">
             <Setter Property="Opacity" Value="1" />
-            <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
+            <Setter Property="TextElement.Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
         </Style>
 
         <Style Selector="^:inactive /template/ ContentPresenter#PART_ContentPresenter">
             <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundLowBrush}" />
-        </Style>
-        <Style Selector="^:today /template/ ContentPresenter#PART_ContentPresenter">
-            <Setter Property="Foreground" Value="{DynamicResource ThemeControlLowBrush}" />
         </Style>
 
         <Style Selector="^:blackout /template/ Path#BlackoutVisual">

@@ -17,8 +17,8 @@ Carousel
         ComboBoxItem
         ContextMenu
         DataValidatioNErrors
-DatePicker
-DateTimePickerShared
+        DatePicker
+        DateTimePickerShared
 DropDownButton
 EmbeddableControlRoot
         Expander
@@ -60,7 +60,7 @@ TabStripItem
         TextBox
 TextSelectionHandle
 ThemeVariantScope
-TimePicker
+        TimePicker
 TitleBar
         ToggleButton
 ToggleSwitch

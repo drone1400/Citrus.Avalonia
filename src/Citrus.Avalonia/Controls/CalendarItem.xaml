@@ -1,4 +1,11 @@
-﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+﻿<!--
+  // (c) Copyright Microsoft Corporation.
+  // This source is subject to the Microsoft Public License (Ms-PL).
+  // Please see http://go.microsoft.com/fwlink/?LinkID=131993 for details.
+  // All other rights reserved.
+-->
+
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ControlTheme x:Key="{x:Type CalendarItem}"
                   TargetType="CalendarItem">
@@ -47,12 +54,15 @@
                                         <Setter Property="Foreground" Value="{DynamicResource HighlightBrush}" />
                                     </Style>
                                 </Grid.Styles>
-                                <Rectangle Grid.ColumnSpan="3"
+                                <Rectangle Grid.Row="0"  
+                                           Grid.Column="0" Grid.ColumnSpan="3"
                                            Height="34"
                                            VerticalAlignment="Top"
                                            Fill="{TemplateBinding HeaderBackground}"
                                            Stretch="Fill" />
                                 <Button Name="PART_PreviousButton"
+                                        Grid.Row="0"
+                                        Grid.Column="0"
                                         HorizontalAlignment="Left"
                                         Classes="CalendarHeader CalendarNavigation"
                                         IsVisible="False">
@@ -66,6 +76,7 @@
                                           Fill="{DynamicResource HighlightForegroundBrush}" />
                                 </Button>
                                 <Button Name="PART_HeaderButton"
+                                        Grid.Row="0" 
                                         Grid.Column="1"
                                         Padding="1,5,1,9"
                                         HorizontalAlignment="Center"
@@ -74,6 +85,7 @@
                                         FontSize="10.5"
                                         FontWeight="Bold" />
                                 <Button Name="PART_NextButton"
+                                        Grid.Row="0" 
                                         Grid.Column="2"
                                         HorizontalAlignment="Right"
                                         Classes="CalendarHeader CalendarNavigation"
@@ -89,7 +101,7 @@
                                 </Button>
                                 <Grid Name="PART_MonthView"
                                       Grid.Row="1"
-                                      Grid.ColumnSpan="3"
+                                      Grid.Column="0" Grid.ColumnSpan="3"
                                       Margin="6,-1,6,6"
                                       IsVisible="False">
                                     <Grid.RowDefinitions>
@@ -113,7 +125,7 @@
                                 </Grid>
                                 <Grid Name="PART_YearView"
                                       Grid.Row="1"
-                                      Grid.ColumnSpan="3"
+                                      Grid.Column="0" Grid.ColumnSpan="3"
                                       Margin="6,-3,7,6"
                                       IsVisible="False">
                                     <Grid.RowDefinitions>

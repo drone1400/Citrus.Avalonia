@@ -24,7 +24,30 @@
         <Menu Grid.Row="0">
             <MenuItem Header="Example menu">
                 <MenuItem Header="With items">
-                    <MenuItem Header="First item" />
+                    <MenuItem Header="First item">
+                        <!-- Force menu popup max height so we can see the scroll viewer -->
+                        <MenuItem.Styles>
+                            <Style Selector="Popup" >
+                                <Setter Property="MaxHeight" Value="250" />
+                            </Style>
+                        </MenuItem.Styles>
+                        <MenuItem Header="Menu Item 1"/>
+                        <MenuItem Header="Menu Item 2"/>
+                        <MenuItem Header="Menu Item 3"/>
+                        <MenuItem Header="Menu Item 4"/>
+                        <MenuItem Header="Menu Item 5"/>
+                        <MenuItem Header="Menu Item 6"/>
+                        <MenuItem Header="Menu Item 7"/>
+                        <MenuItem Header="Menu Item 8"/>
+                        <MenuItem Header="Menu Item 9"/>
+                        <MenuItem Header="Menu Item 10"/>
+                        <MenuItem Header="Menu Item 11"/>
+                        <MenuItem Header="Menu Item 12"/>
+                        <MenuItem Header="Menu Item 13"/>
+                        <MenuItem Header="Menu Item 14"/>
+                        <MenuItem Header="Menu Item 15"/>
+                        <MenuItem Header="Menu Item 16"/>
+                    </MenuItem>
                     <MenuItem Header="Second item" />
                 </MenuItem>
                 <MenuItem Header="Enabled" />
@@ -60,8 +83,8 @@
             <TabItem Header="Expanders">
                 <views:Expanders />
             </TabItem>
-            <TabItem Header="Other Controls">
-                <views:OtherControls />
+            <TabItem Header="Date/Time Controls">
+                <views:DateTimeControls />
             </TabItem>
             <TabItem Header="Data Grid">
                 <views:DataGridControls />
