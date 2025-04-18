@@ -8,13 +8,6 @@ It was completely reworked to use Avalonia's new ControlTheme system instead of 
 
 Since I am developing it to use it in my Martridge project, I also added some missing controls like the DataGrid which I needed there. I may further add other missing controls later on...
 
-|                         |                       |
-|-------------------------|-----------------------|
-| ![](doc/picture1.png)   | ![](doc/picture2.png) |
-| ![](doc/picture3.png)   | ![](doc/picture4.png) |
-| ![](doc/picture5.png)   | ![](doc/picture6.png) |
-| ![](doc/picture7.png)   | ![](doc/picture8.png) |
-
 ### Getting Started
 
 Since this is not the official distribution, the NuGet package is not available.
@@ -145,3 +138,12 @@ For more examples check out the `Citrus.Avalonia.Sandbox` project!
 - <a href="https://docs.avaloniaui.net/docs/concepts/reactiveui/">Avalonia.ReactiveUI</a> for MVVM implementation in the sandbox project
 - <a href="https://github.com/reactiveui/reactiveui.validation">ReactiveUI.Validation</a> for `INotifyDataErrorInfo` validations
 - <a href="https://www.jetbrains.com/rider/">JetBrains Rider</a> cross-platform C# IDE
+
+### Example pictures
+
+|                         |                       |
+|-------------------------|-----------------------|
+| ![](doc/picture1.png)   | ![](doc/picture2.png) |
+| ![](doc/picture3.png)   | ![](doc/picture4.png) |
+| ![](doc/picture5.png)   | ![](doc/picture6.png) |
+| ![](doc/picture7.png)   | ![](doc/picture8.png) |
