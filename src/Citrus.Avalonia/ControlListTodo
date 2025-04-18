@@ -1,7 +1,7 @@
 // NOTE - items that are tabbed are more or less done, rest need to be implemented....
 // NOTE: should also implement DataGrid at some point soon...
 
-AdornerLayer
+        AdornerLayer
 AutoCompleteBox
         Button
         ButtonSpinner
@@ -68,5 +68,5 @@ ToggleSwitch
 TransitioningContentControl
         TreeView
         TreeViewItem
-Window
+        Window
 WindowNotificationManager
