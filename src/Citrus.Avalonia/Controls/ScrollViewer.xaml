@@ -43,7 +43,8 @@
             <ControlTemplate>
                 <DockPanel>
                     <RepeatButton Background="Transparent"
-                                  BorderThickness="0"
+                                  CornerRadius="0"
+                                  BorderThickness="2"
                                   Command="{Binding LineUp, RelativeSource={RelativeSource TemplatedParent}}"
                                   DockPanel.Dock="Top">
                         <RepeatButton.IsVisible>
@@ -62,7 +63,8 @@
                         <Path Data="M 0 4 L 8 4 L 4 0 Z" />
                     </RepeatButton>
                     <RepeatButton Background="Transparent"
-                                  BorderThickness="0"
+                                  CornerRadius="0"
+                                  BorderThickness="2"
                                   Command="{Binding LineDown, RelativeSource={RelativeSource TemplatedParent}}"
                                   DockPanel.Dock="Bottom">
                         <RepeatButton.IsVisible>
@@ -80,8 +82,23 @@
                         </RepeatButton.IsVisible>
                         <Path Data="M 0 0 L 4 4 L 8 0 Z" />
                     </RepeatButton>
+                    
+                    <!-- <ScrollContentPresenter Name="PART_ContentPresenter" -->
+                    <!--                         Margin="{TemplateBinding Padding}" /> -->
                     <ScrollContentPresenter Name="PART_ContentPresenter"
-                                            Margin="{TemplateBinding Padding}" />
+                                            Padding="{TemplateBinding Padding}"
+                                            HorizontalSnapPointsType="{TemplateBinding HorizontalSnapPointsType}"
+                                            VerticalSnapPointsType="{TemplateBinding VerticalSnapPointsType}"
+                                            HorizontalSnapPointsAlignment="{TemplateBinding HorizontalSnapPointsAlignment}"
+                                            VerticalSnapPointsAlignment="{TemplateBinding VerticalSnapPointsAlignment}"
+                                            Background="{TemplateBinding Background}"
+                                            ScrollViewer.IsScrollInertiaEnabled="{TemplateBinding IsScrollInertiaEnabled}">
+                        <ScrollContentPresenter.GestureRecognizers>
+                            <ScrollGestureRecognizer CanHorizontallyScroll="{Binding CanHorizontallyScroll, ElementName=PART_ContentPresenter}"
+                                                     CanVerticallyScroll="{Binding CanVerticallyScroll, ElementName=PART_ContentPresenter}"
+                                                     IsScrollInertiaEnabled="{Binding (ScrollViewer.IsScrollInertiaEnabled), ElementName=PART_ContentPresenter}" />
+                        </ScrollContentPresenter.GestureRecognizers>
+                    </ScrollContentPresenter>
                 </DockPanel>
             </ControlTemplate>
         </Setter>
