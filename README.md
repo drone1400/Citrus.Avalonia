@@ -121,7 +121,7 @@ Application.Current.Styles.Add(citrusTheme);
 #### Example overriding the Light ThemeVariant from local file
 ```cs
 CitrusTheme citrusTheme = new CitrusTheme();
-using FileStream fileStream = new FileStream("MyCustomThemeVariantResourceDictionary.axaml", FileMode.Open, FileAccess.Read); 
+using FileStream fileStream = new FileStream("MyTheme.axaml", FileMode.Open, FileAccess.Read); 
 object obj = AvaloniaRuntimeXamlLoader.Load(fileStream);
 if (obj is ResourceDictionary dictionary) {
     citrusTheme.DesiredLightThemeVariant = dictionary;
