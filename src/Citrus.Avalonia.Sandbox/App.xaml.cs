@@ -27,6 +27,9 @@ namespace Citrus.Avalonia.Sandbox
         
         private object? _currentThemeObj = null;
         
+        private IList<ThemeVariant>? _themePalettes = null;
+        private int _selectedPaletteIndex = 0;
+        
         private MainWindowViewModel? _mainWindowViewModel = null;
 
         private readonly string _baseAppDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) ?? string.Empty;
@@ -50,10 +53,11 @@ namespace Citrus.Avalonia.Sandbox
             this._styles.Add(this._citrusTheme);
             this._styles.Add(this._resDataGridCitrus);
             this._currentThemeObj = this._citrusTheme;
+            
+            // register our custom theme variant, in this case there is only one
+            this._citrusTheme.RegisterThemeVariant(new CitrusThemeVariantData("CustomPalette", "avares://Citrus.Avalonia.Sandbox/Palette/CustomPalette.xaml"));
 
-            // register our custom theme palettes, in this case there is only one
-            this._citrusTheme.RegisterPalette(new CitrusPaletteData("CustomPalette", "avares://Citrus.Avalonia.Sandbox/Palette/CustomPalette.xaml"));
-
+            // register additional custom theme variants from local files
             try {
                 DirectoryInfo dinfo = new DirectoryInfo(Path.Combine(this._baseAppDirectory, "CustomPalettes"));
                 FileInfo[] files = dinfo.GetFiles();
@@ -69,16 +73,18 @@ namespace Citrus.Avalonia.Sandbox
                         if (obj is not ResourceDictionary resDic)
                             continue;
                         
-                        CitrusPaletteData paletteData = new CitrusPaletteData(name, resDic);
+                        CitrusThemeVariantData themeVariantData = new CitrusThemeVariantData(name, resDic);
                         
-                        this._citrusTheme.RegisterPalette(paletteData);
+                        this._citrusTheme.RegisterThemeVariant(themeVariantData);
                     } catch (Exception) {
-
+                        Console.WriteLine($"Error reading ResourceDictionary from file {file.FullName}");
                     }
                 }
             } catch (Exception) {
-                
+                Console.WriteLine($"Error reading custom theme palettes");
             }
+
+            this._themePalettes = this._citrusTheme.GetRegisteredThemeVariants();
         }
 
         public override void OnFrameworkInitializationCompleted()
@@ -86,60 +92,91 @@ namespace Citrus.Avalonia.Sandbox
             if (this.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktopLifetime)
             {
                 this._mainWindowViewModel = new MainWindowViewModel();
-                this._mainWindowViewModel.Title = $"Sandbox - Citrus Theme - {this._citrusTheme?.ColorPalette}";
+                this._mainWindowViewModel.Title = $"Sandbox - Citrus Theme - {this._citrusTheme?.DesiredDefaultThemeVariant}";
                 
-                desktopLifetime.MainWindow = new MainWindow() { DataContext = this._mainWindowViewModel };
+                desktopLifetime.MainWindow = new MainWindow() {
+                    DataContext = this._mainWindowViewModel,
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                };
             }
             
             base.OnFrameworkInitializationCompleted();
         }
 
-        public void SetCitrusThemePalette(string paletteKey) {
-            if (this._citrusTheme == null) return;
-            this._citrusTheme.ColorPalette = paletteKey;
+        public void SetThemeVariant(ThemeVariant? variant) {
+            if (variant == null)  {
+                this.SetValue(Application.RequestedThemeVariantProperty, ThemeVariant.Default);
+            } else {
+                this.SetValue(Application.RequestedThemeVariantProperty, variant);
+            }
+
+            ThemeVariant actualVariant = this.GetValue(Application.ActualThemeVariantProperty);
             
             if (this._mainWindowViewModel == null) return;
-            this._mainWindowViewModel.Title = $"Sandbox - Citrus Theme - {this._citrusTheme.ColorPalette}";
+            this._mainWindowViewModel.Title = $"Sandbox - Citrus Theme - {actualVariant.Key}";
+        }
+
+        public void SetDesiredDarkThemeSea() {
+            if (this._citrusTheme == null) return;
+            Uri uriSeaPalette = new Uri("avares://Citrus.Avalonia/Palette/SeaPalette.xaml");
+            this._citrusTheme.DesiredDarkThemeVariant = new ResourceInclude(uriSeaPalette) { Source = uriSeaPalette };
+        }
+        
+        public void SetDesiredDarkThemeRust() {
+            if (this._citrusTheme == null) return;
+            Uri uriRustPalette = new Uri("avares://Citrus.Avalonia/Palette/RustPalette.xaml");
+            this._citrusTheme.DesiredDarkThemeVariant = new ResourceInclude(uriRustPalette) { Source = uriRustPalette };
+        }
+        
+        public void LoadNextCitrusThemeVariant() {
+            if (this._citrusTheme == null || 
+                this._themePalettes == null || 
+                ReferenceEquals(this._currentThemeObj, this._citrusTheme) == false)
+                return;
+            
+            this._selectedPaletteIndex++;
+            if (this._selectedPaletteIndex >= this._themePalettes.Count)
+                this._selectedPaletteIndex = 0;
+            this.SetThemeVariant(this._themePalettes[this._selectedPaletteIndex]);
         }
 
         public void LoadNextTheme() {
-            if (Application.Current is not App app) return;
             if (this._mainWindowViewModel == null) return;
+            
+            ThemeVariant actualVariant = this.GetValue(Application.ActualThemeVariantProperty);
             
             if (ReferenceEquals(this._currentThemeObj, this._citrusTheme) && this._fluentTheme != null && this._resDataGridFluent != null) {
                 this._styles[0] = this._fluentTheme;
                 this._styles[1] = this._resDataGridFluent;
                 this._currentThemeObj = this._fluentTheme;
-                this._mainWindowViewModel.Title = "Sandbox - Fluent Theme";
+                if (actualVariant.Key.ToString() != "Light" && actualVariant.Key.ToString() != "Dark") {
+                    this.SetThemeVariant(ThemeVariant.Default);
+                }
+                this._mainWindowViewModel.Title = $"Sandbox - Fluent Theme - {actualVariant.Key}";
             } else if (ReferenceEquals(this._currentThemeObj, this._fluentTheme) && this._simpleTheme != null && this._resDataGridSimple != null) {
                 this._styles[0] = this._simpleTheme;
                 this._styles[1] = this._resDataGridSimple;
                 this._currentThemeObj = this._simpleTheme;
-                this._mainWindowViewModel.Title = "Sandbox - Simple Theme";
+                if (actualVariant.Key.ToString() != "Light" && actualVariant.Key.ToString() != "Dark") {
+                    this.SetThemeVariant(ThemeVariant.Default);
+                }
+                this._mainWindowViewModel.Title = $"Sandbox - Simple Theme - {actualVariant.Key}";
             } else if (this._citrusTheme != null && this._resDataGridCitrus != null) {
                 this._styles[0] = this._citrusTheme;
                 this._styles[1] = this._resDataGridCitrus;
                 this._currentThemeObj = this._citrusTheme;
-                this._mainWindowViewModel.Title = $"Sandbox - Citrus Theme - {this._citrusTheme.ColorPalette}";
+                this._mainWindowViewModel.Title = $"Sandbox - Citrus Theme - {actualVariant.Key}";
             }
 
-            if (app.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktopLifetime) {
+            if (this.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktopLifetime) {
                 Window? oldWindow = desktopLifetime.MainWindow;
-                desktopLifetime.MainWindow = new MainWindow() { DataContext = this._mainWindowViewModel };
+                desktopLifetime.MainWindow = new MainWindow() {
+                    DataContext = this._mainWindowViewModel,
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                };
                 desktopLifetime.MainWindow.Show();
                 oldWindow?.Close();
             }
-        }
-
-        public IList<string> GetPaletteNames() {
-            IList<string> paletteNames = new List<string>();
-            if (this._citrusTheme == null) 
-                return paletteNames;
-            var palettes = this._citrusTheme.GetRegisteredPalettes();
-            foreach (var palette in palettes) {
-                paletteNames.Add(palette.Key);
-            }
-            return paletteNames;
         }
     }
 }

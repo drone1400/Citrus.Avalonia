@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.Markup.Xaml.Styling;
 using Avalonia.Styling;
@@ -8,8 +9,8 @@ using Avalonia.Styling;
 namespace Citrus.Avalonia;
 
 public class CitrusTheme : Styles {
-    private readonly Uri _uriSimpleTheme = new Uri("avares://Avalonia.Themes.Simple/SimpleTheme.xaml");
     private readonly Uri _uriControls = new Uri("avares://Citrus.Avalonia/CitrusControls.xaml");
+    
     // default palettes
     private readonly Uri _uriCandyPalette = new Uri("avares://Citrus.Avalonia/Palette/CandyPalette.xaml");
     private readonly Uri _uriCitrusPalette = new Uri("avares://Citrus.Avalonia/Palette/CitrusPalette.xaml");
@@ -19,92 +20,120 @@ public class CitrusTheme : Styles {
     
     
 
-    private readonly Dictionary<string, CitrusPaletteData> _palettes = new Dictionary<string, CitrusPaletteData>();
-
-    private string _currentThemeKey = "";
+    private readonly Dictionary<ThemeVariant, CitrusThemeVariantData> _palettes = new Dictionary<ThemeVariant, CitrusThemeVariantData>();
     
     /// <summary>
-    /// StyledProperty that defines the currently selected color palette 
+    /// StyledProperty that defines the desired Default theme variant to use 
     /// </summary>
-    public static readonly StyledProperty<string> ColorPaletteProperty = 
-        AvaloniaProperty.Register<CitrusTheme, string>(nameof(ColorPalette), defaultValue: "Citrus");
+    public static readonly StyledProperty<IThemeVariantProvider> DesiredDefaultThemeVariantProperty = 
+        AvaloniaProperty.Register<CitrusTheme, IThemeVariantProvider>(nameof(DesiredDefaultThemeVariant));
     
     /// <summary>
-    /// The currently selected color palette, set will only update the property value if the provided value is a registered theme Key.
+    /// The desired Default theme variant
     /// </summary>
-    public string ColorPalette {
-        get => this.GetValue(CitrusTheme.ColorPaletteProperty);
+    public IThemeVariantProvider DesiredDefaultThemeVariant {
+        get => this.GetValue(CitrusTheme.DesiredDefaultThemeVariantProperty);
         set {
-            if (this.SelectPalette(value)) {
-                this.SetValue(CitrusTheme.ColorPaletteProperty, value);
+            if (this.TrySetDefaultThemeVariant(value)) {
+                this.SetValue(CitrusTheme.DesiredDefaultThemeVariantProperty, value);
+            }
+        }
+    }
+    
+    /// <summary>
+    /// StyledProperty that defines the desired Light theme variant to use 
+    /// </summary>
+    public static readonly StyledProperty<IThemeVariantProvider> DesiredLightThemeVariantProperty = 
+        AvaloniaProperty.Register<CitrusTheme, IThemeVariantProvider>(nameof(DesiredLightThemeVariant));
+    
+    /// <summary>
+    /// The desired Light theme variant
+    /// </summary>
+    public IThemeVariantProvider DesiredLightThemeVariant {
+        get => this.GetValue(CitrusTheme.DesiredLightThemeVariantProperty);
+        set {
+            if (this.TrySetLightThemeVariant(value)) {
+                this.SetValue(CitrusTheme.DesiredLightThemeVariantProperty, value);
+            }
+        }
+    }
+    
+    /// <summary>
+    /// StyledProperty that defines the desired Dark theme variant to use 
+    /// </summary>
+    public static readonly StyledProperty<IThemeVariantProvider> DesiredDarkThemeVariantProperty = 
+        AvaloniaProperty.Register<CitrusTheme, IThemeVariantProvider>(nameof(DesiredDarkThemeVariant));
+    
+    /// <summary>
+    /// The desired Dark theme variant
+    /// </summary>
+    public IThemeVariantProvider DesiredDarkThemeVariant {
+        get => this.GetValue(CitrusTheme.DesiredDarkThemeVariantProperty);
+        set {
+            if (this.TrySetDarkThemeVariant(value)) {
+                this.SetValue(CitrusTheme.DesiredDarkThemeVariantProperty, value);
             }
         }
     }
     
     public CitrusTheme(IServiceProvider? sp = null) {
-        //this.Add(new StyleInclude(this._uriSimpleTheme) { Source = this._uriSimpleTheme});
         
         this.Add(new StyleInclude(this._uriControls) { Source = this._uriControls});
         
         AvaloniaXamlLoader.Load(sp, this);
 
-        this.RegisterPalette(new CitrusPaletteData(CitrusDefaultPalettes.Citrus.ToString(), this._uriCitrusPalette));
-        this.RegisterPalette(new CitrusPaletteData(CitrusDefaultPalettes.Candy.ToString(), this._uriCandyPalette));
-        this.RegisterPalette(new CitrusPaletteData(CitrusDefaultPalettes.Magma.ToString(), this._uriMagmaPalette));
-        this.RegisterPalette(new CitrusPaletteData(CitrusDefaultPalettes.Rust.ToString(), this._uriRustPalette));
-        this.RegisterPalette(new CitrusPaletteData(CitrusDefaultPalettes.Sea.ToString(), this._uriSeaPalette));
+        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Citrus.ToString(), this._uriCitrusPalette));
+        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Candy.ToString(), this._uriCandyPalette));
+        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Magma.ToString(), this._uriMagmaPalette));
+        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Rust.ToString(), this._uriRustPalette));
+        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Sea.ToString(), this._uriSeaPalette));
 
-        this.SelectPalette("Citrus");
+        this.TrySetDefaultThemeVariant(new ResourceInclude(this._uriCitrusPalette) { Source = this._uriCitrusPalette } );
+        this.TrySetLightThemeVariant(new ResourceInclude(this._uriCitrusPalette) { Source = this._uriCitrusPalette });
+        this.TrySetDarkThemeVariant(new ResourceInclude(this._uriSeaPalette) { Source = this._uriSeaPalette });
     }
 
     
-    /// <summary>
-    /// Allows you to register a new custom color palette using a given URI
-    /// </summary>
-    /// <param name="key">Color Palette Key</param>
-    /// <param name="resource">ResourceInclude of the palette definition</param>
-    /// <returns>true if successful, false if key already exists or some other error occurred...</returns>
-    public bool RegisterPalette(string key, ResourceInclude resource) {
-        if (this._palettes.ContainsKey(key)) return false;
+    public bool RegisterThemeVariant(CitrusThemeVariantData resourceData) {
+        if (this._palettes.ContainsKey(resourceData.Variant)) return false;
         
-        this._palettes.Add(key, new CitrusPaletteData(key, resource));
-        return true;
-    }
-    
-    public bool RegisterPalette(CitrusPaletteData resourceData) {
-        if (this._palettes.ContainsKey(resourceData.Key)) return false;
+        if (this.Resources.ThemeDictionaries.ContainsKey(resourceData.Variant)) {
+            return false;
+        }
         
-        this._palettes.Add(resourceData.Key, resourceData);
+        this.Resources.ThemeDictionaries.Add(resourceData.Variant, resourceData.VariantProvider);
+        this._palettes.Add(resourceData.Variant, resourceData);
         return true;
     }
 
     /// <summary>
     /// Gets a list of all the currently registered Palettes
     /// </summary>
-    /// <returns>List of <see cref="CitrusPalette"/></returns>
-    public List<CitrusPaletteData> GetRegisteredPalettes() {
-        List<CitrusPaletteData> palettes = new List<CitrusPaletteData>();
+    /// <returns>List of <see cref="CitrusThemeVariantData"/></returns>
+    public List<ThemeVariant> GetRegisteredThemeVariants() {
+        List<ThemeVariant> palettes = new List<ThemeVariant>();
         foreach (var palette in this._palettes) {
-            palettes.Add(palette.Value);
+            palettes.Add(palette.Key);
         }
         return palettes;
     }
 
-    private bool SelectPalette(string key) {
-        // check if same as current
-        if (key == this._currentThemeKey) return true;
-        
-        if (this._palettes.TryGetValue(key, out CitrusPaletteData? data) == false) return false;
+    private bool TrySetThemeVariant(IThemeVariantProvider? currentValue, IThemeVariantProvider newProvider, ThemeVariant targetThemeVariant) {
+        // check if same key as current?
+        if (currentValue?.Key != null && currentValue.Key == newProvider.Key) return true;
 
-        // remove existing palette if possible
-        if (this._palettes.TryGetValue(this._currentThemeKey, out CitrusPaletteData? currentData)) {
-            this.Resources.MergedDictionaries.Remove(currentData.ResourceInclude);
+        // remove existing theme variant if possible
+        if (this.Resources.ThemeDictionaries.ContainsKey(targetThemeVariant)) {
+            this.Resources.ThemeDictionaries.Remove(targetThemeVariant);
         }
-        
-        // add new palette
-        this.Resources.MergedDictionaries.Insert(0, data.ResourceInclude);
-        this._currentThemeKey = key;
+
+        // add new theme variant
+        this.Resources.ThemeDictionaries.Add(targetThemeVariant, newProvider);
         return true;
     }
+    
+    private bool TrySetDefaultThemeVariant(IThemeVariantProvider variantProvider) => this.TrySetThemeVariant(this.DesiredDefaultThemeVariant, variantProvider, ThemeVariant.Default);
+    private bool TrySetLightThemeVariant(IThemeVariantProvider variantProvider) => this.TrySetThemeVariant(this.DesiredLightThemeVariant, variantProvider, ThemeVariant.Light);
+    private bool TrySetDarkThemeVariant(IThemeVariantProvider variantProvider) => this.TrySetThemeVariant(this.DesiredDarkThemeVariant, variantProvider, ThemeVariant.Dark);
     
 }

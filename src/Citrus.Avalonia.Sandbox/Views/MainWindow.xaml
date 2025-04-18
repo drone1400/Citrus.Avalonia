@@ -22,21 +22,23 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Menu Grid.Row="0">
-            <MenuItem Header="Menu option number one">
+            <MenuItem Header="Example menu">
                 <MenuItem Header="With items">
                     <MenuItem Header="First item" />
                     <MenuItem Header="Second item" />
                 </MenuItem>
+                <MenuItem Header="Enabled" />
                 <MenuItem Header="Disabled" IsEnabled="False" />
             </MenuItem>
-            <MenuItem Header="Menu option number two">
-                <MenuItem Header="With items">
-                    <MenuItem Header="First item" />
-                    <MenuItem Header="Second item" />
-                </MenuItem>
-                <MenuItem Header="Enabled" IsEnabled="True" />
+            <MenuItem Header="Switch palette">
+                <MenuItem Header="Switch to Custom - Set Next Registered" Command="{Binding CommandSwitchNextRegisteredThemeVariant}" />
+                <MenuItem Header="Switch to Default" Command="{Binding CommandSwitchDefaultThemeVariant}" />
+                <MenuItem Header="Switch to Light" Command="{Binding CommandSwitchLightThemeVariant}" />
+                <MenuItem Header="Switch to Dark" Command="{Binding CommandSwitchDarkThemeVariant}" />
+                <Separator />
+                <MenuItem Header="Set Default Dark Theme - Rust" Command="{Binding CommandSetDefaultDarkThemeRust}" />
+                <MenuItem Header="Set Default Dark Theme - Sea" Command="{Binding CommandSetDefaultDarkThemeSea}" />
             </MenuItem>
-            <MenuItem Header="Switch palette" Command="{Binding ChangeThemePalette}" />
             <MenuItem Header="Switch theme" Command="{Binding ChangeTheme}" />
         </Menu>
         <TabControl Grid.Row="1">
