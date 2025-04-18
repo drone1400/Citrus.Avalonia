@@ -103,7 +103,8 @@ You can then use the `GetRegisteredThemeVariants` method to get a list of all th
 
 ```cs
 CitrusTheme citrusTheme = new CitrusTheme();
-citrusTheme.RegisterThemeVariant(new CitrusThemeVariantData("CustomPalette", "avares://Citrus.Avalonia.Sandbox/Palette/CustomPalette.xaml"));
+citrusTheme.RegisterThemeVariant(new CitrusThemeVariantData(
+    "CustomPalette", "avares://Citrus.Avalonia.Sandbox/Palette/CustomPalette.xaml"));
 IList<ThemeVariant> list = citrusTheme.GetRegisteredThemeVariants();
 Application.Current.Styles.Add(citrusTheme);
 Application.Current.SetValue(Application.RequestedThemeVariantProperty, list[list.Count-1]);
