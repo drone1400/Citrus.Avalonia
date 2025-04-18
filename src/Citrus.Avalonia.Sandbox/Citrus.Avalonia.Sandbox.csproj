@@ -7,18 +7,19 @@
     <TargetFramework>net8.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <Nullable>enable</Nullable>
+    <AvaloniaVersion>11.2.7</AvaloniaVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="11.2.6" />
-    <PackageReference Include="Avalonia.Diagnostics" Version="11.2.6" />
-    <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="11.2.6" />
-    <PackageReference Include="Avalonia.ReactiveUI" Version="11.2.6" />
-    <PackageReference Include="Avalonia.LinuxFramebuffer" Version="11.2.6" />
-    <PackageReference Include="Avalonia.Desktop" Version="11.2.6" />
-    <PackageReference Include="Avalonia.Themes.Simple" Version="11.2.6" />
-    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.6" />
-    <PackageReference Include="ReactiveUI.Validation" Version="3.1.7" />
+    <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.LinuxFramebuffer" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.Themes.Simple" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="ReactiveUI.Validation" Version="4.1.1" />
   </ItemGroup>
   
   <ItemGroup>
