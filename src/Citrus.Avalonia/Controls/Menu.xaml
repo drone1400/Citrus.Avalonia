@@ -33,9 +33,9 @@
                                IsOpen="{TemplateBinding IsSubMenuOpen, Mode=TwoWay}"
                                Placement="BottomEdgeAlignedLeft"
                                OverlayInputPassThroughElement="{Binding $parent[Menu]}">
-                            <Border Background="{DynamicResource ThemeBackgroundBrush}"
+                            <Border Background="{DynamicResource ThemeCardBrush}"
                                     BorderBrush="{DynamicResource ThemeBorderMidBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                    BorderThickness="2">
                                 <ScrollViewer Theme="{StaticResource SimpleMenuScrollViewer}">
                                     <ItemsPresenter Name="PART_ItemsPresenter"
                                                     Margin="2"

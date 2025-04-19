@@ -69,14 +69,14 @@
                                IsOpen="{TemplateBinding IsSubMenuOpen,
                                             Mode=TwoWay}"
                                Placement="RightEdgeAlignedTop">
-                            <Border Background="{DynamicResource ThemeBackgroundBrush}"
+                            <Border Background="{DynamicResource ThemeCardBrush}"
                                     BorderBrush="{DynamicResource ThemeBorderMidBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                    BorderThickness="2">
                                 <ScrollViewer Theme="{StaticResource SimpleMenuScrollViewer}">
                                     <ItemsPresenter Name="PART_ItemsPresenter"
                                                     Margin="2"
                                                     Grid.IsSharedSizeScope="True"
-                                                    ItemsPanel="{TemplateBinding ItemsPanel}" />
+                                                    ItemsPanel="{TemplateBinding ItemsPanel}"/>
                                 </ScrollViewer>
                             </Border>
                         </Popup>

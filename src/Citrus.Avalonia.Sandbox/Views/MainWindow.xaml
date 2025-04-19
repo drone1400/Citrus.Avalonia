@@ -1,13 +1,11 @@
-<Window xmlns="https://github.com/avaloniaui"
+<Window x:Class="Citrus.Avalonia.Sandbox.Views.MainWindow"
+        xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:sandbox="clr-namespace:Citrus.Avalonia.Sandbox"
         xmlns:views="clr-namespace:Citrus.Avalonia.Sandbox.Views"
         xmlns:viewModels="clr-namespace:Citrus.Avalonia.Sandbox.ViewModels"
-        Background="{DynamicResource ThemeBackgroundColor}"
-        x:Class="Citrus.Avalonia.Sandbox.Views.MainWindow"
         Title="{Binding Title}"
         Width="1200" Height="800"
-        MinWidth="1000" MinHeight="800">
+        MinWidth="1200" MinHeight="800">
     <Design.DesignStyle>
         <SimpleTheme/>
     </Design.DesignStyle>
@@ -39,6 +37,7 @@
                         <MenuItem Header="Menu Item 6"/>
                         <MenuItem Header="Menu Item 7"/>
                         <MenuItem Header="Menu Item 8"/>
+                        <Separator />
                         <MenuItem Header="Menu Item 9"/>
                         <MenuItem Header="Menu Item 10"/>
                         <MenuItem Header="Menu Item 11"/>
@@ -53,6 +52,12 @@
                 <MenuItem Header="Enabled" />
                 <MenuItem Header="Disabled" IsEnabled="False" />
             </MenuItem>
+            <MenuItem Header="Switch TabControl">
+                <MenuItem Header="Top" Command="{Binding ChangeTabStripPlacementTop}"/>
+                <MenuItem Header="Bottom" Command="{Binding ChangeTabStripPlacementBottom}"/>
+                <MenuItem Header="Left" Command="{Binding ChangeTabStripPlacementLeft}"/>
+                <MenuItem Header="Right" Command="{Binding ChangeTabStripPlacementRight}"/>
+            </MenuItem>
             <MenuItem Header="Switch palette">
                 <MenuItem Header="Switch to Custom - Set Next Registered" Command="{Binding CommandSwitchNextRegisteredThemeVariant}" />
                 <MenuItem Header="Switch to Default" Command="{Binding CommandSwitchDefaultThemeVariant}" />
@@ -64,7 +69,9 @@
             </MenuItem>
             <MenuItem Header="Switch theme" Command="{Binding ChangeTheme}" />
         </Menu>
-        <TabControl Grid.Row="1">
+        
+        <TabControl Grid.Row="1"
+                    TabStripPlacement="{Binding TabStripPlacement}">
             <TabItem Header="Common Controls">
                 <views:CommonControls />
             </TabItem>
@@ -82,6 +89,9 @@
             </TabItem>
             <TabItem Header="Expanders">
                 <views:Expanders />
+            </TabItem>
+            <TabItem Header="Misc">
+                <views:TabStrips />
             </TabItem>
             <TabItem Header="Date/Time Controls">
                 <views:DateTimeControls />

@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="Citrus.Avalonia.Sandbox.Views.TabStrips"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sandbox="clr-namespace:Citrus.Avalonia.Sandbox"
+             xmlns:viewModels="clr-namespace:Citrus.Avalonia.Sandbox.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             Background="{DynamicResource ThemeBackgroundColor}">
+
+    <Design.DesignStyle>
+        <SimpleTheme />
+    </Design.DesignStyle>
+
+    <Design.DataContext>
+        <viewModels:MainWindowViewModel />
+    </Design.DataContext>
+
+    <Grid ColumnDefinitions="*,*">
+        <Border Classes="Card" Grid.Column="0">
+            <StackPanel Spacing="10">
+                <Label Classes="Heading" Content="TabStrip"/>
+                <TabStrip>
+                    <TabStripItem Content="Item 1"/>
+                    <TabStripItem Content="Item 2"/>
+                    <TabStripItem Content="Item 3"/>
+                    <TabStripItem Content="Disabled" IsEnabled="False"/>
+                </TabStrip>
+                
+                <Label Classes="Heading" Content="Disabled TabStrip"/>
+                <TabStrip IsEnabled="False">
+                    <TabStripItem Content="Item 1"/>
+                    <TabStripItem Content="Item 2"/>
+                    <TabStripItem Content="Item 3"/>
+                    <TabStripItem Content="Disabled" IsEnabled="False"/>
+                </TabStrip>
+                
+                <Label Classes="Heading" Content="Separator"/>
+                <Separator />
+            </StackPanel>
+        </Border>
+        
+        <Border Classes="Card" Grid.Column="1">
+            <StackPanel Spacing="10">
+               
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

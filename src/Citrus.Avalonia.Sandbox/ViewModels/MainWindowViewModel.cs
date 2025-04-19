@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Reactive;
 using Avalonia;
 using Avalonia.Collections;
+using Avalonia.Controls;
 using Avalonia.Styling;
 using ReactiveUI;
 using ReactiveUI.Validation.Extensions;
@@ -13,6 +14,12 @@ namespace Citrus.Avalonia.Sandbox.ViewModels
 {
     public sealed class MainWindowViewModel : ReactiveValidationObject
     {
+        public Dock TabStripPlacement {
+            get => this._tabStripPlacement; 
+            set => this.RaiseAndSetIfChanged(ref this._tabStripPlacement, value);
+        }
+        private Dock _tabStripPlacement = Dock.Top;
+
         public class MyComparer : IComparer {
             public int Compare(object? x, object? y) {
                 if (x is string x1 && y is string y1)
@@ -101,5 +108,25 @@ namespace Citrus.Avalonia.Sandbox.ViewModels
             app.LoadNextTheme();
         });
         private ReactiveCommand<Unit, Unit>? _changeTheme = null;
+        
+        public ReactiveCommand<Unit, Unit> ChangeTabStripPlacementTop => this._changeTabStripPlacementTop ??= ReactiveCommand.Create(() => {
+            this.TabStripPlacement = Dock.Top;
+        });
+        private ReactiveCommand<Unit, Unit>? _changeTabStripPlacementTop = null;
+        
+        public ReactiveCommand<Unit, Unit> ChangeTabStripPlacementBottom => this._changeTabStripPlacementBottom ??= ReactiveCommand.Create(() => {
+            this.TabStripPlacement = Dock.Bottom;
+        });
+        private ReactiveCommand<Unit, Unit>? _changeTabStripPlacementBottom = null;
+        
+        public ReactiveCommand<Unit, Unit> ChangeTabStripPlacementLeft => this._changeTabStripPlacementLeft ??= ReactiveCommand.Create(() => {
+            this.TabStripPlacement = Dock.Left;
+        });
+        private ReactiveCommand<Unit, Unit>? _changeTabStripPlacementLeft = null;
+        
+        public ReactiveCommand<Unit, Unit> ChangeTabStripPlacementRight => this._changeTabStripPlacementRight ??= ReactiveCommand.Create(() => {
+            this.TabStripPlacement = Dock.Right;
+        });
+        private ReactiveCommand<Unit, Unit>? _changeTabStripPlacementRight = null;
     }
 }

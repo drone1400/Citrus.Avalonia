@@ -32,9 +32,12 @@
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/RepeatButton.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ScrollBar.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ScrollViewer.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Separator.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Slider.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TabControl.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TabItem.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TabStrip.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TabStripItem.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TextBlock.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TextBox.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TimePicker.xaml" />

@@ -22,7 +22,6 @@ Carousel
 DropDownButton
 EmbeddableControlRoot
         Expander
-FluentControls
 FlyoutPresenter
 GridSplitter
 HeaderedContentControl
@@ -49,14 +48,14 @@ RefreshVisualizer
         ScrollBar
         ScrollViewer
 SelectableTextBlock
-Separator
+        Separator
         Slider
 SplitButton
 SplitView
         TabControl
         TabItem
-TabStrip
-TabStripItem
+        TabStrip
+        TabStripItem
         TextBox
 TextSelectionHandle
 ThemeVariantScope
