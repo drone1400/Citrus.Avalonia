@@ -35,8 +35,6 @@
     
     <ControlTheme x:Key="{x:Type Label}"
                   TargetType="Label">
-        <Setter Property="FontFamily" Value="Ubuntu" />
-        <Setter Property="FontSize" Value="14" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Padding" Value="3" />
         <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
@@ -61,7 +59,7 @@
             <Setter Property="Margin" Value="0 10 0 5" />
             <Setter Property="FontWeight" Value="SemiBold" />
             <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
-            <Setter Property="FontSize" Value="15" />
+            <Setter Property="FontSize" Value="{DynamicResource FontSizeLarge}" />
         </Style>
         <Style Selector="^.Caption">
             <Setter Property="Foreground" Value="{DynamicResource ThemeControlHighBrush}" />

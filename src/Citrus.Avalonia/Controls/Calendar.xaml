@@ -18,7 +18,7 @@
     <ControlTheme x:Key="{x:Type Calendar}"
                   TargetType="Calendar">
         <!--<Setter Property="Focusable" Value="False" />-->
-        <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}" />
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderHighBrush}" />
         <Setter Property="Background" Value="{DynamicResource ThemeBorderLowBrush}" />
         <Setter Property="HeaderBackground" Value="{DynamicResource ThemeAccentBrush2}" />

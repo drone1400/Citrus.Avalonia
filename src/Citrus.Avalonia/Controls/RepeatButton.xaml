@@ -22,7 +22,6 @@
                   TargetType="RepeatButton">
         <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderLowBrush}" />
-        <!-- <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}" /> -->
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />

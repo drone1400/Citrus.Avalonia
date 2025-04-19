@@ -25,49 +25,49 @@
                 <Expander Header="Expand me Down!"
                           ExpandDirection="Down"
                           IsExpanded="True">
-                    <TextBlock Text="Hidden content here!"
-                               Classes="Caption"
-                               Margin="10" />
+                    <Label Content="Hidden content here!"
+                           Classes="Caption"
+                           Margin="10" />
                 </Expander>
                 <Expander Header="Expanded Down and disabled"
                           ExpandDirection="Down"
                           IsExpanded="True"
                           IsEnabled="False">
-                    <TextBlock Text="Hidden content here!"
-                               Classes="Caption"
-                               Margin="10" />
+                    <Label Content="Hidden content here!"
+                           Classes="Caption"
+                           Margin="10" />
                 </Expander>
                 <Expander Header="Collapsed Down and disabled"
                           ExpandDirection="Down"
                           IsExpanded="False"
                           IsEnabled="False">
-                    <TextBlock Text="Hidden content here!"
-                               Classes="Caption"
-                               Margin="10" />
+                    <Label Content="Hidden content here!"
+                           Classes="Caption"
+                           Margin="10" />
                 </Expander>
 
                 <Expander Header="Expand me Up!"
                           ExpandDirection="Up"
                           IsExpanded="True">
-                    <TextBlock Text="Hidden content here!"
-                               Classes="Caption"
-                               Margin="10" />
+                    <Label Content="Hidden content here!"
+                           Classes="Caption"
+                           Margin="10" />
                 </Expander>
                 <Expander Header="Expanded Up and disabled"
                           ExpandDirection="Up"
                           IsExpanded="True"
                           IsEnabled="False">
-                    <TextBlock Text="Hidden content here!"
-                               Classes="Caption"
-                               Margin="10" />
+                    <Label Content="Hidden content here!"
+                           Classes="Caption"
+                           Margin="10" />
                 </Expander>
                 <Expander Header="Collapsed Up and disabled"
                           ExpandDirection="Up"
                           IsExpanded="False"
                           IsEnabled="False">
-                    <TextBlock Text="Hidden content here!"
-                               Classes="Caption"
-                               Margin="10" />
+                    <Label Content="Hidden content here!"
+                           Classes="Caption"
+                           Margin="10" />
                 </Expander>
             </StackPanel>
         </Border>
@@ -80,49 +80,49 @@
                 <Expander Header="Expand me Left!"
                           ExpandDirection="Left"
                           IsExpanded="True">
-                    <TextBlock Text="Hidden content here!"
-                               Classes="Caption"
-                               Margin="10" />
+                    <Label Content="Hidden content here!"
+                           Classes="Caption"
+                           Margin="10" />
                 </Expander>
                 <Expander Header="Expanded Left and disabled"
                           ExpandDirection="Left"
                           IsExpanded="True"
                           IsEnabled="False">
-                    <TextBlock Text="Hidden content here!"
-                               Classes="Caption"
-                               Margin="10" />
+                    <Label Content="Hidden content here!"
+                           Classes="Caption"
+                           Margin="10" />
                 </Expander>
                 <Expander Header="Collapsed Left and disabled"
                           ExpandDirection="Left"
                           IsExpanded="False"
                           IsEnabled="False">
-                    <TextBlock Text="Hidden content here!"
-                               Classes="Caption"
-                               Margin="10" />
+                    <Label Content="Hidden content here!"
+                           Classes="Caption"
+                           Margin="10" />
                 </Expander>
                 
                 <Expander Header="Expand me Right!"
                           ExpandDirection="Right"
                           IsExpanded="True">
-                    <TextBlock Text="Hidden content here!"
-                               Classes="Caption"
-                               Margin="10" />
+                    <Label Content="Hidden content here!"
+                           Classes="Caption"
+                           Margin="10" />
                 </Expander>
                 <Expander Header="Expanded Right and disabled"
                           ExpandDirection="Right"
                           IsExpanded="True"
                           IsEnabled="False">
-                    <TextBlock Text="Hidden content here!"
-                               Classes="Caption"
-                               Margin="10" />
+                    <Label Content="Hidden content here!"
+                           Classes="Caption"
+                           Margin="10" />
                 </Expander>
                 <Expander Header="Collapsed Right and disabled"
                           ExpandDirection="Right"
                           IsExpanded="False"
                           IsEnabled="False">
-                    <TextBlock Text="Hidden content here!"
-                               Classes="Caption"
-                               Margin="10" />
+                    <Label Content="Hidden content here!"
+                           Classes="Caption"
+                           Margin="10" />
                 </Expander>
             </StackPanel>
         </Border>

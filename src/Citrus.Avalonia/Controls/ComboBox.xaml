@@ -23,7 +23,6 @@
         <Setter Property="Background" Value="{DynamicResource ThemeBorderLowBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}" />
-        <!-- <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}" /> -->
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Center" />

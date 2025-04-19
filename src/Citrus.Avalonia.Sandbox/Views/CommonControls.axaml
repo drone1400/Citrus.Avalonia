@@ -19,19 +19,6 @@
     <Grid ColumnDefinitions="*,*">
         <Border Classes="Card" Grid.Column="0">
             <StackPanel Spacing="10">
-                <!-- TextBlock -->
-                <TextBlock Classes="Heading"
-                           Text="Heading class TextBlock" />
-                <TextBlock Classes="Caption"
-                           Text="Caption class TextBlock" />
-                <TextBlock Classes="Caption"
-                           Text="Accent class TextBlock" />
-                <TextBlock Text="Hi, I'm a tooltip TextBlock! Please, hover over me."
-                           ToolTip.Tip="Hello, this is magic!" />
-                <TextBlock IsEnabled="False"
-                           Text="A disabled TextBlock" />
-
-
                 <!-- Label -->
                 <Label Classes="Heading"
                        Content="Heading class Label" />

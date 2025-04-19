@@ -32,7 +32,6 @@
                   TargetType="NumericUpDown">
         <Setter Property="Background" Value="{DynamicResource ThemeBorderLowBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}" />
-        <!-- <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}" /> -->
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Padding" Value="8" />
         <Setter Property="CornerRadius" Value="5" />

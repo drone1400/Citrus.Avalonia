@@ -42,14 +42,16 @@
 
     <SolidColorBrush x:Key="ThemeControlTransparentBrush" Color="Transparent" />
     
-    <!-- Sizes -->
-
-    <Thickness x:Key="ThemeBorderThickness">1,1,1,1</Thickness>
     <x:Double x:Key="ThemeDisabledOpacity">0.5</x:Double>
-
+    
+    <!-- Font sizes -->
+    
     <x:Double x:Key="FontSizeSmall">13</x:Double>
     <x:Double x:Key="FontSizeNormal">14</x:Double>
-    <x:Double x:Key="FontSizeLarge">14</x:Double>
+    <x:Double x:Key="FontSizeLarge">15</x:Double>
+    <FontFamily x:Key="FontFamily">Ubuntu</FontFamily>
+    
+    <!-- Specific control settings -->
 
     <x:Double x:Key="ScrollBarThickness">18</x:Double>
     <x:Double x:Key="ScrollBarThumbThickness">8</x:Double>

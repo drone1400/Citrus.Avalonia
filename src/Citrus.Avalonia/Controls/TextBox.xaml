@@ -113,15 +113,12 @@
         <Setter Property="Background" Value="{DynamicResource ThemeBorderLowBrush}" />
         <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
-        <!-- <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}" /> -->
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="SelectionBrush" Value="{DynamicResource HighlightBrush}" />
         <Setter Property="SelectionForegroundBrush" Value="{DynamicResource HighlightForegroundBrush}" />
         <Setter Property="Margin" Value="0 5" />
         <Setter Property="Padding" Value="10" />
         <Setter Property="CornerRadius" Value="5" />
-        <Setter Property="FontFamily" Value="Ubuntu" />
-        <Setter Property="FontSize" Value="14" />
         <Setter Property="ContextFlyout" Value="{StaticResource SimpleTextBoxContextFlyout}" />
         <Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />
         <Setter Property="Template">

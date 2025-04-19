@@ -4,21 +4,11 @@
                   TargetType="TextBlock">
         <!-- NOTE: do not manually set foreground property in the theme so that it gets inherited from parent controls... -->
         <!-- <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" /> -->
-        <Setter Property="FontFamily" Value="Ubuntu" />
-        <Setter Property="FontSize" Value="14" />
-        <Setter Property="VerticalAlignment" Value="Center" />
         
-        <Style Selector="^.Heading">
-            <Setter Property="Margin" Value="0 10 0 5" />
-            <Setter Property="FontWeight" Value="SemiBold" />
-            <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
-            <Setter Property="FontSize" Value="15" />
-        </Style>
-        <Style Selector="^.Caption">
-            <Setter Property="Foreground" Value="{DynamicResource ThemeControlHighBrush}" />
-        </Style>
-        <Style Selector="^.Accent">
-            <Setter Property="Foreground" Value="{DynamicResource HighlightBrush}" />
-        </Style>
+        <!-- NOTE: just inherit font size and family -->
+        <!-- <Setter Property="FontFamily" Value="{DynamicResource FontFamily}" /> -->
+        <!-- <Setter Property="FontSize" Value="{DynamicResource FontSizeNormal}" /> -->
+        
+        <Setter Property="VerticalAlignment" Value="Center" />
     </ControlTheme>
 </ResourceDictionary>

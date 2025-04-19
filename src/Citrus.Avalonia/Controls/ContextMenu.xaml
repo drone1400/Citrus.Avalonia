@@ -7,8 +7,6 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Focusable" Value="True" />
         <Setter Property="Padding" Value="4,2" />
-        <Setter Property="TextBlock.FontSize" Value="{DynamicResource FontSizeNormal}" />
-        <Setter Property="TextBlock.FontWeight" Value="Normal" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border Padding="{TemplateBinding Padding}"

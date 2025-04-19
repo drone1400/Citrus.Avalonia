@@ -26,13 +26,10 @@
         <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <!-- <Setter Property="BorderThickness" Value="{DynamicResource ThemeBorderThickness}" /> -->
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Margin" Value="0 5" />
         <Setter Property="Padding" Value="5" />
         <Setter Property="CornerRadius" Value="5" />
-        <Setter Property="FontFamily" Value="Ubuntu" />
-        <Setter Property="FontSize" Value="14" />
         <Setter Property="MinHeight" Value="{DynamicResource DateTimePickerHeight}" />
         
         <Setter Property="Template">
@@ -131,8 +128,6 @@
         <Setter Property="MinWidth" Value="296" />
         <Setter Property="MaxHeight" Value="398" />
         <Setter Property="CornerRadius" Value="0"/>
-        <Setter Property="FontWeight" Value="Normal" />
-        <Setter Property="FontSize" Value="{DynamicResource FontSizeNormal}" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="{DynamicResource ThemeControlMidHighBrush}" />
         <Setter Property="BorderThickness" Value="{DynamicResource DateTimeFlyoutBorderThickness}" />
