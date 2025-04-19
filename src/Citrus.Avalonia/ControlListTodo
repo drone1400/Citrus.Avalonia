@@ -32,9 +32,9 @@ HyperlinkButton
         ListBoxItem
 ManagedFileChooser
         Menu
-MenuFlyoutPresenter
+        MenuFlyoutPresenter
         MenuItem
-MenuScrollViewer
+        MenuScrollViewer
 NotificationCard
         NumericUpDown
 OverlayPopupHost

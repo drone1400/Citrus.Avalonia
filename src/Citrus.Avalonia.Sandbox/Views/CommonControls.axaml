@@ -37,8 +37,8 @@
                             <MenuItem Header="Option 2">
                                 <MenuItem Header="Option A"/>
                                 <MenuItem Header="Option B"/>
-                                <MenuItem Header="Option C" IsChecked="True"/>
-                                <MenuItem Header="Option D" IsEnabled="False"/>
+                                <MenuItem Header="Option C" IsChecked="True" ToggleType="CheckBox"/>
+                                <MenuItem Header="Option D" IsEnabled="False" ToggleType="CheckBox"/>
                             </MenuItem>
                             <MenuItem Header="Option 3"/>
                             <MenuItem Header="Option 4"/>

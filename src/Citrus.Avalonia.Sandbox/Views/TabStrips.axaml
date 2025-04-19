@@ -37,6 +37,23 @@
                 
                 <Label Classes="Heading" Content="Separator"/>
                 <Separator />
+                
+                <Label Classes="Heading" Content="Button with flyout menu"></Label>
+                <Button Content="Click me">
+                    <Button.Flyout>
+                        <MenuFlyout>
+                            <MenuItem Header="Option 1"/>
+                            <MenuItem Header="Option 2">
+                                <MenuItem Header="Option A"/>
+                                <MenuItem Header="Option B"/>
+                                <MenuItem Header="Option C" IsChecked="True" ToggleType="CheckBox"/>
+                                <MenuItem Header="Option D" IsEnabled="False" ToggleType="CheckBox"/>
+                            </MenuItem>
+                            <MenuItem Header="Option 3"/>
+                            <MenuItem Header="Option 4"/>
+                        </MenuFlyout>
+                    </Button.Flyout>
+                </Button>
             </StackPanel>
         </Border>
         

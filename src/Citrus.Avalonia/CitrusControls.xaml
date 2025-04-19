@@ -25,7 +25,9 @@
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ListBox.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ListBoxItem.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Menu.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/MenuFlyoutPresenter.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/MenuItem.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/MenuScrollViewer.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/NumericUpDown.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ProgressBar.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/RadioButton.xaml" />

@@ -5,7 +5,8 @@
         xmlns:viewModels="clr-namespace:Citrus.Avalonia.Sandbox.ViewModels"
         Title="{Binding Title}"
         Width="1200" Height="800"
-        MinWidth="1200" MinHeight="800">
+        MinWidth="1200" MinHeight="800"
+        Icon="/Assets/avalonia.ico">
     <Design.DesignStyle>
         <SimpleTheme/>
     </Design.DesignStyle>
@@ -22,7 +23,7 @@
         <Menu Grid.Row="0">
             <MenuItem Header="Example menu">
                 <MenuItem Header="With items">
-                    <MenuItem Header="First item">
+                    <MenuItem Header="Item with children">
                         <!-- Force menu popup max height so we can see the scroll viewer -->
                         <MenuItem.Styles>
                             <Style Selector="Popup" >
@@ -47,7 +48,14 @@
                         <MenuItem Header="Menu Item 15"/>
                         <MenuItem Header="Menu Item 16"/>
                     </MenuItem>
-                    <MenuItem Header="Second item" />
+                    <MenuItem Header="Second item" >
+                        <MenuItem.Icon>
+                            <Image Source="/Assets/avalonia.ico"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Checkable item" IsChecked="True" ToggleType="CheckBox"/>
+                    <MenuItem Header="Radio item 1" IsChecked="True" ToggleType="Radio" GroupName="RadioXYZ"/>
+                    <MenuItem Header="Radio item 2" IsChecked="False" ToggleType="Radio" GroupName="RadioXYZ"/>
                 </MenuItem>
                 <MenuItem Header="Enabled" />
                 <MenuItem Header="Disabled" IsEnabled="False" />
