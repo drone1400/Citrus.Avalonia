@@ -29,6 +29,14 @@ namespace Citrus.Avalonia.Sandbox.ViewModels
                 return 0;
             }
         }
+
+        public List<string> AutoCompleteList { get; } = new List<string>() {
+            "Citrus",
+            "Candy",
+            "Magma",
+            "Rust",
+            "Sea"
+        };
         
         public MainWindowViewModel()
         {

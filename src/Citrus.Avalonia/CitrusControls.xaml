@@ -4,6 +4,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/AdornerLayer.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/AutoCompleteBox.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Border.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Button.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ButtonSpinner.xaml" />

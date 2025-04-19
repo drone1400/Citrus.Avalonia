@@ -17,7 +17,7 @@
 
     <Grid ColumnDefinitions="*,*">
         <Border Classes="Card" Grid.Column="0">
-            <StackPanel Spacing="10">
+            <StackPanel Spacing="3">
                 <!-- TextBox -->
                 <TextBox Text="Just a normal TextBox" />
                 <TextBox Text="A tall textbox with text centered vertically" 
@@ -46,7 +46,7 @@
         </Border>
         
         <Border Classes="Card" Grid.Column="1">
-            <StackPanel Spacing="10">
+            <StackPanel Spacing="3">
                 <!-- More TextBox -->
                 <TextBox Watermark="TextBox with validation message below textbox"
                          Text="{Binding Path=Message}" />
@@ -80,6 +80,10 @@
                          IsEnabled="False"
                          Text="MyPassword"
                          PasswordChar="*" />
+                
+                <Label Content="An autocomplete textbox"/>
+                <AutoCompleteBox Watermark="Try typing Citrus"
+                                 ItemsSource="{Binding AutoCompleteList}" />
             </StackPanel>
         </Border>
     </Grid>
