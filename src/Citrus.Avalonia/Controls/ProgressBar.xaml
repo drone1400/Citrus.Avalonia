@@ -5,33 +5,31 @@
 
     <!-- TODO... maybe make the progress text partially change color when the progress indicator is behind it? -->
     <!-- that might be tricky to do... will have to look into it later... -->
-    
+
     <ControlTheme x:Key="{x:Type ProgressBar}"
                   TargetType="ProgressBar">
         <Setter Property="Background" Value="{DynamicResource ThemeBorderLowBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource ThemeAccentBrush}" />
-        <Setter Property="Margin" Value="0,5"/>
+        <Setter Property="Margin" Value="0,5" />
         <Setter Property="Template">
             <ControlTemplate TargetType="ProgressBar">
                 <Grid>
+                    <!-- background -->
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="{TemplateBinding CornerRadius}">
-                        <Panel>
-                            <Border Name="PART_Indicator"
-                                    Background="{TemplateBinding Foreground}"
-                                    IsVisible="{Binding !IsIndeterminate, RelativeSource={RelativeSource TemplatedParent}}" />
-                            <Border Name="PART_IndeterminateIndicator"
-                                    Background="{TemplateBinding Foreground}"
-                                    IsVisible="{Binding IsIndeterminate, RelativeSource={RelativeSource TemplatedParent}}" />
-                        </Panel>
                     </Border>
-                    <LayoutTransformControl Name="PART_LayoutTransformControl"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            IsVisible="{Binding ShowProgressText, RelativeSource={RelativeSource TemplatedParent}}">
-                        <TextBlock Foreground="{DynamicResource ThemeForegroundBrush}">
+
+                    <!-- progress text -->
+                    <LayoutTransformControl
+                        Name="PART_LayoutTransformControl"
+                        IsVisible="{Binding ShowProgressText, RelativeSource={RelativeSource TemplatedParent}}">
+                        <TextBlock Name="PART_TextBlock"
+                                   Foreground="{DynamicResource ThemeForegroundBrush}"
+                                   TextAlignment="Center"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Stretch">
                             <TextBlock.Text>
                                 <MultiBinding Converter="{StaticResource StringFormatConverter}">
                                     <TemplateBinding Property="ProgressTextFormat" />
@@ -44,6 +42,45 @@
                             </TextBlock.Text>
                         </TextBlock>
                     </LayoutTransformControl>
+
+
+                    <!-- progress -->
+                    <Panel>
+                        <Border Name="PART_Indicator"
+                                Background="{TemplateBinding Foreground}"
+                                IsVisible="{Binding !IsIndeterminate, RelativeSource={RelativeSource TemplatedParent}}" />
+                        <Border Name="PART_IndeterminateIndicator"
+                                Background="{TemplateBinding Foreground}"
+                                IsVisible="{Binding IsIndeterminate, RelativeSource={RelativeSource TemplatedParent}}" />
+                    </Panel>
+
+
+                    <!-- cropped overlay text -->
+                    <Canvas
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        Width="{Binding #PART_Indicator.Bounds.Width}"
+                        Height="{Binding #PART_Indicator.Bounds.Height}"
+                        ClipToBounds="True"
+                        IsVisible="{Binding ShowProgressText, RelativeSource={RelativeSource TemplatedParent}}">
+                        <!-- the canvas is the same size as the progress indicator and clips to bounds -->
+
+                        <LayoutTransformControl
+                            Name="PART_LayoutTransformControl2"
+                            Canvas.Left="0"
+                            Canvas.Bottom="0"
+                            Width="{Binding #PART_LayoutTransformControl.Bounds.Width}"
+                            Height="{Binding #PART_LayoutTransformControl.Bounds.Height}">
+                            <!-- the layout transform is the same size as the other layout transform so the text aligns perfectly -->
+                            <!-- keep the layout control aligned to the left and bottom edges of the canvas -->
+
+                            <TextBlock Foreground="{DynamicResource HighlightForegroundBrush}"
+                                       TextAlignment="Center"
+                                       HorizontalAlignment="Stretch"
+                                       VerticalAlignment="Stretch"
+                                       Text="{Binding #PART_TextBlock.Text}"/>
+                        </LayoutTransformControl>
+                    </Canvas>
                 </Grid>
             </ControlTemplate>
         </Setter>
@@ -64,10 +101,12 @@
             <Setter Property="MinWidth" Value="16" />
             <Setter Property="MinHeight" Value="200" />
         </Style>
-        <Style Selector="^:vertical /template/ LayoutTransformControl#PART_LayoutTransformControl">
+
+        <!-- apply to both LayoutTransformControls -->
+        <Style Selector="^:vertical /template/ LayoutTransformControl">
             <Setter Property="LayoutTransform">
                 <Setter.Value>
-                    <RotateTransform Angle="90" />
+                    <RotateTransform Angle="-90" />
                 </Setter.Value>
             </Setter>
         </Style>
@@ -108,10 +147,10 @@
             <Setter Property="Height"
                     Value="{Binding TemplateSettings.ContainerWidth, RelativeSource={RelativeSource TemplatedParent}}" />
         </Style>
-        
+
         <Style Selector="^:disabled">
             <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
         </Style>
-        
+
     </ControlTheme>
 </ResourceDictionary>
