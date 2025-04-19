@@ -138,6 +138,7 @@
                                        Grid.Column="1" >
 
                                 <TextBlock Name="PART_FloatingWatermark"
+                                           Margin="10,0"
                                            Foreground="{DynamicResource ThemeAccentBrush}"
                                            IsVisible="False"
                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
