@@ -75,6 +75,7 @@
                               IsChecked="False"
                               Content="CheckBox Unchecked" />
                     <CheckBox Grid.Row="0" Grid.Column="1"
+                              IsChecked="{x:Null}"
                               Content="CheckBox Indeterminate" />
                     <CheckBox Grid.Row="0" Grid.Column="2"
                               IsChecked="True"
@@ -87,6 +88,7 @@
                               Content="CheckBox Unchecked" />
                     <CheckBox Grid.Row="0" Grid.Column="1"
                               IsEnabled="False"
+                              IsChecked="{x:Null}"
                               Content="CheckBox Indeterminate" />
                     <CheckBox Grid.Row="0" Grid.Column="2"
                               IsEnabled="False"
