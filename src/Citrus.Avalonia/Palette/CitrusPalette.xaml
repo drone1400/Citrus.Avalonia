@@ -1,6 +1,5 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:sys="clr-namespace:System;assembly=netstandard">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Color x:Key="ThemeAccentColor">#0063bb</Color>
     <Color x:Key="ThemeAccentColor2">#0063bb</Color>
     <Color x:Key="ThemeAccentColor3">#0063bb</Color>
@@ -37,60 +36,4 @@
     <Color x:Key="NotificationCardSuccessBackgroundColor">#1F9E45</Color>
     <Color x:Key="NotificationCardWarningBackgroundColor">#FDB328</Color>
     <Color x:Key="NotificationCardErrorBackgroundColor">#BD202C</Color>
-    
-    <!-- Brushes -->
-    
-    <SolidColorBrush x:Key="ThemeCardBrush" Color="{StaticResource ThemeCardColor}" />
-    <SolidColorBrush x:Key="ThemeBackgroundBrush" Color="{StaticResource ThemeBackgroundColor}" />
-    <SolidColorBrush x:Key="ThemeBorderLowBrush" Color="{StaticResource ThemeBorderLowColor}" />
-    <SolidColorBrush x:Key="ThemeBorderMidBrush" Color="{StaticResource ThemeBorderMidColor}" />
-    <SolidColorBrush x:Key="ThemeBorderHighBrush" Color="{StaticResource ThemeBorderHighColor}" />
-    <SolidColorBrush x:Key="ThemeControlLowBrush" Color="{StaticResource ThemeControlLowColor}" />
-    <SolidColorBrush x:Key="ThemeControlMidBrush" Color="{StaticResource ThemeControlMidColor}" />
-    <SolidColorBrush x:Key="ThemeControlMidHighBrush" Color="{StaticResource ThemeControlMidHighColor}" />
-    <SolidColorBrush x:Key="ThemeControlHighBrush" Color="{StaticResource ThemeControlHighColor}" />
-    <SolidColorBrush x:Key="ThemeControlVeryHighBrush" Color="{StaticResource ThemeControlVeryHighColor}" />
-    <SolidColorBrush x:Key="ThemeControlHighlightLowBrush" Color="{StaticResource ThemeControlHighlightLowColor}" />
-    <SolidColorBrush x:Key="ThemeControlHighlightMidBrush" Color="{StaticResource ThemeControlHighlightMidColor}" />
-    <SolidColorBrush x:Key="ThemeControlHighlightHighBrush" Color="{StaticResource ThemeControlHighlightHighColor}" />
-    <SolidColorBrush x:Key="ThemeForegroundBrush" Color="{StaticResource ThemeForegroundColor}" />
-    <SolidColorBrush x:Key="ThemeForegroundLowBrush" Color="{StaticResource ThemeForegroundLowColor}" />
-
-    <SolidColorBrush x:Key="HighlightBrush" Color="{StaticResource HighlightColor}" />
-    <SolidColorBrush x:Key="HighlightBadgeBrush" Color="{StaticResource HighlightBadgeColor}" />
-    <SolidColorBrush x:Key="HighlightHoverBrush" Color="{StaticResource HighlightHoverColor}" />
-    <SolidColorBrush x:Key="HighlightForegroundBrush" Color="{StaticResource HighlightForegroundColor}" />
-    <SolidColorBrush x:Key="ThemeAccentBrush" Color="{StaticResource ThemeAccentColor}" />
-    <SolidColorBrush x:Key="ThemeAccentBrush2" Color="{StaticResource ThemeAccentColor2}" />
-    <SolidColorBrush x:Key="ThemeAccentBrush3" Color="{StaticResource ThemeAccentColor3}" />
-    <SolidColorBrush x:Key="ThemeAccentBrush4" Color="{StaticResource ThemeAccentColor4}" />
-    <SolidColorBrush x:Key="ThemeAccentBadgeBrush" Color="{StaticResource ThemeAccentBadgeColor}" />
-    <SolidColorBrush x:Key="ErrorBrush" Color="{StaticResource ErrorColor}" />
-    <SolidColorBrush x:Key="ErrorLowBrush" Color="{StaticResource ErrorLowColor}" />
-
-    <SolidColorBrush x:Key="NotificationCardBackgroundBrush" Color="{StaticResource NotificationCardBackgroundColor}" Opacity="0.75" />
-    <SolidColorBrush x:Key="NotificationCardInformationBackgroundBrush" Color="{StaticResource NotificationCardInformationBackgroundColor}" Opacity="0.75" />
-    <SolidColorBrush x:Key="NotificationCardSuccessBackgroundBrush" Color="{StaticResource NotificationCardSuccessBackgroundColor}" Opacity="0.75" />
-    <SolidColorBrush x:Key="NotificationCardWarningBackgroundBrush" Color="{StaticResource NotificationCardWarningBackgroundColor}" Opacity="0.75" />
-    <SolidColorBrush x:Key="NotificationCardErrorBackgroundBrush" Color="{StaticResource NotificationCardErrorBackgroundColor}" Opacity="0.75" />
-
-    <SolidColorBrush x:Key="DatePickerFlyoutPresenterHighlightFill" Color="{StaticResource ThemeAccentColor}" Opacity="0.4" />
-    <SolidColorBrush x:Key="TimePickerFlyoutPresenterHighlightFill" Color="{StaticResource ThemeAccentColor}" Opacity="0.4" />
-
-    <SolidColorBrush x:Key="ThemeControlTransparentBrush" Color="Transparent" />
-    
-    <!-- Sizes -->
-
-    <Thickness x:Key="ThemeBorderThickness">1,1,1,1</Thickness>
-    <sys:Double x:Key="ThemeDisabledOpacity">0.5</sys:Double>
-
-    <sys:Double x:Key="FontSizeSmall">13</sys:Double>
-    <sys:Double x:Key="FontSizeNormal">14</sys:Double>
-    <sys:Double x:Key="FontSizeLarge">14</sys:Double>
-
-    <sys:Double x:Key="ScrollBarThickness">18</sys:Double>
-    <sys:Double x:Key="ScrollBarThumbThickness">8</sys:Double>
-
-    <sys:Double x:Key="IconElementThemeHeight">20</sys:Double>
-    <sys:Double x:Key="IconElementThemeWidth">20</sys:Double>
 </ResourceDictionary>

@@ -10,6 +10,7 @@ namespace Citrus.Avalonia;
 
 public class CitrusTheme : Styles {
     private readonly Uri _uriControls = new Uri("avares://Citrus.Avalonia/CitrusControls.xaml");
+    private readonly Uri _uriResources = new Uri("avares://Citrus.Avalonia/CitrusResources.xaml");
     
     // default palettes
     private readonly Uri _uriCandyPalette = new Uri("avares://Citrus.Avalonia/Palette/CandyPalette.xaml");
@@ -78,7 +79,9 @@ public class CitrusTheme : Styles {
     
     public CitrusTheme(IServiceProvider? sp = null) {
         
+        this.Resources.MergedDictionaries.Add(new ResourceInclude(this._uriResources) { Source = this._uriResources});
         this.Add(new StyleInclude(this._uriControls) { Source = this._uriControls});
+        
         
         AvaloniaXamlLoader.Load(sp, this);
 
