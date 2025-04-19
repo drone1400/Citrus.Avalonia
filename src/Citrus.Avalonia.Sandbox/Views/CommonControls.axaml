@@ -191,6 +191,52 @@
                                   Classes="Primary"
                                   Content="Disabled Repeat Primary Button" />
                 </Grid>
+                
+                <Separator />
+                
+                <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*,10,*">
+                    <Label
+                        Grid.Row="0" Grid.Column="0"
+                        Classes="Heading" 
+                        Content="Button with flyout menu"></Label>
+                    <Button 
+                        Grid.Row="1" Grid.Column="0"
+                        Content="Click me">
+                        <Button.Flyout>
+                            <MenuFlyout>
+                                <MenuItem Header="Option 1"/>
+                                <MenuItem Header="Option 2">
+                                    <MenuItem Header="Option A"/>
+                                    <MenuItem Header="Option B"/>
+                                    <MenuItem Header="Option C" IsChecked="True" ToggleType="CheckBox"/>
+                                    <MenuItem Header="Option D" IsEnabled="False" ToggleType="CheckBox"/>
+                                </MenuItem>
+                                <MenuItem Header="Option 3"/>
+                                <MenuItem Header="Option 4"/>
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                
+                    <Label
+                        Grid.Row="0" Grid.Column="2"
+                        Classes="Heading" 
+                        Content="Button with flyout"></Label>
+                    <Button 
+                        Grid.Row="1" Grid.Column="2"
+                        Content="Click me">
+                        <Button.Flyout>
+                            <Flyout>
+                                <StackPanel Spacing="10">
+                                    <Label Classes="Heading" Content="This is the flyout..."/>
+                                    <Label Content="Did you expect something more?"/>
+                                    <CheckBox Content="Here, a checkbox!"/>
+                                </StackPanel>
+                            </Flyout>
+                        </Button.Flyout>
+                    </Button>
+                </Grid>
+                
+                
             </StackPanel>
         </Border>
     </Grid>
