@@ -2,7 +2,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:sandbox="clr-namespace:Citrus.Avalonia.Sandbox"
              xmlns:viewModels="clr-namespace:Citrus.Avalonia.Sandbox.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="800"
              x:Class="Citrus.Avalonia.Sandbox.Views.TextBoxControls"
@@ -17,74 +16,101 @@
 
     <Grid ColumnDefinitions="*,*">
         <Border Classes="Card" Grid.Column="0">
-            <StackPanel Spacing="3">
-                <!-- TextBox -->
-                <TextBox Text="Just a normal TextBox" />
-                <TextBox Text="A tall textbox with text centered vertically" 
-                         Height="56" 
-                         VerticalContentAlignment="Center"/>
-                <TextBox IsEnabled="False"
-                         Text="A disabled TextBox" />
-                <TextBox Classes="Badge"
-                         Text="A TextBox with the Badge class" />
-                <TextBox Classes="PrimaryBadge"
-                         Text="A TextBox with the PrimaryBadge class" />
-                <TextBox Classes="ClearButton"
-                         Text="A TextBox with the ClearButton class" />
-                
-                <TextBox Height="60"
-                         AcceptsReturn="True"
-                         Text="This is the large text area with some selected text.&#10;This is another line!"
-                         SelectionStart="0"
-                         SelectionEnd="15" />
-                
-                <TextBox Height="180"
-                         AcceptsReturn="True"
-                         Text="This is the large text area with a very very very very very very very very very very very very very very very very very very very very long line!&#10;There are more lines!&#10;This is another line.&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!"/>
-                
-            </StackPanel>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+                <StackPanel Spacing="5" Margin="10,0">
+                    <!-- TextBox -->
+                    <TextBox Text="Just a normal TextBox" />
+                    <TextBox Text="A tall textbox with text centered vertically"
+                             Height="56"
+                             VerticalContentAlignment="Center" />
+                    <TextBox IsEnabled="False"
+                             Text="A disabled TextBox" />
+                    
+                    <TextBox Watermark="TextBox with validation message below textbox"
+                             Text="{Binding Path=Message}" />
+                    <TextBox Watermark="TextBox with validation message tooltip"
+                             Text="{Binding Path=Message}">
+                        <TextBox.Styles>
+                            <Style Selector="DataValidationErrors">
+                                <Setter Property="Theme" Value="{DynamicResource TooltipDataValidationErrors}" />
+                            </Style>
+                        </TextBox.Styles>
+                    </TextBox>
+                    
+                    <TextBox Classes="Badge"
+                             Text="A TextBox with the Badge class" />
+                    <TextBox Classes="PrimaryBadge"
+                             Text="A TextBox with the PrimaryBadge class" />
+
+                    <TextBox Height="60"
+                             AcceptsReturn="True"
+                             Text="This is the large text area with some selected text.&#10;This is another line!"
+                             SelectionStart="0"
+                             SelectionEnd="15" />
+
+                    <TextBox Height="180"
+                             AcceptsReturn="True"
+                             Text="This is the large text area with a very very very very very very very very very very very very very very very very very very very very long line!&#10;There are more lines!&#10;This is another line.&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!&#10;This is yet another line!" />
+
+                </StackPanel>
+            </ScrollViewer>
         </Border>
-        
+
         <Border Classes="Card" Grid.Column="1">
-            <StackPanel Spacing="3">
-                <!-- More TextBox -->
-                <TextBox Watermark="TextBox with validation message below textbox"
-                         Text="{Binding Path=Message}" />
-                <TextBox Watermark="TextBox with validation message tooltip"
-                         Text="{Binding Path=Message}">
-                    <TextBox.Styles>
-                        <Style Selector="DataValidationErrors">
-                            <Setter Property="Theme" Value="{DynamicResource TooltipDataValidationErrors}" />
-                        </Style>
-                    </TextBox.Styles>
-                </TextBox>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+                <StackPanel Spacing="5" Margin="10,0">
+                    <Label Classes="Heading" Content="AutoComplete TextBoxes" />
+                    
+                    <AutoCompleteBox Watermark="Try typing Citrus"
+                                     ItemsSource="{Binding AutoCompleteList}" />
 
-                <TextBox UseFloatingWatermark="True"
-                         Watermark="TextBox with floating watermark."
-                         Text="If you enter some text, it will float to the top." />
-                <TextBox UseFloatingWatermark="True"
-                         IsEnabled="False"
-                         Watermark="TextBox with floating watermark, but disabled."
-                         Text="If you enter some text, it will float to the top." />
+                    <AutoCompleteBox Watermark="Try typing Citrus"
+                                     Text="{Binding AutoCompleteText1}"
+                                     ItemsSource="{Binding AutoCompleteList}">
+                    </AutoCompleteBox>
+                    
+                    <AutoCompleteBox Watermark="Try typing Citrus"
+                                     Text="{Binding AutoCompleteText1}"
+                                     ItemsSource="{Binding AutoCompleteList}">
+                        <AutoCompleteBox.Styles>
+                            <Style Selector="DataValidationErrors">
+                                <Setter Property="Theme" Value="{DynamicResource TooltipDataValidationErrors}" />
+                            </Style>
+                        </AutoCompleteBox.Styles>
+                    </AutoCompleteBox>
 
-                <Label Content="This is a password TextBox:" />
-                <TextBox Text="MyPassword"
-                         PasswordChar="*" />
-                <Label Content="This is a password TextBox with a RevealPasswordButton class" />
-                <TextBox Classes="RevealPasswordButton"
-                         Text="MyPassword"
-                         PasswordChar="*" />
-                
-                <Label Content="This is a disabled password TextBox with a RevealPasswordButton class" />
-                <TextBox Classes="RevealPasswordButton"
-                         IsEnabled="False"
-                         Text="MyPassword"
-                         PasswordChar="*" />
-                
-                <Label Content="An autocomplete textbox"/>
-                <AutoCompleteBox Watermark="Try typing Citrus"
-                                 ItemsSource="{Binding AutoCompleteList}" />
-            </StackPanel>
+                    <Label Classes="Heading" Content="Watermark TextBoxes" />
+                    
+                    <TextBox UseFloatingWatermark="True"
+                             Watermark="TextBox with floating watermark."
+                             Text="If you enter some text, it will float to the top." />
+                    <TextBox UseFloatingWatermark="True"
+                             IsEnabled="False"
+                             Watermark="TextBox with floating watermark, but disabled."
+                             Text="If you enter some text, it will float to the top." />
+
+                    <Label Classes="Heading" Content="Other TextBoxes" />
+                    
+                    <TextBox Classes="ClearButton"
+                             Text="A TextBox with the ClearButton class" />
+                    
+                    <Label Classes="Heading" Content="Password TextBoxes" />
+                    
+                    <Label Content="This is a password TextBox:" />
+                    <TextBox Text="MyPassword"
+                             PasswordChar="*" />
+                    <Label Content="This is a password TextBox with a RevealPasswordButton class" />
+                    <TextBox Classes="RevealPasswordButton"
+                             Text="MyPassword"
+                             PasswordChar="*" />
+
+                    <Label Content="This is a disabled password TextBox with a RevealPasswordButton class" />
+                    <TextBox Classes="RevealPasswordButton"
+                             IsEnabled="False"
+                             Text="MyPassword"
+                             PasswordChar="*" />
+                </StackPanel>
+            </ScrollViewer>
         </Border>
     </Grid>
 

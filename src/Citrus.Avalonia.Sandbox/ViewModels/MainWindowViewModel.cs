@@ -20,6 +20,12 @@ namespace Citrus.Avalonia.Sandbox.ViewModels
         }
         private Dock _tabStripPlacement = Dock.Top;
 
+        public string AutoCompleteText1 {
+            get => this._autoCompleteText1;
+            set => this.RaiseAndSetIfChanged(ref this._autoCompleteText1, value);
+        }
+        private string _autoCompleteText1 = "";
+
         public class MyComparer : IComparer {
             public int Compare(object? x, object? y) {
                 if (x is string x1 && y is string y1)
@@ -45,6 +51,11 @@ namespace Citrus.Avalonia.Sandbox.ViewModels
             this.ValidationRule(x => x.Message,
                 message => !string.IsNullOrWhiteSpace(message),
                 "This text is not happy to be empty!");
+            
+            this.ValidationRule(x => x.AutoCompleteText1,
+                message => 
+                    this.AutoCompleteList.Contains(message),
+                "Try entering a Citrus theme name [Citrus, Candy, Magma, Rust, Sea]");
 
             this.SomeCollectionViewData = new DataGridCollectionView(this.SomeData);
             this.SomeCollectionViewData.GroupDescriptions.Add(new DataGridPathGroupDescription("Category"));
