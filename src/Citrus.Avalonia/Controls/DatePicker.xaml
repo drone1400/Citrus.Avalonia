@@ -22,11 +22,11 @@
     <ControlTheme x:Key="{x:Type DatePicker}"
                   TargetType="DatePicker">
         <Setter Property="Background" Value="{DynamicResource ThemeBorderLowBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Margin" Value="0 5" />
         <Setter Property="Padding" Value="5" />
         <Setter Property="CornerRadius" Value="5" />
@@ -113,6 +113,9 @@
         </Style>
         <Style Selector="^:disabled">
             <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
+        </Style>
+        <Style Selector="^:error">
+            <Setter Property="BorderBrush" Value="{DynamicResource ErrorBrush}" />
         </Style>
 
         <!--  Changes foreground for watermark text when SelectedDate is null  -->

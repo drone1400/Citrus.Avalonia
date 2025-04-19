@@ -31,8 +31,8 @@
     <ControlTheme x:Key="{x:Type NumericUpDown}"
                   TargetType="NumericUpDown">
         <Setter Property="Background" Value="{DynamicResource ThemeBorderLowBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}" />
-        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="8" />
         <Setter Property="CornerRadius" Value="5" />
         <Setter Property="Template">
@@ -78,6 +78,9 @@
         </Style>
         <Style Selector="^:pressed /template/ TextBox">
             <Setter Property="Background" Value="Transparent" />
+        </Style>
+        <Style Selector="^:error">
+            <Setter Property="BorderBrush" Value="{DynamicResource ErrorBrush}" />
         </Style>
 
         <Style Selector="^.LeftSideSpinner">

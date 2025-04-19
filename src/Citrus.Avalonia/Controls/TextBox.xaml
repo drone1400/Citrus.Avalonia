@@ -111,9 +111,9 @@
                   TargetType="TextBox">
         <Setter Property="CaretBrush" Value="{DynamicResource ThemeForegroundBrush}" />
         <Setter Property="Background" Value="{DynamicResource ThemeBorderLowBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
-        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="SelectionBrush" Value="{DynamicResource HighlightBrush}" />
         <Setter Property="SelectionForegroundBrush" Value="{DynamicResource HighlightForegroundBrush}" />
         <Setter Property="Margin" Value="0 5" />
@@ -214,7 +214,7 @@
             <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderHighBrush}" />
             <Setter Property="Background" Value="{DynamicResource ThemeBorderMidBrush}" />
         </Style>
-        <Style Selector="^:error /template/ Border#PART_BorderElement">
+        <Style Selector="^:error">
             <Setter Property="BorderBrush" Value="{DynamicResource ErrorBrush}" />
         </Style>
         <Style Selector="^ /template/ DockPanel">
