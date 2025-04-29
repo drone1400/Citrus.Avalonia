@@ -26,6 +26,12 @@ namespace Citrus.Avalonia.Sandbox.ViewModels
         }
         private string _autoCompleteText1 = "";
 
+        public IList<ThemeVariant> ThemeVariants {
+            get => this._themeVariants;
+            set => this.RaiseAndSetIfChanged(ref this._themeVariants, value);
+        }
+        private IList<ThemeVariant> _themeVariants = new List<ThemeVariant>();
+
         public class MyComparer : IComparer {
             public int Compare(object? x, object? y) {
                 if (x is string x1 && y is string y1)
@@ -60,6 +66,8 @@ namespace Citrus.Avalonia.Sandbox.ViewModels
             this.SomeCollectionViewData = new DataGridCollectionView(this.SomeData);
             this.SomeCollectionViewData.GroupDescriptions.Add(new DataGridPathGroupDescription("Category"));
             this.SomeCollectionViewData.SortDescriptions.Add(new DataGridComparerSortDescription(new MyComparer(), ListSortDirection.Ascending));
+
+            this._themeVariants = (Application.Current as App)!.GetThemeVariants();
         }
 
         public IEnumerable<SampleDataViewModel> SomeData { get; } = new List<SampleDataViewModel>() {

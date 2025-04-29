@@ -116,6 +116,10 @@ namespace Citrus.Avalonia.Sandbox
             this._mainWindowViewModel.Title = $"Sandbox - Citrus Theme - {actualVariant.Key}";
         }
 
+        public IList<ThemeVariant> GetThemeVariants() {
+            return this._themePalettes ?? new List<ThemeVariant>();
+        }
+
         public void SetDesiredDarkThemeSea() {
             if (this._citrusTheme == null) return;
             Uri uriSeaPalette = new Uri("avares://Citrus.Avalonia/Palette/SeaPalette.xaml");

@@ -107,6 +107,9 @@
             <TabItem Header="Data Grid">
                 <views:DataGridControls />
             </TabItem>
+            <TabItem Header="Theme Variants">
+                <views:ThemeVariants/>
+            </TabItem>
             <TabItem Header="Disabled page" IsEnabled="False">
             </TabItem>
         </TabControl>

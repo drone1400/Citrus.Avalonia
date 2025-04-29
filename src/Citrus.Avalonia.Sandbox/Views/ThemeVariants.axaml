@@ -1,0 +1,55 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:Citrus.Avalonia.Sandbox.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Citrus.Avalonia.Sandbox.Views.ThemeVariants"
+             Background="{DynamicResource ThemeBackgroundColor}">
+
+    <Design.DesignStyle>
+        <SimpleTheme />
+    </Design.DesignStyle>
+
+    <Design.DataContext>
+        <viewModels:MainWindowViewModel />
+    </Design.DataContext>
+
+    <Grid ColumnDefinitions="*,*">
+        <Border Classes="Card" Grid.Column="0">
+            <ListBox ItemsSource="{Binding ThemeVariants}" x:Name="listBox">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <ThemeVariantScope RequestedThemeVariant="{Binding}">
+                            <StackPanel Orientation="Vertical">
+                                <Label Classes="Heading"
+                                       Content="{Binding Key}" />
+                                <Button Content="Button 1" />
+                                <Button Content="Button 2" Classes="Primary" />
+                            </StackPanel>
+                        </ThemeVariantScope>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Border>
+
+        <Border Classes="Card" Grid.Column="1">
+            <StackPanel Spacing="10">
+                <ThemeVariantScope RequestedThemeVariant="{Binding #listBox.SelectedItem}">
+                    <StackPanel Orientation="Vertical" Spacing="10">
+                        <Label Classes="Heading"
+                               Content="{Binding #listBox.SelectedItem.Key}" />
+                        
+                        <Button Content="Button 1" />
+                        <Button Content="Button 2" Classes="Primary" />
+                        <CheckBox IsChecked="False" Content="A checkbox"/>
+                        <CheckBox IsChecked="True" Content="Another checkbox"/>
+                        <TextBox Text="A text box..." 
+                                 Watermark="With a watermark"
+                                 UseFloatingWatermark="True"/>
+                    </StackPanel>
+                </ThemeVariantScope>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
