@@ -51,7 +51,6 @@
         <Setter Property="Background" Value="{DynamicResource ThemeCardBrush}" />
         <Setter Property="Padding" Value="8" />
         <Setter Property="IsTabStop" Value="True"/>
-        <Setter Property="KeyboardNavigation.TabNavigation" Value="Continue"/>
         <Setter Property="Template">
             <ControlTemplate>
                 <DockPanel>
@@ -67,8 +66,7 @@
                             CornerRadius="0">
                         
                         <ItemsPresenter Name="PART_ItemsPresenter"
-                                        ItemsPanel="{TemplateBinding ItemsPanel}" 
-                                        KeyboardNavigation.TabNavigation="Continue" />
+                                        ItemsPanel="{TemplateBinding ItemsPanel}" />
                     </Border>
                     
                     <Border Padding="{TemplateBinding Padding}"
