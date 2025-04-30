@@ -5,7 +5,7 @@
              xmlns:viewModels="clr-namespace:Citrus.Avalonia.Sandbox.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="800"
              x:Class="Citrus.Avalonia.Sandbox.Views.TextBoxControls"
-             Background="{DynamicResource ThemeBackgroundColor}">
+             Background="{DynamicResource ThemeBackgroundBrush}">
     <Design.DesignStyle>
         <SimpleTheme />
     </Design.DesignStyle>
