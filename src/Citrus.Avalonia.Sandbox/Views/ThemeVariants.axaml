@@ -3,9 +3,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:Citrus.Avalonia.Sandbox.ViewModels"
+             xmlns:converters="clr-namespace:Citrus.Avalonia.Sandbox.Converters"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Citrus.Avalonia.Sandbox.Views.ThemeVariants"
-             Background="{DynamicResource ThemeBackgroundColor}">
+             Background="{DynamicResource ThemeBackgroundBrush}">
 
     <Design.DesignStyle>
         <SimpleTheme />
@@ -15,41 +16,86 @@
         <viewModels:MainWindowViewModel />
     </Design.DataContext>
 
+    <UserControl.Resources>
+        <converters:DoubleStringConverter x:Key="DoubleStringConverter" />
+        <converters:IntStringConverter x:Key="IntStringConverter" />
+    </UserControl.Resources>
+
     <Grid ColumnDefinitions="*,*">
         <Border Classes="Card" Grid.Column="0">
             <ListBox ItemsSource="{Binding ThemeVariants}" x:Name="listBox">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <ThemeVariantScope RequestedThemeVariant="{Binding}">
-                            <StackPanel Orientation="Vertical">
-                                <Label Classes="Heading"
-                                       Content="{Binding Key}" />
-                                <Button Content="Button 1" />
-                                <Button Content="Button 2" Classes="Primary" />
-                            </StackPanel>
+                            <Border Classes="Card" Margin="0" Padding="0">
+                                <StackPanel Orientation="Vertical">
+                                    <Label Classes="Heading"
+                                           Content="{Binding Key}" />
+                                    <Button Content="Button 1" />
+                                    <Button Content="Button 2" Classes="Primary" />
+                                </StackPanel>
+                            </Border>
                         </ThemeVariantScope>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </Border>
 
-        <Border Classes="Card" Grid.Column="1">
-            <StackPanel Spacing="10">
-                <ThemeVariantScope RequestedThemeVariant="{Binding #listBox.SelectedItem}">
-                    <StackPanel Orientation="Vertical" Spacing="10">
-                        <Label Classes="Heading"
-                               Content="{Binding #listBox.SelectedItem.Key}" />
-                        
-                        <Button Content="Button 1" />
-                        <Button Content="Button 2" Classes="Primary" />
-                        <CheckBox IsChecked="False" Content="A checkbox"/>
-                        <CheckBox IsChecked="True" Content="Another checkbox"/>
-                        <TextBox Text="A text box..." 
-                                 Watermark="With a watermark"
-                                 UseFloatingWatermark="True"/>
-                    </StackPanel>
-                </ThemeVariantScope>
-            </StackPanel>
-        </Border>
+        <ThemeVariantScope
+            Grid.Column="1"
+            RequestedThemeVariant="{Binding #listBox.SelectedItem}">
+            <Border Classes="Card">
+                <StackPanel Orientation="Vertical" Spacing="10">
+                    <Label Classes="Heading"
+                           Content="{Binding #listBox.SelectedItem.Key}" />
+
+                    <Button Content="Button 1" />
+                    <Button Content="Button 2" Classes="Primary" />
+                    <CheckBox IsChecked="False" Content="A checkbox" />
+                    <CheckBox IsChecked="True" Content="Another checkbox" />
+                    <TextBox Text="Hello there"
+                             Watermark="Textbox with a watermark"
+                             UseFloatingWatermark="True" />
+
+                    <DataGrid
+                        ItemsSource="{Binding SomeData}">
+                        <DataGrid.Styles>
+                            <Style Selector="DataValidationErrors">
+                                <Setter Property="Theme" Value="{DynamicResource TooltipDataValidationErrors}" />
+                            </Style>
+                        </DataGrid.Styles>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                Header="Name"
+                                Width="*"
+                                Binding="{Binding Name, Mode=TwoWay}"
+                                x:DataType="viewModels:SampleDataViewModel" />
+                            <DataGridTextColumn
+                                Header="Category"
+                                Width="*"
+                                Binding="{Binding Category, Mode=TwoWay}"
+                                x:DataType="viewModels:SampleDataViewModel" />
+                            <DataGridCheckBoxColumn
+                                Header="Bool"
+                                Width="*"
+                                Binding="{Binding BoolValue, Mode=TwoWay}"
+                                x:DataType="viewModels:SampleDataViewModel" />
+                            <DataGridTextColumn
+                                Header="Int"
+                                Width="*"
+                                Binding="{Binding IntValue, Mode=TwoWay, 
+                            Converter={StaticResource IntStringConverter} }"
+                                x:DataType="viewModels:SampleDataViewModel" />
+                            <DataGridTextColumn
+                                Header="Double"
+                                Width="*"
+                                Binding="{Binding DoubleValue, Mode=TwoWay,
+                            Converter={StaticResource DoubleStringConverter}}"
+                                x:DataType="viewModels:SampleDataViewModel" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </Border>
+        </ThemeVariantScope>
     </Grid>
 </UserControl>
