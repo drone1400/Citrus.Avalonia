@@ -25,8 +25,8 @@
 
     <ControlTheme x:Key="{x:Type DataGridRowGroupHeader}"
                   TargetType="DataGridRowGroupHeader">
-        <Setter Property="Foreground" Value="{DynamicResource DataGridRowGroupHeaderForegroundBrush}" />
-        <Setter Property="Background" Value="{DynamicResource DataGridRowGroupHeaderBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource ThemeControlMidBrush}" />
         <Setter Property="FontSize" Value="15" />
         <Setter Property="MinHeight" Value="32" />
         <Setter Property="Template">
@@ -80,7 +80,7 @@
                                VerticalAlignment="Stretch"
                                Fill="Transparent"
                                IsHitTestVisible="False"
-                               Stroke="{DynamicResource DataGridCurrencyVisualPrimaryBrush}"
+                               Stroke="{DynamicResource ThemeControlTransparentBrush}"
                                StrokeThickness="1" />
                     <Grid x:Name="FocusVisual"
                           Grid.Row="0" Grid.Column="0"
@@ -91,14 +91,14 @@
                                    VerticalAlignment="Stretch"
                                    Fill="Transparent"
                                    IsHitTestVisible="False"
-                                   Stroke="{DynamicResource DataGridCellFocusVisualPrimaryBrush}"
+                                   Stroke="{DynamicResource ThemeControlTransparentBrush}"
                                    StrokeThickness="2" />
                         <Rectangle Margin="2"
                                    HorizontalAlignment="Stretch"
                                    VerticalAlignment="Stretch"
                                    Fill="Transparent"
                                    IsHitTestVisible="False"
-                                   Stroke="{DynamicResource DataGridCellFocusVisualSecondaryBrush}"
+                                   Stroke="{DynamicResource ThemeControlTransparentBrush}"
                                    StrokeThickness="1" />
                     </Grid>
 

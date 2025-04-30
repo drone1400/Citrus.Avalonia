@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ControlTheme x:Key="{x:Type DataGridRowHeader}" TargetType="DataGridRowHeader">
-        <Setter Property="SeparatorBrush" Value="{DynamicResource DataGridGridLinesBrush}" />
+        <Setter Property="SeparatorBrush" Value="{DynamicResource ThemeForegroundLowBrush}" />
+        <!-- <Setter Property="SeparatorBrush" Value="{DynamicResource DataGridGridLinesBrush}" /> -->
         <Setter Property="AreSeparatorsVisible" Value="False" />
         <Setter Property="Template">
             <ControlTemplate>
@@ -15,10 +16,10 @@
                         <Grid Background="{TemplateBinding Background}">
                             <Rectangle x:Name="RowInvalidVisualElement"
                                        Opacity="0"
-                                       Fill="{DynamicResource DataGridRowInvalidBrush}"
+                                       Fill="{DynamicResource ErrorBrush}"
                                        Stretch="Fill" />
                             <Rectangle x:Name="BackgroundRectangle"
-                                       Fill="{DynamicResource DataGridRowBackgroundBrush}"
+                                       Fill="{DynamicResource ThemeControlTransparentBrush}"
                                        Stretch="Fill" />
                         </Grid>
                     </Border>
@@ -28,6 +29,7 @@
                                Height="1"
                                Margin="1,0,1,0"
                                HorizontalAlignment="Stretch"
+                               Opacity="{DynamicResource DataGridLineOpacity}"
                                Fill="{TemplateBinding SeparatorBrush}"
                                IsVisible="{TemplateBinding AreSeparatorsVisible}" />
 

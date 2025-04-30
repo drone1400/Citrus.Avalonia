@@ -8,8 +8,10 @@
         <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="SelectionMode" Value="Extended" />
         <Setter Property="GridLinesVisibility" Value="None" />
-        <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource DataGridGridLinesBrush}" />
-        <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource DataGridGridLinesBrush}" />
+        <!-- <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource DataGridGridLinesBrush}" /> -->
+        <!-- <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource DataGridGridLinesBrush}" /> -->
+        <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource ThemeForegroundLowBrush}" />
+        <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource ThemeForegroundLowBrush}" />
         <Setter Property="FocusAdorner" Value="{x:Null}" />
         <Setter Property="DropLocationIndicatorTemplate">
             <Template>
@@ -29,7 +31,7 @@
                           ClipToBounds="True">
 
                         <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
-                                   Fill="{DynamicResource DataGridColumnHeaderBackgroundBrush}" />
+                                   Fill="{DynamicResource ThemeAccentBrush2}" />
 
                         <DataGridColumnHeader Grid.Row="0" Grid.Column="0" Name="PART_TopLeftCornerHeader"
                                               Theme="{StaticResource DataGridTopLeftColumnHeader}" />
@@ -41,7 +43,8 @@
                                    Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="0"
                                    VerticalAlignment="Bottom"
                                    Height="1"
-                                   Fill="{DynamicResource DataGridGridLinesBrush}" />
+                                   Opacity="{DynamicResource DataGridLineOpacity}"
+                                   Fill="{DynamicResource ThemeForegroundLowBrush}" />
 
                         <DataGridRowsPresenter Name="PART_RowsPresenter"
                                                Grid.Row="1"
@@ -55,7 +58,7 @@
                         </DataGridRowsPresenter>
 
                         <Rectangle Name="PART_BottomRightCorner"
-                                   Fill="{DynamicResource DataGridTransparentBrush}"
+                                   Fill="{DynamicResource ThemeControlTransparentBrush}"
                                    Grid.Column="2"
                                    Grid.Row="2" />
 
@@ -70,7 +73,7 @@
                               ColumnDefinitions="Auto,*">
                             <Rectangle Name="PART_FrozenColumnScrollBarSpacer"
                                        Grid.Column="0"
-                                       Fill="{DynamicResource DataGridTransparentBrush}" />
+                                       Fill="{DynamicResource ThemeControlTransparentBrush}" />
                             <ScrollBar Name="PART_HorizontalScrollbar"
                                        Grid.Column="1"
                                        Orientation="Horizontal"

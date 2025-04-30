@@ -1,40 +1,6 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <SolidColorBrush x:Key="DataGridTransparentBrush" Color="Transparent" />
-    
-    <SolidColorBrush x:Key="DataGridColumnHeaderForegroundBrush" Color="{DynamicResource HighlightForegroundColor}" />
-    <SolidColorBrush x:Key="DataGridColumnHeaderBackgroundBrush" Color="{DynamicResource ThemeAccentColor2}" />
-    <SolidColorBrush x:Key="DataGridColumnHeaderHoveredBackgroundBrush" Color="{DynamicResource ThemeAccentColor4}" />
-    <SolidColorBrush x:Key="DataGridColumnHeaderPressedBackgroundBrush" Color="{DynamicResource HighlightColor}" />
-    <SolidColorBrush x:Key="DataGridColumnHeaderDraggedBackgroundBrush" Color="{DynamicResource ThemeControlHighlightMidColor}" />
-
-    <SolidColorBrush x:Key="DataGridRowGroupHeaderForegroundBrush" Color="{DynamicResource ThemeForegroundColor}" />
-    <SolidColorBrush x:Key="DataGridRowGroupHeaderBackgroundBrush" Color="{DynamicResource ThemeControlMidColor}" />
-    <SolidColorBrush x:Key="DataGridRowGroupHeaderPressedBackgroundBrush" Color="{DynamicResource HighlightColor}" />
-    <SolidColorBrush x:Key="DataGridRowGroupHeaderHoveredBackgroundBrush" Color="{DynamicResource HighlightHoverColor}" />
-    <SolidColorBrush x:Key="DataGridRowHoveredBackgroundColor" Color="{DynamicResource HighlightHoverColor}" />
-    <SolidColorBrush x:Key="DataGridRowInvalidBrush" Color="{DynamicResource ErrorColor}" />
-    
-    <SolidColorBrush x:Key="DataGridRowForegroundBrush" Color="{DynamicResource ThemeForegroundColor}" />
-    <SolidColorBrush x:Key="DataGridRowBackgroundBrush" Color="Transparent" />
-    <SolidColorBrush x:Key="DataGridRowSelectedForegroundBrush" Color="{DynamicResource HighlightForegroundColor}" />
-    <SolidColorBrush x:Key="DataGridRowSelectedBackgroundBrush" Color="{DynamicResource ThemeAccentColor}" />
-    <SolidColorBrush x:Key="DataGridRowSelectedHoveredBackgroundBrush" Color="{DynamicResource HighlightHoverColor}" />
-    <SolidColorBrush x:Key="DataGridRowSelectedUnfocusedBackgroundBrush" Color="{DynamicResource ThemeAccentColor}" />
-    <SolidColorBrush x:Key="DataGridRowSelectedHoveredUnfocusedBackgroundBrush" Color="{DynamicResource HighlightHoverColor}" />
-
-    <SolidColorBrush x:Key="DataGridCellBackgroundBrush" Color="Transparent" />
-    <SolidColorBrush x:Key="DataGridCellFocusVisualPrimaryBrush" Color="Transparent" />
-    <SolidColorBrush x:Key="DataGridCellFocusVisualSecondaryBrush" Color="Transparent" />
-    <SolidColorBrush x:Key="DataGridCellInvalidBrush" Color="{DynamicResource ErrorColor}" />
-
-    <SolidColorBrush x:Key="DataGridGridLinesBrush" Opacity="0.4" Color="{DynamicResource ThemeForegroundLowColor}" />
-    <SolidColorBrush x:Key="DataGridDetailsPresenterBackgroundBrush" Color="{DynamicResource ThemeBackgroundColor}" />
-    
-    <SolidColorBrush x:Key="DataGridCurrencyVisualPrimaryBrush" Color="Transparent" />
-    <SolidColorBrush x:Key="DataGridFillerColumnGridLinesBrush" Color="Transparent" />
-    
-    <!-- .... -->
+    <x:Double x:Key="DataGridLineOpacity">0.4</x:Double>
     
     <x:Double x:Key="ListAccentFullOpacity">1.0</x:Double>
     <x:Double x:Key="ListAccentLowOpacity">0.6</x:Double>

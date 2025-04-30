@@ -2,11 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ControlTheme x:Key="{x:Type DataGridColumnHeader}"
                   TargetType="DataGridColumnHeader">
-        <Setter Property="Foreground" Value="{DynamicResource DataGridColumnHeaderForegroundBrush}" />
-        <Setter Property="Background" Value="{DynamicResource DataGridColumnHeaderBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush2}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="SeparatorBrush" Value="{DynamicResource DataGridGridLinesBrush}" />
+        <Setter Property="SeparatorBrush" Value="{DynamicResource ThemeForegroundLowBrush}" />
         <Setter Property="Padding" Value="12,0,0,0" />
         <Setter Property="FontSize" Value="12" />
         <Setter Property="MinHeight" Value="32" />
@@ -47,6 +47,7 @@
                                    Grid.Column="1"
                                    Width="1"
                                    VerticalAlignment="Stretch"
+                                   Opacity="{DynamicResource DataGridLineOpacity}"
                                    Fill="{TemplateBinding SeparatorBrush}"
                                    IsVisible="{TemplateBinding AreSeparatorsVisible}" />
 
@@ -57,7 +58,7 @@
                                        VerticalAlignment="Stretch"
                                        Fill="Transparent"
                                        IsHitTestVisible="False"
-                                       Stroke="{DynamicResource DataGridCellFocusVisualPrimaryBrush}"
+                                       Stroke="{DynamicResource ThemeControlTransparentBrush}"
                                        StrokeThickness="2" />
                             <Rectangle x:Name="FocusVisualSecondary"
                                        Margin="2"
@@ -65,7 +66,7 @@
                                        VerticalAlignment="Stretch"
                                        Fill="Transparent"
                                        IsHitTestVisible="False"
-                                       Stroke="{DynamicResource DataGridCellFocusVisualSecondaryBrush}"
+                                       Stroke="{DynamicResource ThemeControlTransparentBrush}"
                                        StrokeThickness="1" />
                         </Grid>
                     </Grid>
@@ -78,11 +79,11 @@
         </Style>
 
         <Style Selector="^:pointerover /template/ Grid#PART_ColumnHeaderRoot">
-            <Setter Property="Background" Value="{DynamicResource DataGridColumnHeaderHoveredBackgroundBrush}" />
+            <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush4}" />
         </Style>
 
         <Style Selector="^:pressed /template/ Grid#PART_ColumnHeaderRoot">
-            <Setter Property="Background" Value="{DynamicResource DataGridColumnHeaderPressedBackgroundBrush}" />
+            <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
         </Style>
 
         <Style Selector="^:dragIndicator">
@@ -107,12 +108,14 @@
                       RowDefinitions="*,*,Auto">
                     <Border Grid.RowSpan="2"
                             BorderThickness="0,0,1,0"
-                            BorderBrush="{DynamicResource DataGridGridLinesBrush}" />
+                            Opacity="{DynamicResource DataGridLineOpacity}"
+                            BorderBrush="{DynamicResource ThemeForegroundLowBrush}" />
                     <Rectangle Grid.Row="0" Grid.RowSpan="2"
                                VerticalAlignment="Bottom"
                                StrokeThickness="1"
                                Height="1"
-                               Fill="{DynamicResource DataGridGridLinesBrush}" />
+                               Opacity="{DynamicResource DataGridLineOpacity}"
+                               Fill="{DynamicResource ThemeForegroundLowBrush}" />
                 </Grid>
             </ControlTemplate>
         </Setter>

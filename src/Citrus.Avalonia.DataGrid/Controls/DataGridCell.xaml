@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ControlTheme x:Key="{x:Type DataGridCell}"
                   TargetType="DataGridCell">
-        <Setter Property="Background" Value="{DynamicResource DataGridCellBackgroundBrush}" />
+        <Setter Property="Background" Value="{DynamicResource ThemeControlTransparentBrush}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="FontSize" Value="15" />
@@ -22,7 +22,7 @@
                                    VerticalAlignment="Stretch"
                                    Fill="Transparent"
                                    IsHitTestVisible="False"
-                                   Stroke="{DynamicResource DataGridCurrencyVisualPrimaryBrush}"
+                                   Stroke="{DynamicResource ThemeControlTransparentBrush}"
                                    StrokeThickness="1" />
                         <Grid Grid.Column="0" x:Name="FocusVisual" IsHitTestVisible="False"
                               IsVisible="False">
@@ -30,14 +30,14 @@
                                        VerticalAlignment="Stretch"
                                        Fill="Transparent"
                                        IsHitTestVisible="False"
-                                       Stroke="{DynamicResource DataGridCellFocusVisualPrimaryBrush}"
+                                       Stroke="{DynamicResource ThemeControlTransparentBrush}"
                                        StrokeThickness="2" />
                             <Rectangle Margin="2"
                                        HorizontalAlignment="Stretch"
                                        VerticalAlignment="Stretch"
                                        Fill="Transparent"
                                        IsHitTestVisible="False"
-                                       Stroke="{DynamicResource DataGridCellFocusVisualSecondaryBrush}"
+                                       Stroke="{DynamicResource ThemeControlTransparentBrush}"
                                        StrokeThickness="1" />
                         </Grid>
 
@@ -53,14 +53,14 @@
                                    HorizontalAlignment="Stretch"
                                    VerticalAlignment="Stretch"
                                    IsHitTestVisible="False"
-                                   Stroke="{DynamicResource DataGridCellInvalidBrush}"
+                                   Stroke="{DynamicResource ErrorBrush}"
                                    StrokeThickness="1" />
 
                         <Rectangle Name="PART_RightGridLine"
                                    Grid.Column="1"
                                    Width="1"
                                    VerticalAlignment="Stretch"
-                                   Fill="{DynamicResource DataGridFillerColumnGridLinesBrush}" />
+                                   Fill="{DynamicResource ThemeControlTransparentBrush}" />
                     </Grid>
                 </Border>
             </ControlTemplate>
