@@ -1,39 +1,43 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Color x:Key="ThemeAccentColor">#CF6641</Color>
-    <Color x:Key="ThemeAccentColor2">#CF6641</Color>
-    <Color x:Key="ThemeAccentColor3">#CF6641</Color>
-    <Color x:Key="ThemeAccentColor4">#BF5F31</Color>
-    <Color x:Key="ThemeAccentBadgeColor">#40CF6641</Color>
-
-    <Color x:Key="ThemeCardColor">#222222</Color>
-    <Color x:Key="ThemeBackgroundColor">#000000</Color>
-    <Color x:Key="ThemeBorderLowColor">#333333</Color>
-    <Color x:Key="ThemeBorderMidColor">#444444</Color>
-    <Color x:Key="ThemeBorderHighColor">#555555</Color>
+    <SolidColorBrush x:Key="ThemeAccentBrush" Color="#CF6641" />
+    <SolidColorBrush x:Key="ThemeAccentBrush2" Color="#CF6641" />
+    <SolidColorBrush x:Key="ThemeAccentBrush3" Color="#CF6641" />
+    <SolidColorBrush x:Key="ThemeAccentBrush4" Color="#BF5F31" />
+    <SolidColorBrush x:Key="ThemeAccentBadgeBrush" Color="#40CF6641" />
     
-    <Color x:Key="ThemeControlLowColor">#BBFFFFFF</Color>
-    <Color x:Key="ThemeControlMidColor">#44FFFFFF</Color>
-    <Color x:Key="ThemeControlMidHighColor">#66FFFFFF</Color>
-    <Color x:Key="ThemeControlHighColor">#88FFFFFF</Color>
-    <Color x:Key="ThemeControlVeryHighColor">#AAFFFFFF</Color>
+    <SolidColorBrush x:Key="HighlightBrush" Color="#fd7d00" />
+    <SolidColorBrush x:Key="HighlightHoverBrush" Color="#ed6d00" />
+    <SolidColorBrush x:Key="HighlightBadgeBrush" Color="#40fd7d00" />
+    <SolidColorBrush x:Key="HighlightForegroundBrush" Color="#FFFFFFFF" />
     
-    <Color x:Key="ThemeControlHighlightLowColor">#BBFFFFFF</Color>
-    <Color x:Key="ThemeControlHighlightMidColor">#88FFFFFF</Color>
-    <Color x:Key="ThemeControlHighlightHighColor">#44FFFFFF</Color>
-    <Color x:Key="ThemeForegroundColor">#FFFFFFFF</Color>
-    <Color x:Key="ThemeForegroundLowColor">#88FFFFFF</Color>
+    <SolidColorBrush x:Key="ErrorBrush" Color="#FFFF0000" />
+    <SolidColorBrush x:Key="ErrorLowBrush" Color="#AAFF0000" />
+    
+    <SolidColorBrush x:Key="ThemeCardBrush" Color="#222222" />
+    <SolidColorBrush x:Key="ThemeBackgroundBrush" Color="#000000" />
+    <SolidColorBrush x:Key="ThemeBorderLowBrush" Color="#333333" />
+    <SolidColorBrush x:Key="ThemeBorderMidBrush" Color="#444444" />
+    <SolidColorBrush x:Key="ThemeBorderHighBrush" Color="#555555" />
+    
+    <SolidColorBrush x:Key="ThemeControlLowBrush" Color="#BBFFFFFF" />
+    <SolidColorBrush x:Key="ThemeControlMidBrush" Color="#44FFFFFF" />
+    <SolidColorBrush x:Key="ThemeControlMidHighBrush" Color="#66FFFFFF" />
+    <SolidColorBrush x:Key="ThemeControlHighBrush" Color="#88FFFFFF" />
+    <SolidColorBrush x:Key="ThemeControlVeryHighBrush" Color="#AAFFFFFF" />
+    
+    <SolidColorBrush x:Key="ThemeControlHighlightLowBrush" Color="#BBFFFFFF" />
+    <SolidColorBrush x:Key="ThemeControlHighlightMidBrush" Color="#88FFFFFF" />
+    <SolidColorBrush x:Key="ThemeControlHighlightHighBrush" Color="#44FFFFFF" />
+    
+    <SolidColorBrush x:Key="ThemeForegroundBrush" Color="#FFFFFFFF" />
+    <SolidColorBrush x:Key="ThemeForegroundLowBrush" Color="#88FFFFFF" />
 
-    <Color x:Key="HighlightBadgeColor">#40fd7d00</Color>
-    <Color x:Key="HighlightColor">#fd7d00</Color>
-    <Color x:Key="HighlightHoverColor">#ed6d00</Color>
-    <Color x:Key="HighlightForegroundColor">#FFFFFFFF</Color>
-    <Color x:Key="ErrorColor">#FFFF0000</Color>
-    <Color x:Key="ErrorLowColor">#AAFF0000</Color>
+    <SolidColorBrush x:Key="NotificationCardBackgroundBrush" Color="#444444" Opacity="0.75" />
+    <SolidColorBrush x:Key="NotificationCardInformationBackgroundBrush" Color="#007ACC" Opacity="0.75" />
+    <SolidColorBrush x:Key="NotificationCardSuccessBackgroundBrush" Color="#1F9E45" Opacity="0.75" />
+    <SolidColorBrush x:Key="NotificationCardWarningBackgroundBrush" Color="#FDB328" Opacity="0.75" />
+    <SolidColorBrush x:Key="NotificationCardErrorBackgroundBrush" Color="#BD202C" Opacity="0.75" />
 
-    <Color x:Key="NotificationCardBackgroundColor">#444444</Color>
-    <Color x:Key="NotificationCardInformationBackgroundColor">#007ACC</Color>
-    <Color x:Key="NotificationCardSuccessBackgroundColor">#1F9E45</Color>
-    <Color x:Key="NotificationCardWarningBackgroundColor">#FDB328</Color>
-    <Color x:Key="NotificationCardErrorBackgroundColor">#BD202C</Color>
+    <SolidColorBrush x:Key="ThemeControlTransparentBrush" Color="Transparent" />
 </ResourceDictionary>
