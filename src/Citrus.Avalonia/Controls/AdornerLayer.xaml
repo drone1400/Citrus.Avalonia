@@ -5,7 +5,7 @@
         <Setter Property="DefaultFocusAdorner">
             <FocusAdornerTemplate>
                 <Rectangle Margin="0"
-                           Stroke="{DynamicResource HighlightHoverColor}"
+                           Stroke="{DynamicResource HighlightHoverBrush}"
                            StrokeThickness="3" />
             </FocusAdornerTemplate>
         </Setter>
