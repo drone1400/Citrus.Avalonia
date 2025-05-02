@@ -36,11 +36,6 @@
                             </Style>
                         </TextBox.Styles>
                     </TextBox>
-                    
-                    <TextBox Classes="Badge"
-                             Text="A TextBox with the Badge class" />
-                    <TextBox Classes="PrimaryBadge"
-                             Text="A TextBox with the PrimaryBadge class" />
 
                     <TextBox Height="60"
                              AcceptsReturn="True"

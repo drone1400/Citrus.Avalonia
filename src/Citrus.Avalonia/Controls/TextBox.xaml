@@ -228,30 +228,6 @@
             <Setter Property="Cursor" Value="IBeam" />
         </Style>
 
-        <Style Selector="^.Badge">
-            <Setter Property="IsEnabled" Value="False" />
-            <Setter Property="IsReadOnly" Value="True" />
-            <Setter Property="Background" Value="{DynamicResource HighlightBadgeBrush}" />
-            <Setter Property="Foreground" Value="{DynamicResource HighlightBrush}" />
-            <Setter Property="HorizontalAlignment" Value="Left" />
-            <Setter Property="Padding" Value="10 5" />
-        </Style>
-        <Style Selector="^.Badge:disabled /template/ Border#PART_BorderElement">
-            <Setter Property="Opacity" Value="1" />
-        </Style>
-
-        <Style Selector="^.PrimaryBadge">
-            <Setter Property="IsEnabled" Value="False" />
-            <Setter Property="IsReadOnly" Value="True" />
-            <Setter Property="Background" Value="{DynamicResource ThemeAccentBadgeBrush}" />
-            <Setter Property="Foreground" Value="{DynamicResource ThemeAccentBrush}" />
-            <Setter Property="HorizontalAlignment" Value="Left" />
-            <Setter Property="Padding" Value="10 5" />
-        </Style>
-        <Style Selector="^.PrimaryBadge:disabled /template/ Border#PART_BorderElement">
-            <Setter Property="Opacity" Value="1" />
-        </Style>
-
         <Style Selector="^.ClearButton[AcceptsReturn=False][IsReadOnly=False]:focus:not(TextBox:empty)">
             <Setter Property="InnerRightContent">
                 <Template>

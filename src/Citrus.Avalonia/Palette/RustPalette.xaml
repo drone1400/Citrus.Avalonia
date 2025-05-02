@@ -4,11 +4,9 @@
     <SolidColorBrush x:Key="ThemeAccentBrush2" Color="#CF6641" />
     <SolidColorBrush x:Key="ThemeAccentBrush3" Color="#CF6641" />
     <SolidColorBrush x:Key="ThemeAccentBrush4" Color="#BF5F31" />
-    <SolidColorBrush x:Key="ThemeAccentBadgeBrush" Color="#40CF6641" />
     
     <SolidColorBrush x:Key="HighlightBrush" Color="#fd7d00" />
     <SolidColorBrush x:Key="HighlightHoverBrush" Color="#ed6d00" />
-    <SolidColorBrush x:Key="HighlightBadgeBrush" Color="#40fd7d00" />
     <SolidColorBrush x:Key="HighlightForegroundBrush" Color="#FFFFFFFF" />
     
     <SolidColorBrush x:Key="ErrorBrush" Color="#FFFF0000" />
