@@ -5,8 +5,8 @@
         <Setter Property="Background" Value="{DynamicResource ThemeControlTransparentBrush}" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="FontSize" Value="15" />
-        <Setter Property="MinHeight" Value="32" />
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeNormal}" />
+        <Setter Property="MinHeight" Value="24" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border x:Name="CellBorder"

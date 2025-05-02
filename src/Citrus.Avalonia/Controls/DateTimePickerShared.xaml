@@ -26,7 +26,6 @@
     <x:Double x:Key="DateTimePickerThemeMaxWidth">456</x:Double>
     <Thickness x:Key="DateTimePickerFlyoutPresenterItemPadding">0,0,0,0</Thickness>
     <Thickness x:Key="DateTimePickerFlyoutPresenterMonthPadding">8,0,0,0</Thickness>
-    <Thickness x:Key="DateTimePickerHostPadding">0,3,0,6</Thickness>
     <Thickness x:Key="DateTimePickerHostMonthPadding">9,3,0,6</Thickness>
     <x:Double x:Key="DateTimePickerSpacerThemeWidth">2</x:Double>
     <Thickness x:Key="DateTimeFlyoutButtonBorderThickness">0</Thickness>
@@ -62,27 +61,17 @@
         </Setter>
 
         <Style Selector="^:pointerover">
-            <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
+            <Setter Property="Background" Value="{DynamicResource ThemeAccentHoverBrush}" />
             <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
         </Style>
 
         <Style Selector="^:selected">
-            <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush}" />
-            <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
-        </Style>
-
-        <Style Selector="^:selected:focus">
-            <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush}" />
+            <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
             <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
         </Style>
 
         <Style Selector="^:selected:pointerover">
-            <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush}" />
-            <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
-        </Style>
-
-        <Style Selector="^:selected:focus:pointerover">
-            <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
+            <Setter Property="Background" Value="{DynamicResource ThemeAccentHoverBrush}" />
             <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
         </Style>
 
@@ -128,7 +117,7 @@
         </Setter>
 
         <Style Selector="^:pointerover">
-            <Setter Property="Background" Value="{DynamicResource HighlightHoverBrush}" />
+            <Setter Property="Background" Value="{DynamicResource ThemeAccentHoverBrush}" />
             <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
         </Style>
         <Style Selector="^:pressed">
@@ -144,7 +133,7 @@
                   TargetType="RepeatButton">
         <Setter Property="Background" Value="{DynamicResource ThemeAccentColor2}" />
         <Setter Property="BorderBrush" Value="Transparent" />
-        <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
+        <Setter Property="Foreground" Value="Transparent" />
         <Setter Property="VerticalAlignment" Value="Top" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="Padding" Value="0" />
@@ -168,7 +157,8 @@
         </Setter>
         
         <Style Selector="^:pointerover">
-            <Setter Property="Background" Value="{DynamicResource HighlightHoverBrush}" />
+            <Setter Property="Background" Value="{DynamicResource ThemeAccentHoverBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
         </Style>
         <Style Selector="^:pressed">
             <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
@@ -182,7 +172,7 @@
                   TargetType="RepeatButton">
         <Setter Property="Background" Value="{DynamicResource ThemeAccentColor2}" />
         <Setter Property="BorderBrush" Value="Transparent" />
-        <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
+        <Setter Property="Foreground" Value="Transparent" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="VerticalAlignment" Value="Bottom" />
         <Setter Property="Padding" Value="0" />
@@ -206,7 +196,8 @@
         </Setter>
         
         <Style Selector="^:pointerover">
-            <Setter Property="Background" Value="{DynamicResource HighlightHoverBrush}" />
+            <Setter Property="Background" Value="{DynamicResource ThemeAccentHoverBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
         </Style>
         <Style Selector="^:pressed">
             <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />

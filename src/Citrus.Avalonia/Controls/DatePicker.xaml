@@ -58,21 +58,18 @@
                                 
                                 <!--  Column Definitions set in code, ignore here  -->
                                 <TextBlock Name="PART_DayTextBlock"
-                                           Padding="{DynamicResource DateTimePickerHostPadding}"
                                            HorizontalAlignment="Center"
                                            FontFamily="{TemplateBinding FontFamily}"
                                            FontSize="{TemplateBinding FontSize}"
                                            FontWeight="{TemplateBinding FontWeight}"
                                            Text="{DynamicResource StringDatePickerDayText}" />
                                 <TextBlock Name="PART_MonthTextBlock"
-                                           Padding="{DynamicResource DateTimePickerHostMonthPadding}"
                                            FontFamily="{TemplateBinding FontFamily}"
                                            FontSize="{TemplateBinding FontSize}"
                                            FontWeight="{TemplateBinding FontWeight}"
                                            Text="{DynamicResource StringDatePickerMonthText}"
                                            TextAlignment="Left" />
                                 <TextBlock Name="PART_YearTextBlock"
-                                           Padding="{DynamicResource DateTimePickerHostPadding}"
                                            HorizontalAlignment="Center"
                                            FontFamily="{TemplateBinding FontFamily}"
                                            FontSize="{TemplateBinding FontSize}"
@@ -105,10 +102,14 @@
         </Setter>
 
         <Style Selector="^:pointerover">
-            <Setter Property="Background" Value="{DynamicResource HighlightHoverBrush}" />
+            <Setter Property="Background" Value="{DynamicResource ThemeAccentHoverBrush}" />
             <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
         </Style>
-        <Style Selector="^:pressed">
+        <Style Selector="^/template/ Button#PART_FlyoutButton:pointerover">
+            <Setter Property="Background" Value="{DynamicResource ThemeAccentHoverBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
+        </Style>
+        <Style Selector="^/template/ Button#PART_FlyoutButton:pressed">
             <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
         </Style>
         <Style Selector="^:disabled">

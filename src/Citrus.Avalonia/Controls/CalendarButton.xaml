@@ -54,12 +54,22 @@
         <Style Selector="^:pointerover /template/ Rectangle#Background">
             <Setter Property="IsVisible" Value="True" />
         </Style>
+        <Style Selector="^:pointerover">
+            <Setter Property="Opacity" Value="1" />
+            <Setter Property="TextElement.Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
+        </Style>
+        
         <Style Selector="^:pressed /template/ Rectangle#Background">
             <Setter Property="IsVisible" Value="True" />
         </Style>
 
         <Style Selector="^:selected /template/ Rectangle#SelectedBackground">
             <Setter Property="IsVisible" Value="True" />
+        </Style>
+        
+        <Style Selector="^:selected">
+            <Setter Property="Opacity" Value="1" />
+            <Setter Property="TextElement.Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
         </Style>
 
         <Style Selector="^:inactive /template/ ContentPresenter#PART_ContentPresenter">

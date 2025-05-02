@@ -55,7 +55,7 @@
         </Style>
 
         <Style Selector="^:pointerover /template/ Rectangle#BackgroundRectangle">
-            <Setter Property="Fill" Value="{DynamicResource HighlightHoverBrush}" />
+            <Setter Property="Fill" Value="{DynamicResource ThemeAccentHoverBrush}" />
         </Style>
 
         <Style Selector="^:pointerover">
@@ -66,19 +66,19 @@
             <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
 
             <Style Selector="^ /template/ Rectangle#BackgroundRectangle">
-                <Setter Property="Fill" Value="{DynamicResource ThemeAccentBrush}" />
+                <Setter Property="Fill" Value="{DynamicResource HighlightBrush}" />
                 <Setter Property="Opacity" Value="{DynamicResource DataGridRowSelectedUnfocusedBackgroundOpacity}" />
             </Style>
             <Style Selector="^:pointerover /template/ Rectangle#BackgroundRectangle">
-                <Setter Property="Fill" Value="{DynamicResource HighlightHoverBrush}" />
+                <Setter Property="Fill" Value="{DynamicResource ThemeAccentHoverBrush}" />
                 <Setter Property="Opacity" Value="{DynamicResource DataGridRowSelectedHoveredUnfocusedBackgroundOpacity}" />
             </Style>
             <Style Selector="^:focus /template/ Rectangle#BackgroundRectangle">
-                <Setter Property="Fill" Value="{DynamicResource ThemeAccentBrush}" />
+                <Setter Property="Fill" Value="{DynamicResource HighlightBrush}" />
                 <Setter Property="Opacity" Value="{DynamicResource DataGridRowSelectedBackgroundOpacity}" />
             </Style>
             <Style Selector="^:pointerover:focus /template/ Rectangle#BackgroundRectangle">
-                <Setter Property="Fill" Value="{DynamicResource HighlightHoverBrush}" />
+                <Setter Property="Fill" Value="{DynamicResource ThemeAccentHoverBrush}" />
                 <Setter Property="Opacity" Value="{DynamicResource DataGridRowSelectedHoveredBackgroundOpacity}" />
             </Style>
         </Style>

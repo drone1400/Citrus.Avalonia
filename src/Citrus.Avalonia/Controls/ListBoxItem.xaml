@@ -24,23 +24,14 @@
         </Setter>
 
         <Style Selector="^:pointerover">
-            <Setter Property="BorderBrush" Value="{DynamicResource HighlightBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource ThemeAccentHoverBrush}" />
         </Style>
-
         <Style Selector="^:selected">
-            <Setter Property="BorderBrush" Value="{DynamicResource ThemeAccentBrush}" />
-        </Style>
-
-        <Style Selector="^:selected:focus">
-            <Setter Property="BorderBrush" Value="{DynamicResource ThemeAccentBrush}" />
-        </Style>
-
-        <Style Selector="^:selected:pointerover">
-            <Setter Property="BorderBrush" Value="{DynamicResource ThemeAccentBrush}" />
-        </Style>
-
-        <Style Selector="^:selected:focus:pointerover">
             <Setter Property="BorderBrush" Value="{DynamicResource HighlightBrush}" />
         </Style>
+        <Style Selector="^:selected:pointerover">
+            <Setter Property="BorderBrush" Value="{DynamicResource ThemeAccentHoverBrush}" />
+        </Style>
+        
     </ControlTheme>
 </ResourceDictionary>

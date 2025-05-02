@@ -64,7 +64,7 @@
             <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
         </Style>
         <Style Selector="^.Primary:pointerover">
-            <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush4}" />
+            <Setter Property="Background" Value="{DynamicResource ThemeAccentHoverBrush}" />
         </Style>
         <Style Selector="^.Primary:pressed">
             <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush}" />

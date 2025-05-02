@@ -2,8 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <SolidColorBrush x:Key="ThemeAccentBrush" Color="#0063bb" />
     <SolidColorBrush x:Key="ThemeAccentBrush2" Color="#0063bb" />
-    <SolidColorBrush x:Key="ThemeAccentBrush3" Color="#0063bb" />
-    <SolidColorBrush x:Key="ThemeAccentBrush4" Color="#003f8e" />
+    <SolidColorBrush x:Key="ThemeAccentHoverBrush" Color="#003f8e" />
     
     <SolidColorBrush x:Key="HighlightBrush" Color="#389105" />
     <SolidColorBrush x:Key="HighlightHoverBrush" Color="#46BC07" />

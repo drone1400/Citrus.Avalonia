@@ -54,7 +54,7 @@
                                         Content="{TemplateBinding SelectionBoxItem}"
                                         ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}">
                         </ContentControl>
-                        <ToggleButton Name="toggle"
+                        <ToggleButton x:Name="PART_ToggleButton"
                                       Grid.Column="1"
                                       Background="Transparent"
                                       BorderThickness="0"
@@ -62,7 +62,8 @@
                                       Focusable="False"
                                       IsChecked="{TemplateBinding IsDropDownOpen,
                                                       Mode=TwoWay}">
-                            <Path Width="8"
+                            <Path x:Name="PART_Path"
+                                  Width="8"
                                   Height="4"
                                   HorizontalAlignment="Center"
                                   VerticalAlignment="Center"
@@ -98,9 +99,15 @@
         <Style Selector="^:pointerover /template/ Border#border">
             <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}" />
         </Style>
-        <Style Selector="^:pointerover:focus /template/ Border">
-            <Setter Property="Background" Value="{DynamicResource ThemeBorderMidBrush}" />
+
+        <Style Selector="^:pointerover /template/ Path#PART_Path">
+            <Setter Property="Fill" Value="{DynamicResource HighlightForegroundBrush}" />
         </Style>
+        
+        <Style Selector="^:dropdownopen /template/ Path#PART_Path">
+            <Setter Property="Fill" Value="{DynamicResource HighlightForegroundBrush}" />
+        </Style>
+        
         <Style Selector="^:disabled /template/ Border#border">
             <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
         </Style>

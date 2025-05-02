@@ -136,10 +136,14 @@
         </Setter>
 
         <Style Selector="^:pointerover">
-            <Setter Property="Background" Value="{DynamicResource HighlightHoverBrush}" />
+            <Setter Property="Background" Value="{DynamicResource ThemeAccentHoverBrush}" />
             <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
         </Style>
-        <Style Selector="^:pressed">
+        <Style Selector="^/template/ Button#PART_FlyoutButton:pointerover">
+            <Setter Property="Background" Value="{DynamicResource ThemeAccentHoverBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
+        </Style>
+        <Style Selector="^/template/ Button#PART_FlyoutButton:pressed">
             <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
         </Style>
         <Style Selector="^:disabled">

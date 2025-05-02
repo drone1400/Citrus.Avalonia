@@ -102,7 +102,7 @@
         </Style>
 
         <Style Selector="^:selected /template/ Border#root">
-            <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush4}" />
+            <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush}" />
             <Setter Property="BorderBrush" Value="{DynamicResource ThemeAccentBrush}" />
         </Style>
 
