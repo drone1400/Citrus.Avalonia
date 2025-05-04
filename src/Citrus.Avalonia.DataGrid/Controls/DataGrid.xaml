@@ -12,7 +12,6 @@
         <!-- <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource DataGridGridLinesBrush}" /> -->
         <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource ThemeForegroundLowBrush}" />
         <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource ThemeForegroundLowBrush}" />
-        <Setter Property="FocusAdorner" Value="{x:Null}" />
         <Setter Property="DropLocationIndicatorTemplate">
             <Template>
                 <Rectangle Fill="{DynamicResource DataGridDropLocationIndicatorBackground}"
