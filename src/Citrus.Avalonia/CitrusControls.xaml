@@ -22,6 +22,7 @@
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/DateTimePickerShared.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Expander.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/FlyoutPresenter.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/GridSplitter.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ItemsControl.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Label.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ListBox.xaml" />
