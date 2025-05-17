@@ -37,13 +37,22 @@
                 
                 <Label Classes="Heading" Content="Separator"/>
                 
+                <Separator />
+                
             </StackPanel>
         </Border>
         
         <Border Classes="Card" Grid.Column="1">
-            <StackPanel Spacing="10">
-               
-            </StackPanel>
+            <Grid ColumnDefinitions="*,Auto,*">
+                <Rectangle Grid.Column="0" Fill="Red" />
+                <GridSplitter Grid.Column="1" />
+                   
+                <Grid Grid.Column="2" RowDefinitions="*,Auto,*">
+                    <Rectangle Grid.Row="0" Fill="Blue" />
+                    <GridSplitter Grid.Row="1" />
+                    <Rectangle Grid.Row="2" Fill="Green" />
+                </Grid>
+            </Grid>
         </Border>
     </Grid>
 </UserControl>
