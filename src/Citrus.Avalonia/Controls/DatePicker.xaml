@@ -6,8 +6,7 @@
 -->
 
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    x:ClassModifier="internal">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <Border Padding="20" Width="300">
             <StackPanel Spacing="20">
