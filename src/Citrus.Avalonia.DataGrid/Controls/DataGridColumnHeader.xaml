@@ -7,9 +7,9 @@
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="SeparatorBrush" Value="{DynamicResource ThemeForegroundLowBrush}" />
-        <Setter Property="Padding" Value="12,0,0,0" />
+        <Setter Property="Padding" Value="{DynamicResource DataGridHeaderMargin}" />
         <Setter Property="FontSize" Value="{DynamicResource FontSizeNormal}" />
-        <Setter Property="MinHeight" Value="28" />
+        <Setter Property="MinHeight" Value="{DynamicResource DataGridHeaderHeight}" />
         <Setter Property="Template">
             <ControlTemplate>
                 <Border x:Name="HeaderBorder"
@@ -28,14 +28,17 @@
                                     <ColumnDefinition Width="Auto" MinWidth="{DynamicResource DataGridSortIconMinWidth}" />
                                 </Grid.ColumnDefinitions>
 
-                                <ContentPresenter x:Name="PART_ContentPresenter"
-                                                  Content="{TemplateBinding Content}"
-                                                  ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                <ContentPresenter
+                                    x:Name="PART_ContentPresenter"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="{DynamicResource DataGridHeaderContentColumnSpan}"
+                                    Content="{TemplateBinding Content}"
+                                    ContentTemplate="{TemplateBinding ContentTemplate}" />
 
                                 <Path Name="SortIcon"
                                       IsVisible="False"
                                       Grid.Column="1"
-                                      Height="12"
+                                      Height="{DynamicResource DataGridSortIconSize}"
                                       HorizontalAlignment="Center"
                                       VerticalAlignment="Center"
                                       Fill="{TemplateBinding Foreground}"
