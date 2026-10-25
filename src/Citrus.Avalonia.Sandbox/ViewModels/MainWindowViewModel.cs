@@ -59,8 +59,8 @@ namespace Citrus.Avalonia.Sandbox.ViewModels
                 "This text is not happy to be empty!");
             
             this.ValidationRule(x => x.AutoCompleteText1,
-                message => 
-                    this.AutoCompleteList.Contains(message),
+                message =>
+                    message != null && this.AutoCompleteList.Contains(message),
                 "Try entering a Citrus theme name [Citrus, Candy, Magma, Rust, Sea]");
 
             this.SomeCollectionViewData = new DataGridCollectionView(this.SomeData);
