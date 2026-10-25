@@ -6,7 +6,8 @@
         <AssemblyName>Citrus.Avalonia.DataGrid</AssemblyName>
         <RootNamespace>Citrus.Avalonia.DataGrid</RootNamespace>
         <Nullable>enable</Nullable>
-        <AvaloniaVersion>11.3.8</AvaloniaVersion>
+        <AvaloniaVersion>11.3.22</AvaloniaVersion>
+        <AvaloniaDataGridVersion>11.3.13</AvaloniaDataGridVersion>
         <IsPackable>false</IsPackable>
     </PropertyGroup>
 
@@ -16,7 +17,7 @@
 
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
-        <PackageReference Include="Avalonia.Controls.DataGrid" Version="$(AvaloniaVersion)" />
+        <PackageReference Include="Avalonia.Controls.DataGrid" Version="$(AvaloniaDataGridVersion)" />
     </ItemGroup>
   
     <ItemGroup>
