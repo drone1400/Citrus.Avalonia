@@ -1,0 +1,40 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="ThemeAccentBrush" Color="#e8587a" />
+    <SolidColorBrush x:Key="ThemeAccentBrush2" Color="#c22f55" />
+    <SolidColorBrush x:Key="ThemeAccentHoverBrush" Color="#9e2444" />
+    
+    <SolidColorBrush x:Key="HighlightBrush" Color="#f0793f" />
+    <SolidColorBrush x:Key="HighlightHoverBrush" Color="#e0682f" />
+    <SolidColorBrush x:Key="HighlightForegroundBrush" Color="#FFFFFFFF" />
+    
+    <SolidColorBrush x:Key="ErrorBrush" Color="#FFFF0000" />
+    <SolidColorBrush x:Key="ErrorLowBrush" Color="#AAFF0000" />
+    
+    <SolidColorBrush x:Key="ThemeCardBrush" Color="#26121a" />
+    <SolidColorBrush x:Key="ThemeBackgroundBrush" Color="#160a0f" />
+    <SolidColorBrush x:Key="ThemeBorderLowBrush" Color="#351a25" />
+    <SolidColorBrush x:Key="ThemeBorderMidBrush" Color="#452230" />
+    <SolidColorBrush x:Key="ThemeBorderHighBrush" Color="#572b3d" />
+    
+    <SolidColorBrush x:Key="ThemeControlLowBrush" Color="#BBFFFFFF" />
+    <SolidColorBrush x:Key="ThemeControlMidBrush" Color="#44FFFFFF" />
+    <SolidColorBrush x:Key="ThemeControlMidHighBrush" Color="#66FFFFFF" />
+    <SolidColorBrush x:Key="ThemeControlHighBrush" Color="#88FFFFFF" />
+    <SolidColorBrush x:Key="ThemeControlVeryHighBrush" Color="#AAFFFFFF" />
+    
+    <SolidColorBrush x:Key="ThemeControlHighlightLowBrush" Color="#BBFFFFFF" />
+    <SolidColorBrush x:Key="ThemeControlHighlightMidBrush" Color="#88FFFFFF" />
+    <SolidColorBrush x:Key="ThemeControlHighlightHighBrush" Color="#44FFFFFF" />
+    
+    <SolidColorBrush x:Key="ThemeForegroundBrush" Color="#FFFFFFFF" />
+    <SolidColorBrush x:Key="ThemeForegroundLowBrush" Color="#88FFFFFF" />
+
+    <SolidColorBrush x:Key="NotificationCardBackgroundBrush" Color="#444444" Opacity="0.75" />
+    <SolidColorBrush x:Key="NotificationCardInformationBackgroundBrush" Color="#007ACC" Opacity="0.75" />
+    <SolidColorBrush x:Key="NotificationCardSuccessBackgroundBrush" Color="#1F9E45" Opacity="0.75" />
+    <SolidColorBrush x:Key="NotificationCardWarningBackgroundBrush" Color="#FDB328" Opacity="0.75" />
+    <SolidColorBrush x:Key="NotificationCardErrorBackgroundBrush" Color="#BD202C" Opacity="0.75" />
+
+    <SolidColorBrush x:Key="ThemeControlTransparentBrush" Color="Transparent" />
+</ResourceDictionary>

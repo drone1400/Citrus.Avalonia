@@ -48,6 +48,8 @@ Now implements ThemeVariants! The default Light theme is Citrus, the default Dar
 
 This means you can use `RequestedThemeVariant="Default"` in your application and Citrus will use the  Light or Dark variant automagically.
 
+Built-in palettes (see `CitrusDefaultPalettes`): Citrus, Candy, Magma, Lime, Grapefruit and Orange are light, Rust, Sea, DarkLime, DarkGrapefruit and DarkOrange are dark. Each one is registered as a ThemeVariant with the same name.
+
 ### Overriding implicit ThemeVariant values
 
 You can customize what Light, Dark or even Default variants are used through the `CitrusTheme` style's properties: `DesiredLightThemeVariant`, `DesiredDarkThemeVariant` or `DesiredDefaultThemeVariant`. Setting one of them to `null` restores the built-in palette (Citrus for Light and Default, Sea for Dark).

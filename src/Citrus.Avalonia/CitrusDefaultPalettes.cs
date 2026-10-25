@@ -5,5 +5,11 @@
         Magma,
         Rust,
         Sea,
+        Lime,
+        Grapefruit,
+        Orange,
+        DarkLime,
+        DarkGrapefruit,
+        DarkOrange,
     }
 }

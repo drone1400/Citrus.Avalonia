@@ -15,7 +15,13 @@ public class CitrusTheme : Styles {
     // default palettes
     private readonly Uri _uriCandyPalette = new Uri("avares://Citrus.Avalonia/Palette/CandyPalette.xaml");
     private readonly Uri _uriCitrusPalette = new Uri("avares://Citrus.Avalonia/Palette/CitrusPalette.xaml");
+    private readonly Uri _uriDarkGrapefruitPalette = new Uri("avares://Citrus.Avalonia/Palette/DarkGrapefruitPalette.xaml");
+    private readonly Uri _uriDarkLimePalette = new Uri("avares://Citrus.Avalonia/Palette/DarkLimePalette.xaml");
+    private readonly Uri _uriDarkOrangePalette = new Uri("avares://Citrus.Avalonia/Palette/DarkOrangePalette.xaml");
+    private readonly Uri _uriGrapefruitPalette = new Uri("avares://Citrus.Avalonia/Palette/GrapefruitPalette.xaml");
+    private readonly Uri _uriLimePalette = new Uri("avares://Citrus.Avalonia/Palette/LimePalette.xaml");
     private readonly Uri _uriMagmaPalette = new Uri("avares://Citrus.Avalonia/Palette/MagmaPalette.xaml");
+    private readonly Uri _uriOrangePalette = new Uri("avares://Citrus.Avalonia/Palette/OrangePalette.xaml");
     private readonly Uri _uriRustPalette = new Uri("avares://Citrus.Avalonia/Palette/RustPalette.xaml");
     private readonly Uri _uriSeaPalette = new Uri("avares://Citrus.Avalonia/Palette/SeaPalette.xaml");
     
@@ -81,6 +87,12 @@ public class CitrusTheme : Styles {
         this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Magma.ToString(), this._uriMagmaPalette));
         this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Rust.ToString(), this._uriRustPalette));
         this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Sea.ToString(), this._uriSeaPalette));
+        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Lime.ToString(), this._uriLimePalette));
+        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Grapefruit.ToString(), this._uriGrapefruitPalette));
+        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Orange.ToString(), this._uriOrangePalette));
+        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.DarkLime.ToString(), this._uriDarkLimePalette));
+        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.DarkGrapefruit.ToString(), this._uriDarkGrapefruitPalette));
+        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.DarkOrange.ToString(), this._uriDarkOrangePalette));
 
         this.DesiredDefaultThemeVariant = this.CreateDefaultPalette(ThemeVariant.Default);
         this.DesiredLightThemeVariant = this.CreateDefaultPalette(ThemeVariant.Light);

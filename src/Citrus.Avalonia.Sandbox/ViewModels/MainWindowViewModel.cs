@@ -53,7 +53,13 @@ namespace Citrus.Avalonia.Sandbox.ViewModels
             "Candy",
             "Magma",
             "Rust",
-            "Sea"
+            "Sea",
+            "Lime",
+            "Grapefruit",
+            "Orange",
+            "DarkLime",
+            "DarkGrapefruit",
+            "DarkOrange"
         };
         
         public MainWindowViewModel()
@@ -67,7 +73,7 @@ namespace Citrus.Avalonia.Sandbox.ViewModels
             this.ValidationRule(x => x.AutoCompleteText1,
                 message =>
                     message != null && this.AutoCompleteList.Contains(message),
-                "Try entering a Citrus theme name [Citrus, Candy, Magma, Rust, Sea]");
+                "Try entering a Citrus theme name [Citrus, Candy, Magma, Rust, Sea, Lime, Grapefruit, Orange, DarkLime, DarkGrapefruit, DarkOrange]");
 
             this.SomeCollectionViewData = new DataGridCollectionView(this.SomeData);
             this.SomeCollectionViewData.GroupDescriptions.Add(new DataGridPathGroupDescription("Category"));
