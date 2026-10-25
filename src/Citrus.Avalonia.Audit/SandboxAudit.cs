@@ -427,6 +427,8 @@ internal sealed class SandboxAudit {
             .GetVisualChildren().OfType<Shape>()
             .FirstOrDefault(s => s.Width == 2 && s.IsEffectivelyVisible);
         this.SaveScreenshot(window, "datagrid_column_drag");
+        // the indicator's DynamicResource brush resolves on a later layout pass, read it after rendering
+        IBrush? fill = indicator?.Fill;
         // drop it back where it started, so the column order does not change
         window.MouseMove(start, RawInputModifiers.LeftMouseButton);
         window.MouseUp(start, MouseButton.Left);
@@ -435,8 +437,8 @@ internal sealed class SandboxAudit {
         grid.CanUserReorderColumns = canUserReorderColumns;
         Pump();
 
-        this._report.Check(indicator != null && indicator.Fill != null,
-            $"DataGrid: column drop location indicator is drawn while dragging a column header ({(indicator == null ? "not found" : $"fill {indicator.Fill?.ToString() ?? "null"}")})");
+        this._report.Check(indicator != null && fill != null,
+            $"DataGrid: column drop location indicator is drawn while dragging a column header ({(indicator == null ? "not found" : $"fill {fill?.ToString() ?? "null"}")})");
     }
 
     // ---------------------------------------------------------------- theme variants
