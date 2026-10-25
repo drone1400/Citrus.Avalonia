@@ -135,6 +135,13 @@ namespace Citrus.Avalonia.Sandbox.ViewModels
         });
         private ReactiveCommand<Unit, Unit>? _commandSetDefaultDarkThemeSea = null;
         
+        // The Sandbox uses UseManagedSystemDialogs, so this shows the Citrus themed ManagedFileChooser
+        public ReactiveCommand<Unit, Unit> CommandOpenFileDialog => this._commandOpenFileDialog ??= ReactiveCommand.CreateFromTask(async () => {
+            if (Application.Current is not App app) return;
+            await app.OpenFileDialog();
+        });
+        private ReactiveCommand<Unit, Unit>? _commandOpenFileDialog = null;
+
         public ReactiveCommand<Unit, Unit> ChangeTheme => this._changeTheme ??= ReactiveCommand.Create(() => {
             if (Application.Current is not App app) return;
             

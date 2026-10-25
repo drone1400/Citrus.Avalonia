@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Avalonia.Markup.Xaml.Styling;
+using Avalonia.Platform.Storage;
 using Avalonia.Styling;
 using Avalonia.Themes.Fluent;
 using Avalonia.Themes.Simple;
@@ -143,6 +145,14 @@ namespace Citrus.Avalonia.Sandbox
             if (this._selectedPaletteIndex >= this._themePalettes.Count)
                 this._selectedPaletteIndex = 0;
             this.SetThemeVariant(this._themePalettes[this._selectedPaletteIndex]);
+        }
+
+        public async Task OpenFileDialog() {
+            if (this.ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime { MainWindow: { } window }) return;
+            await window.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions {
+                Title = "Open file",
+                AllowMultiple = true,
+            });
         }
 
         public void LoadNextTheme() {

@@ -28,6 +28,7 @@
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Label.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ListBox.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ListBoxItem.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ManagedFileChooser.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Menu.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/MenuFlyoutPresenter.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/MenuItem.xaml" />

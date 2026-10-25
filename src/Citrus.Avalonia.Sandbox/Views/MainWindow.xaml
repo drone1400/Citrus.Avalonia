@@ -61,6 +61,8 @@
                 </MenuItem>
                 <MenuItem Header="Enabled" />
                 <MenuItem Header="Disabled" IsEnabled="False" />
+                <Separator />
+                <MenuItem Header="Open file dialog..." Command="{Binding CommandOpenFileDialog}" />
             </MenuItem>
             <MenuItem Header="Switch TabControl">
                 <MenuItem Header="Top" Command="{Binding ChangeTabStripPlacementTop}"/>
