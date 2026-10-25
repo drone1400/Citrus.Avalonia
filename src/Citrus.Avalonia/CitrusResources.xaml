@@ -5,6 +5,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <x:Double x:Key="ThemeDisabledOpacity">0.5</x:Double>
+    <x:Double x:Key="TextControlPlaceholderOpacity">0.5</x:Double>
     
     <!-- Font sizes -->
     <x:Double x:Key="FontSizeSmall">13</x:Double>
