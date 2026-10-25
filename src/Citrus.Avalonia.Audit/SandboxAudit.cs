@@ -247,6 +247,11 @@ internal sealed class SandboxAudit {
                 ((MenuItem)root.Items[0]!).IsSubMenuOpen = true;
             });
         }
+        List<Button> flyoutButtons = visuals.OfType<Button>().Where(b => b.Flyout != null && b.IsEffectivelyEnabled).ToList();
+        for (int i = 0; i < flyoutButtons.Count; i++) {
+            Button button = flyoutButtons[i];
+            this.CheckPopup(window, tab, $"ButtonFlyout{i + 1}", () => button.Flyout!.ShowAt(button));
+        }
         if (visuals.OfType<ComboBox>().FirstOrDefault() is { } comboBox) {
             this.CheckPopup(window, tab, "ComboBox", () => comboBox.IsDropDownOpen = true);
         }
