@@ -10,7 +10,7 @@ AutoCompleteBox
         CalendarDatePicker
         CalendarDayButton
         CalendarItem
-CaptionButtons
+        CaptionButtons
 Carousel
         CheckBox
         ComboBox
@@ -30,16 +30,16 @@ HyperlinkButton
         Label
         ListBox
         ListBoxItem
-ManagedFileChooser
+        ManagedFileChooser
         Menu
         MenuFlyoutPresenter
         MenuItem
         MenuScrollViewer
 NotificationCard
         NumericUpDown
-OverlayPopupHost
+        OverlayPopupHost
 PathIcon
-PopupRoot
+        PopupRoot
         ProgressBar
         RadioButton
 RefreshContainer
@@ -60,7 +60,7 @@ SplitView
 TextSelectionHandle
 ThemeVariantScope
         TimePicker
-TitleBar
+        TitleBar
         ToggleButton
 ToggleSwitch
         ToolTip

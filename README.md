@@ -32,11 +32,15 @@ git submodule add https://github.com/drone1400/Citrus.Avalonia ./citrus
     <Application.Styles>
         <Styles>
             <StyleInclude Source="avares://Citrus.Avalonia/CitrusTheme.xaml" />
+            <!-- Only when using the DataGrid, it must be included after the Citrus theme -->
+            <StyleInclude Source="avares://Citrus.Avalonia.DataGrid/CitrusDataGrid.xaml" />
         </Styles>
     </Application.Styles>
 </Application>
 
 ```
+
+The texts used by the controls (TextBox context menu, DatePicker/TimePicker placeholders, managed file dialog) use the same resource keys as Avalonia's own themes, for example `StringTextFlyoutCutText` or `StringDatePickerDayText`. Define them in your application resources to localize them.
 
 ### Theme Variants
 
@@ -46,7 +50,7 @@ This means you can use `RequestedThemeVariant="Default"` in your application and
 
 ### Overriding implicit ThemeVariant values
 
-You can customize what Light, Dark or even Default variants are used through the `CitrusTheme` style's properties: `DesiredLightThemeVariant`, `DesiredDarkThemeVariant` or `DesiredDefaultThemeVariant`. 
+You can customize what Light, Dark or even Default variants are used through the `CitrusTheme` style's properties: `DesiredLightThemeVariant`, `DesiredDarkThemeVariant` or `DesiredDefaultThemeVariant`. Setting one of them to `null` restores the built-in palette (Citrus for Light and Default, Sea for Dark).
 
 **NOTE:** the `IThemeVariantProvider` object use must not be included in another ThemeDictionary elsewhere, or you will get an exception: `System.InvalidOperationException: The ResourceDictionary already has a parent.`
 
@@ -133,10 +137,22 @@ Application.Current.Styles.Add(citrusTheme);
 For more examples check out the `Citrus.Avalonia.Sandbox` project!
 
 
+### Audit tool
+
+The `Citrus.Avalonia.Audit` project renders the Sandbox headlessly (every tab, every registered theme variant, the popups, a few standalone controls) and checks the themes for missing templates, resource keys that do not resolve, empty texts, broken popups and Avalonia warnings. It saves a screenshot of everything it renders, and its exit code is the number of failed checks. CI runs it after every build.
+
+```sh
+cd src
+dotnet run --project Citrus.Avalonia.Audit -c Release -- <output folder>
+# byte-compare the screenshots of two runs, e.g. to check that a refactoring changed nothing
+dotnet run --project Citrus.Avalonia.Audit -c Release -- --compare <output folder A> <output folder B>
+```
+
+
 ### Technologies and Tools Used
 
 - <a href="https://github.com/avaloniaui">AvaloniaUI</a> cross-platform XAML-based GUI framework
-- <a href="https://docs.avaloniaui.net/docs/concepts/reactiveui/">Avalonia.ReactiveUI</a> for MVVM implementation in the sandbox project
+- <a href="https://github.com/reactiveui/ReactiveUI">ReactiveUI.Avalonia</a> for MVVM implementation in the sandbox project
 - <a href="https://github.com/reactiveui/reactiveui.validation">ReactiveUI.Validation</a> for `INotifyDataErrorInfo` validations
 - <a href="https://www.jetbrains.com/rider/">JetBrains Rider</a> cross-platform C# IDE
 
