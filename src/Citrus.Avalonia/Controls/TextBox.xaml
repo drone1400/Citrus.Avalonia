@@ -267,4 +267,22 @@
             </Setter>
         </Style>
     </ControlTheme>
+
+    <!-- TextBox inside an editable ComboBox, the ComboBox draws the border and background -->
+    <ControlTheme x:Key="CitrusComboBoxTextBox"
+                  TargetType="TextBox"
+                  BasedOn="{StaticResource {x:Type TextBox}}">
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="MinHeight" Value="0" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="Transparent" />
+
+        <Style Selector="^:pointerover /template/ Border#PART_BorderElement">
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+        <Style Selector="^:focus /template/ Border#PART_BorderElement">
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+    </ControlTheme>
 </ResourceDictionary>

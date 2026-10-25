@@ -112,6 +112,19 @@
                         <ComboBoxItem Content="Third option" />
                     </ComboBox>
                 </Grid>
+
+                <!-- Editable ComboBox -->
+                <Grid ColumnDefinitions="*,10,*">
+                    <ComboBox Grid.Column="0"
+                              IsEditable="True"
+                              SelectedIndex="0"
+                              ItemsSource="{Binding AutoCompleteList}" />
+                    <ComboBox Grid.Column="2"
+                              IsEditable="True"
+                              IsEnabled="False"
+                              Text="Disabled editable"
+                              ItemsSource="{Binding AutoCompleteList}" />
+                </Grid>
             </StackPanel>
         </Border>
 
