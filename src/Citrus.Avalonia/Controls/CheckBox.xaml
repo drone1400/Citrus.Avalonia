@@ -75,11 +75,14 @@
                                       ContentTemplate="{TemplateBinding ContentTemplate}"
                                       IsVisible="{TemplateBinding Content,
                                                         Converter={x:Static ObjectConverters.IsNotNull}}"
-                                      RecognizesAccessKey="True"
                                       TextElement.Foreground="{TemplateBinding Foreground}" />
                 </Grid>
             </ControlTemplate>
         </Setter>
+
+        <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="RecognizesAccessKey" Value="True" />
+        </Style>
         
         <Style Selector="^:pointerover">
             <Setter Property="Background" Value="{DynamicResource ThemeBorderMidBrush}" />
