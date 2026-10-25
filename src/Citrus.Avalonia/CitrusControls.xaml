@@ -13,6 +13,7 @@
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/CalendarDatePicker.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/CalendarDayButton.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/CalendarItem.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/CaptionButtons.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/CheckBox.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ComboBox.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ComboBoxItem.xaml" />
@@ -48,6 +49,7 @@
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TextBlock.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TextBox.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TimePicker.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TitleBar.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ToggleButton.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ToolTip.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TreeView.xaml" />

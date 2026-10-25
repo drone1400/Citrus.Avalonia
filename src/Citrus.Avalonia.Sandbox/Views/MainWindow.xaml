@@ -6,6 +6,8 @@
         Title="{Binding Title}"
         Width="1200" Height="800"
         MinWidth="1200" MinHeight="800"
+        ExtendClientAreaToDecorationsHint="{Binding ExtendClientArea}"
+        ExtendClientAreaChromeHints="PreferSystemChrome"
         Icon="/Assets/avalonia.ico">
     <Design.DesignStyle>
         <SimpleTheme/>
@@ -76,6 +78,11 @@
                 <MenuItem Header="Set Default Dark Theme - Sea" Command="{Binding CommandSetDefaultDarkThemeSea}" />
             </MenuItem>
             <MenuItem Header="Switch theme" Command="{Binding ChangeTheme}" />
+            <MenuItem Header="Window">
+                <!-- PreferSystemChrome makes Windows use the themed TitleBar/CaptionButtons instead of its own buttons -->
+                <MenuItem Header="Extend client area (themed caption buttons)" ToggleType="CheckBox"
+                          IsChecked="{Binding ExtendClientArea, Mode=TwoWay}" />
+            </MenuItem>
         </Menu>
         
         <TabControl Grid.Row="1"

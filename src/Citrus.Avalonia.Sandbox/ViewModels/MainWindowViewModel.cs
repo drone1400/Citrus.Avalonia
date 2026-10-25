@@ -20,6 +20,12 @@ namespace Citrus.Avalonia.Sandbox.ViewModels
         }
         private Dock _tabStripPlacement = Dock.Top;
 
+        public bool ExtendClientArea {
+            get => this._extendClientArea;
+            set => this.RaiseAndSetIfChanged(ref this._extendClientArea, value);
+        }
+        private bool _extendClientArea = false;
+
         public string AutoCompleteText1 {
             get => this._autoCompleteText1;
             set => this.RaiseAndSetIfChanged(ref this._autoCompleteText1, value);
