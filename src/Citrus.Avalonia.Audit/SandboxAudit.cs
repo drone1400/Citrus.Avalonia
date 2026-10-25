@@ -352,7 +352,10 @@ internal sealed class SandboxAudit {
             return;
         }
         List<string> notHit = new List<string>();
-        List<RepeatButton> buttons = presenter.GetVisualDescendants().OfType<RepeatButton>().ToList();
+        // skip the buttons of hidden columns (seconds, AM/PM)
+        List<RepeatButton> buttons = presenter.GetVisualDescendants().OfType<RepeatButton>()
+            .Where(b => b.GetVisualParent() is Visual { IsEffectivelyVisible: true })
+            .ToList();
         foreach (RepeatButton button in buttons) {
             bool wasVisible = button.IsVisible;
             button.IsVisible = true;
