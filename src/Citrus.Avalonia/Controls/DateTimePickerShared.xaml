@@ -134,7 +134,7 @@
 
     <ControlTheme x:Key="DateTimePickerUpButton"
                   TargetType="RepeatButton">
-        <Setter Property="Background" Value="{DynamicResource ThemeAccentColor2}" />
+        <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush2}" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="Foreground" Value="Transparent" />
         <Setter Property="VerticalAlignment" Value="Top" />
@@ -173,7 +173,7 @@
 
     <ControlTheme x:Key="DateTimePickerDownButton"
                   TargetType="RepeatButton">
-        <Setter Property="Background" Value="{DynamicResource ThemeAccentColor2}" />
+        <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush2}" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="Foreground" Value="Transparent" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
