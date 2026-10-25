@@ -27,54 +27,45 @@ public class CitrusTheme : Styles {
     /// StyledProperty that defines the desired Default theme variant to use 
     /// </summary>
     public static readonly StyledProperty<IThemeVariantProvider> DesiredDefaultThemeVariantProperty = 
-        AvaloniaProperty.Register<CitrusTheme, IThemeVariantProvider>(nameof(DesiredDefaultThemeVariant));
+        AvaloniaProperty.Register<CitrusTheme, IThemeVariantProvider>(nameof(DesiredDefaultThemeVariant),
+            coerce: CitrusTheme.CoerceToDefaultPalette(ThemeVariant.Default));
     
     /// <summary>
-    /// The desired Default theme variant
+    /// The desired Default theme variant, setting it to null restores the Citrus palette
     /// </summary>
     public IThemeVariantProvider DesiredDefaultThemeVariant {
         get => this.GetValue(CitrusTheme.DesiredDefaultThemeVariantProperty);
-        set {
-            if (this.TrySetDefaultThemeVariant(value)) {
-                this.SetValue(CitrusTheme.DesiredDefaultThemeVariantProperty, value);
-            }
-        }
+        set => this.SetValue(CitrusTheme.DesiredDefaultThemeVariantProperty, value);
     }
     
     /// <summary>
     /// StyledProperty that defines the desired Light theme variant to use 
     /// </summary>
     public static readonly StyledProperty<IThemeVariantProvider> DesiredLightThemeVariantProperty = 
-        AvaloniaProperty.Register<CitrusTheme, IThemeVariantProvider>(nameof(DesiredLightThemeVariant));
+        AvaloniaProperty.Register<CitrusTheme, IThemeVariantProvider>(nameof(DesiredLightThemeVariant),
+            coerce: CitrusTheme.CoerceToDefaultPalette(ThemeVariant.Light));
     
     /// <summary>
-    /// The desired Light theme variant
+    /// The desired Light theme variant, setting it to null restores the Citrus palette
     /// </summary>
     public IThemeVariantProvider DesiredLightThemeVariant {
         get => this.GetValue(CitrusTheme.DesiredLightThemeVariantProperty);
-        set {
-            if (this.TrySetLightThemeVariant(value)) {
-                this.SetValue(CitrusTheme.DesiredLightThemeVariantProperty, value);
-            }
-        }
+        set => this.SetValue(CitrusTheme.DesiredLightThemeVariantProperty, value);
     }
     
     /// <summary>
     /// StyledProperty that defines the desired Dark theme variant to use 
     /// </summary>
     public static readonly StyledProperty<IThemeVariantProvider> DesiredDarkThemeVariantProperty = 
-        AvaloniaProperty.Register<CitrusTheme, IThemeVariantProvider>(nameof(DesiredDarkThemeVariant));
+        AvaloniaProperty.Register<CitrusTheme, IThemeVariantProvider>(nameof(DesiredDarkThemeVariant),
+            coerce: CitrusTheme.CoerceToDefaultPalette(ThemeVariant.Dark));
     
     /// <summary>
-    /// The desired Dark theme variant
+    /// The desired Dark theme variant, setting it to null restores the Sea palette
     /// </summary>
     public IThemeVariantProvider DesiredDarkThemeVariant {
         get => this.GetValue(CitrusTheme.DesiredDarkThemeVariantProperty);
-        set {
-            if (this.TrySetDarkThemeVariant(value)) {
-                this.SetValue(CitrusTheme.DesiredDarkThemeVariantProperty, value);
-            }
-        }
+        set => this.SetValue(CitrusTheme.DesiredDarkThemeVariantProperty, value);
     }
     
     public CitrusTheme(IServiceProvider? sp = null) {
@@ -91,9 +82,21 @@ public class CitrusTheme : Styles {
         this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Rust.ToString(), this._uriRustPalette));
         this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Sea.ToString(), this._uriSeaPalette));
 
-        this.TrySetDefaultThemeVariant(new ResourceInclude(this._uriCitrusPalette) { Source = this._uriCitrusPalette } );
-        this.TrySetLightThemeVariant(new ResourceInclude(this._uriCitrusPalette) { Source = this._uriCitrusPalette });
-        this.TrySetDarkThemeVariant(new ResourceInclude(this._uriSeaPalette) { Source = this._uriSeaPalette });
+        this.DesiredDefaultThemeVariant = this.CreateDefaultPalette(ThemeVariant.Default);
+        this.DesiredLightThemeVariant = this.CreateDefaultPalette(ThemeVariant.Light);
+        this.DesiredDarkThemeVariant = this.CreateDefaultPalette(ThemeVariant.Dark);
+    }
+
+    protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change) {
+        base.OnPropertyChanged(change);
+
+        if (change.Property == CitrusTheme.DesiredDefaultThemeVariantProperty) {
+            this.SetThemeDictionary(ThemeVariant.Default, change.GetNewValue<IThemeVariantProvider?>());
+        } else if (change.Property == CitrusTheme.DesiredLightThemeVariantProperty) {
+            this.SetThemeDictionary(ThemeVariant.Light, change.GetNewValue<IThemeVariantProvider?>());
+        } else if (change.Property == CitrusTheme.DesiredDarkThemeVariantProperty) {
+            this.SetThemeDictionary(ThemeVariant.Dark, change.GetNewValue<IThemeVariantProvider?>());
+        }
     }
 
     
@@ -121,22 +124,25 @@ public class CitrusTheme : Styles {
         return palettes;
     }
 
-    private bool TrySetThemeVariant(IThemeVariantProvider? currentValue, IThemeVariantProvider newProvider, ThemeVariant targetThemeVariant) {
-        // check if same key as current?
-        if (currentValue?.Key != null && currentValue.Key == newProvider.Key) return true;
-
-        // remove existing theme variant if possible
-        if (this.Resources.ThemeDictionaries.ContainsKey(targetThemeVariant)) {
-            this.Resources.ThemeDictionaries.Remove(targetThemeVariant);
+    private void SetThemeDictionary(ThemeVariant targetThemeVariant, IThemeVariantProvider? provider) {
+        // replace the existing theme variant
+        this.Resources.ThemeDictionaries.Remove(targetThemeVariant);
+        if (provider != null) {
+            this.Resources.ThemeDictionaries.Add(targetThemeVariant, provider);
         }
-
-        // add new theme variant
-        this.Resources.ThemeDictionaries.Add(targetThemeVariant, newProvider);
-        return true;
     }
     
-    private bool TrySetDefaultThemeVariant(IThemeVariantProvider variantProvider) => this.TrySetThemeVariant(this.DesiredDefaultThemeVariant, variantProvider, ThemeVariant.Default);
-    private bool TrySetLightThemeVariant(IThemeVariantProvider variantProvider) => this.TrySetThemeVariant(this.DesiredLightThemeVariant, variantProvider, ThemeVariant.Light);
-    private bool TrySetDarkThemeVariant(IThemeVariantProvider variantProvider) => this.TrySetThemeVariant(this.DesiredDarkThemeVariant, variantProvider, ThemeVariant.Dark);
+    /// <summary>
+    /// Creates a new instance of the built-in palette for a theme variant: Sea for Dark, Citrus otherwise.
+    /// Every theme variant needs its own instance, a provider can only have one parent dictionary.
+    /// </summary>
+    private IThemeVariantProvider CreateDefaultPalette(ThemeVariant targetThemeVariant) {
+        Uri uri = targetThemeVariant == ThemeVariant.Dark ? this._uriSeaPalette : this._uriCitrusPalette;
+        return new ResourceInclude(uri) { Source = uri };
+    }
+
+    private static Func<AvaloniaObject, IThemeVariantProvider, IThemeVariantProvider> CoerceToDefaultPalette(ThemeVariant targetThemeVariant) {
+        return (theme, value) => value ?? ((CitrusTheme)theme).CreateDefaultPalette(targetThemeVariant);
+    }
     
 }
