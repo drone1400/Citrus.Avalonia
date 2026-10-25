@@ -92,7 +92,8 @@ namespace Citrus.Avalonia.Sandbox
             if (this.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktopLifetime)
             {
                 this._mainWindowViewModel = new MainWindowViewModel();
-                this._mainWindowViewModel.Title = $"Sandbox - Citrus Theme - {this._citrusTheme?.DesiredDefaultThemeVariant}";
+                ThemeVariant actualVariant = this.GetValue(Application.ActualThemeVariantProperty);
+                this._mainWindowViewModel.Title = $"Sandbox - Citrus Theme - {actualVariant.Key}";
                 
                 desktopLifetime.MainWindow = new MainWindow() {
                     DataContext = this._mainWindowViewModel,
