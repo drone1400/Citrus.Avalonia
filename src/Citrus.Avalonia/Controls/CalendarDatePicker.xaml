@@ -89,7 +89,6 @@
         <Setter Property="Margin" Value="0 5" />
         <Setter Property="Padding" Value="5" />
         <Setter Property="CornerRadius" Value="5" />
-        <Setter Property="MinHeight" Value="{DynamicResource DateTimePickerHeight}" />
 
         <Setter Property="Template">
             <ControlTemplate>

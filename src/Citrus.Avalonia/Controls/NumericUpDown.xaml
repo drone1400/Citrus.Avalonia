@@ -76,9 +76,6 @@
         <Style Selector="^:pointerover /template/ TextBox">
             <Setter Property="Background" Value="Transparent" />
         </Style>
-        <Style Selector="^:pressed /template/ TextBox">
-            <Setter Property="Background" Value="Transparent" />
-        </Style>
         <Style Selector="^:error">
             <Setter Property="BorderBrush" Value="{DynamicResource ErrorBrush}" />
         </Style>

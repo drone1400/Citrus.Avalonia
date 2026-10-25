@@ -68,8 +68,7 @@
                                         VerticalAlignment="Stretch">
                                     <TextBlock x:Name="PART_HourTextBlock"
                                                Text="{DynamicResource StringTimePickerHourText}"
-                                               HorizontalAlignment="Center"
-                                               Padding="{DynamicResource TimePickerHostPadding}" />
+                                               HorizontalAlignment="Center" />
                                 </Border>
 
                                 <Rectangle Name="PART_FirstColumnDivider"
@@ -84,8 +83,7 @@
                                         VerticalAlignment="Stretch">
                                     <TextBlock x:Name="PART_MinuteTextBlock"
                                                Text="{DynamicResource StringTimePickerMinuteText}"
-                                               HorizontalAlignment="Center"
-                                               Padding="{DynamicResource TimePickerHostPadding}" />
+                                               HorizontalAlignment="Center" />
                                 </Border>
 
                                 <Rectangle Name="PART_SecondColumnDivider"
@@ -100,8 +98,7 @@
                                         VerticalAlignment="Stretch">
                                     <TextBlock x:Name="PART_SecondTextBlock"
                                                Text="{DynamicResource StringTimePickerSecondText}"
-                                               HorizontalAlignment="Center"
-                                               Padding="{DynamicResource TimePickerHostPadding}" />
+                                               HorizontalAlignment="Center" />
                                 </Border>
 
                                 <Rectangle Name="PART_ThirdColumnDivider"
@@ -115,8 +112,7 @@
                                         HorizontalAlignment="Stretch"
                                         VerticalAlignment="Stretch">
                                     <TextBlock x:Name="PART_PeriodTextBlock"
-                                               HorizontalAlignment="Center"
-                                               Padding="{DynamicResource TimePickerHostPadding}" />
+                                               HorizontalAlignment="Center" />
                                 </Border>
                             </Grid>
                         </Button>

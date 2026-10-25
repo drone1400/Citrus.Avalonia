@@ -64,8 +64,7 @@
                         <ScrollBar Name="PART_VerticalScrollbar"
                                    Orientation="Vertical"
                                    Grid.Column="2"
-                                   Grid.Row="1"
-                                   Width="{DynamicResource ScrollBarSize}" />
+                                   Grid.Row="1" />
 
                         <Grid Grid.Column="1"
                               Grid.Row="2"
@@ -75,19 +74,8 @@
                                        Fill="{DynamicResource ThemeControlTransparentBrush}" />
                             <ScrollBar Name="PART_HorizontalScrollbar"
                                        Grid.Column="1"
-                                       Orientation="Horizontal"
-                                       Height="{DynamicResource ScrollBarSize}" />
+                                       Orientation="Horizontal" />
                         </Grid>
-
-                        <Border x:Name="PART_DisabledVisualElement"
-                                Grid.ColumnSpan="3" Grid.Column="0"
-                                Grid.Row="0" Grid.RowSpan="4"
-                                IsHitTestVisible="False"
-                                HorizontalAlignment="Stretch"
-                                VerticalAlignment="Stretch"
-                                CornerRadius="2"
-                                Background="{DynamicResource DataGridDisabledVisualElementBackground}"
-                                IsVisible="{Binding !$parent[DataGrid].IsEnabled}" />
                     </Grid>
                 </Border>
             </ControlTemplate>
