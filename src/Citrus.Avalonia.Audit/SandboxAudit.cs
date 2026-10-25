@@ -73,6 +73,7 @@ internal sealed class SandboxAudit {
         this.CheckThemeVariants(app, window, variants);
         this.CheckRuntimePaletteSwitch(app, window);
         this.CheckEditableComboBox();
+        this.CheckAccessKeys();
         this.CheckLogEvents();
 
         window.Close();
@@ -445,6 +446,37 @@ internal sealed class SandboxAudit {
         this._report.Check(editor != null && editor.IsEffectivelyVisible,
             "Editable ComboBox (IsEditable) shows PART_EditableTextBox");
         this.SaveScreenshot(host, "editable_combobox");
+        host.Close();
+    }
+
+    /// <summary>
+    /// Text content with an underscore must be turned into an <see cref="AccessText"/> (RecognizesAccessKey)
+    /// </summary>
+    private void CheckAccessKeys() {
+        this._sink.Phase = "access-keys";
+        Control[] controls = {
+            new Button { Content = "_Button" },
+            new ToggleButton { Content = "_ToggleButton" },
+            new RepeatButton { Content = "_RepeatButton" },
+            new CheckBox { Content = "_CheckBox" },
+            new RadioButton { Content = "_RadioButton" },
+            new Label { Content = "_Label" },
+            new TabStrip { ItemsSource = new[] { new TabStripItem { Content = "_TabStripItem" } } },
+            new TabControl { ItemsSource = new[] { new TabItem { Header = "_TabItem" } } },
+        };
+        StackPanel panel = new StackPanel();
+        panel.Children.AddRange(controls);
+        Window host = new Window { Width = 300, Height = 500, Content = panel };
+        host.Show();
+        Pump();
+        List<string> missing = controls
+            .Where(c => !c.GetVisualDescendants().OfType<AccessText>().Any())
+            .Select(c => c.GetType().Name)
+            .ToList();
+        this._report.Check(missing.Count == 0,
+            $"Access keys are recognized in {controls.Length} control types" +
+            (missing.Count > 0 ? $" (missing in: {string.Join(", ", missing)})" : ""));
+        this.SaveScreenshot(host, "access_keys");
         host.Close();
     }
 
