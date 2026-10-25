@@ -1,6 +1,6 @@
 ﻿using Avalonia;
 using Avalonia.Dialogs;
-using Avalonia.ReactiveUI;
+using ReactiveUI.Avalonia;
 
 namespace Citrus.Avalonia.Sandbox
 {
@@ -19,7 +19,7 @@ namespace Citrus.Avalonia.Sandbox
                 .With(new X11PlatformOptions {EnableMultiTouch = true, UseDBusMenu = true})
                 .With(new Win32PlatformOptions {RenderingMode = new Win32RenderingMode[] { Win32RenderingMode.AngleEgl }})
                 .UseSkia()
-                .UseReactiveUI()
+                .UseReactiveUI(_ => { })
                 .UseManagedSystemDialogs();
         }
     }

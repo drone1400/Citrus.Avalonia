@@ -15,12 +15,13 @@
         <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)"/>
         <PackageReference Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)"/>
         <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="$(AvaloniaVersion)"/>
-        <PackageReference Include="Avalonia.ReactiveUI" Version="11.3.9"/>
         <PackageReference Include="Avalonia.LinuxFramebuffer" Version="$(AvaloniaVersion)"/>
         <PackageReference Include="Avalonia.Desktop" Version="$(AvaloniaVersion)"/>
         <PackageReference Include="Avalonia.Themes.Simple" Version="$(AvaloniaVersion)"/>
         <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)"/>
-        <PackageReference Include="ReactiveUI.Validation" Version="4.1.1"/>
+        <!-- ReactiveUI.Avalonia 11.4.x (last line for Avalonia 11) needs ReactiveUI 23.x; ReactiveUI.Validation 8.x needs ReactiveUI 26, so stay on 7.1.x until Avalonia 12 -->
+        <PackageReference Include="ReactiveUI.Avalonia" Version="11.4.13" />
+        <PackageReference Include="ReactiveUI.Validation" Version="7.1.0" />
     </ItemGroup>
 
     <ItemGroup>
