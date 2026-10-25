@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <LangVersion>10</LangVersion>
+        <AssemblyName>Citrus.Avalonia.Audit</AssemblyName>
+        <RootNamespace>Citrus.Avalonia.Audit</RootNamespace>
+        <Nullable>enable</Nullable>
+        <AvaloniaVersion>11.3.22</AvaloniaVersion>
+        <OutputType>Exe</OutputType>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)"/>
+        <PackageReference Include="Avalonia.Headless" Version="$(AvaloniaVersion)"/>
+        <PackageReference Include="Avalonia.Skia" Version="$(AvaloniaVersion)"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Citrus.Avalonia.Sandbox\Citrus.Avalonia.Sandbox.csproj"/>
+    </ItemGroup>
+
+</Project>
