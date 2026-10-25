@@ -11,6 +11,7 @@ using Avalonia.Controls.Templates;
 using Avalonia.Dialogs;
 using Avalonia.Headless;
 using Avalonia.Input;
+using Avalonia.Input.Raw;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml.Styling;
 using Avalonia.Media;
@@ -20,6 +21,7 @@ using Avalonia.VisualTree;
 using Citrus.Avalonia.Sandbox;
 using Citrus.Avalonia.Sandbox.ViewModels;
 using Citrus.Avalonia.Sandbox.Views;
+using Shape = Avalonia.Controls.Shapes.Shape;
 
 namespace Citrus.Avalonia.Audit;
 
@@ -217,7 +219,10 @@ internal sealed class SandboxAudit {
 
             this.SaveScreenshot(window, $"tab{i:00}_{FileNamePart(header)}");
             this.CheckTabPopups(window, header);
-            if (header == "Data Grid") this.CheckDataGridEditing(window);
+            if (header == "Data Grid") {
+                this.CheckDataGridEditing(window);
+                this.CheckDataGridColumnDrag(window);
+            }
         }
         tabs.SelectedIndex = 0;
         Pump();
@@ -393,6 +398,45 @@ internal sealed class SandboxAudit {
 
         this._report.Check(editing && row != null && Math.Abs(heightEditing - heightBefore) <= 2,
             $"DataGrid: row height stays the same while editing a text cell ({heightBefore} -> {heightEditing})");
+    }
+
+    /// <summary>
+    /// Drags a column header sideways and checks that the drop location indicator is drawn
+    /// </summary>
+    private void CheckDataGridColumnDrag(Window window) {
+        this._sink.Phase = "datagrid-column-drag";
+        DataGrid? grid = window.GetVisualDescendants().OfType<DataGrid>().FirstOrDefault(g => g.IsEffectivelyEnabled);
+        DataGridColumnHeader? header = grid?.GetVisualDescendants().OfType<DataGridColumnHeader>()
+            .FirstOrDefault(h => h.Content is string && h.IsEffectivelyVisible);
+        if (grid == null || header == null) {
+            this._report.Fail("DataGrid column drag: no enabled DataGrid with column headers found");
+            return;
+        }
+
+        // reordering is off by default, the indicator only shows up when an app enables it
+        bool canUserReorderColumns = grid.CanUserReorderColumns;
+        grid.CanUserReorderColumns = true;
+        Point start = header.TranslatePoint(new Point(header.Bounds.Width / 2, header.Bounds.Height / 2), window) ?? default;
+        window.MouseDown(start, MouseButton.Left);
+        for (int i = 1; i <= 6; i++) {
+            window.MouseMove(start + new Point(i * 20, 0), RawInputModifiers.LeftMouseButton);
+            Pump();
+        }
+        // the indicator is built from DataGrid.DropLocationIndicatorTemplate (a 2 pixel wide shape) and added to the headers presenter
+        Shape? indicator = grid.GetVisualDescendants().OfType<DataGridColumnHeadersPresenter>().FirstOrDefault()?
+            .GetVisualChildren().OfType<Shape>()
+            .FirstOrDefault(s => s.Width == 2 && s.IsEffectivelyVisible);
+        this.SaveScreenshot(window, "datagrid_column_drag");
+        // drop it back where it started, so the column order does not change
+        window.MouseMove(start, RawInputModifiers.LeftMouseButton);
+        window.MouseUp(start, MouseButton.Left);
+        // park the pointer in the bottom right corner, away from anything with a hover style
+        window.MouseMove(new Point(window.Bounds.Width - 1, window.Bounds.Height - 1));
+        grid.CanUserReorderColumns = canUserReorderColumns;
+        Pump();
+
+        this._report.Check(indicator != null && indicator.Fill != null,
+            $"DataGrid: column drop location indicator is drawn while dragging a column header ({(indicator == null ? "not found" : $"fill {indicator.Fill?.ToString() ?? "null"}")})");
     }
 
     // ---------------------------------------------------------------- theme variants
