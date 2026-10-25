@@ -9,12 +9,14 @@ using Avalonia.Controls.Chrome;
 using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Templates;
 using Avalonia.Dialogs;
+using Avalonia.Dialogs.Internal;
 using Avalonia.Headless;
 using Avalonia.Input;
 using Avalonia.Input.Raw;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml.Styling;
 using Avalonia.Media;
+using Avalonia.Platform.Storage;
 using Avalonia.Styling;
 using Avalonia.Threading;
 using Avalonia.VisualTree;
@@ -75,6 +77,7 @@ internal sealed class SandboxAudit {
         this.CheckThemeVariants(app, window, variants);
         this.CheckRuntimePaletteSwitch(app, window);
         this.CheckEditableComboBox();
+        this.CheckManagedFileChooser();
         this.CheckAccessKeys();
         this.CheckLogEvents();
 
@@ -500,6 +503,27 @@ internal sealed class SandboxAudit {
         this._report.Check(editor != null && editor.IsEffectivelyVisible,
             "Editable ComboBox (IsEditable) shows PART_EditableTextBox");
         this.SaveScreenshot(host, "editable_combobox");
+        host.Close();
+    }
+
+    /// <summary>
+    /// The managed file dialog (UseManagedSystemDialogs), opened on the Palette folder so the screenshot is stable
+    /// </summary>
+    private void CheckManagedFileChooser() {
+        this._sink.Phase = "managed-file-chooser";
+        ManagedFileChooserViewModel viewModel = new ManagedFileChooserViewModel(
+            new FilePickerOpenOptions { Title = "Open file" }, new ManagedFileDialogOptions());
+        if (this._sourceDirectory != null) {
+            viewModel.Navigate(Path.Combine(this._sourceDirectory, "Citrus.Avalonia", "Palette"));
+        }
+        ManagedFileChooser chooser = new ManagedFileChooser { DataContext = viewModel };
+        Window host = new Window { Width = 800, Height = 500, Content = chooser };
+        host.Show();
+        Pump();
+        int fileCount = chooser.GetVisualDescendants().OfType<ListBox>().FirstOrDefault(l => l.Name == "PART_Files")?.ItemCount ?? 0;
+        this._report.Check(chooser.Template != null && fileCount > 0,
+            $"ManagedFileChooser renders its file list ({fileCount} files)");
+        this.SaveScreenshot(host, "managed_file_chooser");
         host.Close();
     }
 
