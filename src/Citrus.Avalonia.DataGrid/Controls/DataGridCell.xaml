@@ -75,4 +75,16 @@
             <Setter Property="IsVisible" Value="True" />
         </Style>
     </ControlTheme>
+
+    <!-- Used by DataGridTextColumn for its cell editor, so the row keeps its height while editing -->
+    <ControlTheme x:Key="DataGridCellTextBoxTheme"
+                  TargetType="TextBox"
+                  BasedOn="{StaticResource {x:Type TextBox}}">
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="4,0" />
+        <Setter Property="CornerRadius" Value="0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </ControlTheme>
 </ResourceDictionary>
