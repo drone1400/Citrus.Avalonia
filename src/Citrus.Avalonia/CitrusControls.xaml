@@ -32,6 +32,8 @@
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/MenuItem.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/MenuScrollViewer.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/NumericUpDown.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/OverlayPopupHost.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/PopupRoot.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ProgressBar.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/RadioButton.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/RepeatButton.xaml" />
