@@ -16,6 +16,7 @@ using Avalonia.Input.Raw;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml.Styling;
 using Avalonia.Media;
+using Avalonia.Platform;
 using Avalonia.Platform.Storage;
 using Avalonia.Styling;
 using Avalonia.Threading;
@@ -466,9 +467,25 @@ internal sealed class SandboxAudit {
             this.SaveScreenshot(window, $"variant_{FileNamePart(variant.Key.ToString() ?? "")}");
             this._report.Check(window.Background is ISolidColorBrush,
                 $"Theme variant {variant.Key}: window background resolves ({(window.Background as ISolidColorBrush)?.Color})");
+            this.CheckFrameThemeVariant(window, variant);
         }
         app.SetThemeVariant(ThemeVariant.Default);
         Pump();
+    }
+
+    /// <summary>
+    /// The native window frame (title bar) follows the platform variant that TopLevel derives from ActualThemeVariant,
+    /// a palette with a dark background must map to Dark there
+    /// </summary>
+    private void CheckFrameThemeVariant(Window window, ThemeVariant variant) {
+        if (window.Background is not ISolidColorBrush background) return;
+        Color color = background.Color;
+        double luminance = (0.2126 * color.R + 0.7152 * color.G + 0.0722 * color.B) / 255;
+        PlatformThemeVariant expected = luminance < 0.5 ? PlatformThemeVariant.Dark : PlatformThemeVariant.Light;
+        // the same conversion TopLevel uses for the frame
+        PlatformThemeVariant actual = (PlatformThemeVariant?)window.ActualThemeVariant ?? PlatformThemeVariant.Light;
+        this._report.Check(actual == expected,
+            $"Theme variant {variant.Key}: window frame is {expected} for background {color} (got {actual})");
     }
 
     private void CheckRuntimePaletteSwitch(App app, Window window) {
