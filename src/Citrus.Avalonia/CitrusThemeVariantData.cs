@@ -12,6 +12,15 @@ namespace Citrus.Avalonia {
             this.VariantProvider = new ResourceInclude(uri) { Source = uri, };
         }
         
+        /// <summary>
+        /// Registers the palette as a theme variant that inherits <paramref name="inheritVariant"/> (Light, Dark or null).
+        /// Inheriting Dark also gives windows a dark native frame (title bar).
+        /// </summary>
+        public CitrusThemeVariantData(string key, Uri uri, ThemeVariant? inheritVariant) {
+            this.Variant = new ThemeVariant(key, inheritVariant);
+            this.VariantProvider = new ResourceInclude(uri) { Source = uri, };
+        }
+        
         public CitrusThemeVariantData(string key, string uriString) {
             Uri uri = new Uri(uriString);
             this.Variant = new ThemeVariant(key, null);

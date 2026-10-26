@@ -82,17 +82,18 @@ public class CitrusTheme : Styles {
         
         AvaloniaXamlLoader.Load(sp, this);
 
-        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Citrus.ToString(), this._uriCitrusPalette));
-        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Candy.ToString(), this._uriCandyPalette));
-        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Magma.ToString(), this._uriMagmaPalette));
-        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Rust.ToString(), this._uriRustPalette));
-        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Sea.ToString(), this._uriSeaPalette));
-        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Lime.ToString(), this._uriLimePalette));
-        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Grapefruit.ToString(), this._uriGrapefruitPalette));
-        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Orange.ToString(), this._uriOrangePalette));
-        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.DarkLime.ToString(), this._uriDarkLimePalette));
-        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.DarkGrapefruit.ToString(), this._uriDarkGrapefruitPalette));
-        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.DarkOrange.ToString(), this._uriDarkOrangePalette));
+        // the palettes inherit Light or Dark, so the native window frame (title bar) follows the palette
+        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Citrus.ToString(), this._uriCitrusPalette, ThemeVariant.Light));
+        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Candy.ToString(), this._uriCandyPalette, ThemeVariant.Light));
+        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Magma.ToString(), this._uriMagmaPalette, ThemeVariant.Light));
+        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Rust.ToString(), this._uriRustPalette, ThemeVariant.Dark));
+        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Sea.ToString(), this._uriSeaPalette, ThemeVariant.Dark));
+        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Lime.ToString(), this._uriLimePalette, ThemeVariant.Light));
+        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Grapefruit.ToString(), this._uriGrapefruitPalette, ThemeVariant.Light));
+        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.Orange.ToString(), this._uriOrangePalette, ThemeVariant.Light));
+        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.DarkLime.ToString(), this._uriDarkLimePalette, ThemeVariant.Dark));
+        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.DarkGrapefruit.ToString(), this._uriDarkGrapefruitPalette, ThemeVariant.Dark));
+        this.RegisterThemeVariant(new CitrusThemeVariantData(CitrusDefaultPalettes.DarkOrange.ToString(), this._uriDarkOrangePalette, ThemeVariant.Dark));
 
         this.DesiredDefaultThemeVariant = this.CreateDefaultPalette(ThemeVariant.Default);
         this.DesiredLightThemeVariant = this.CreateDefaultPalette(ThemeVariant.Light);

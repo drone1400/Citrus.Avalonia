@@ -48,7 +48,7 @@ Now implements ThemeVariants! The default Light theme is Citrus, the default Dar
 
 This means you can use `RequestedThemeVariant="Default"` in your application and Citrus will use the Light or Dark variant automagically.
 
-Built-in palettes (see `CitrusDefaultPalettes`): Citrus, Candy, Magma, Lime, Grapefruit and Orange are light, Rust, Sea, DarkLime, DarkGrapefruit and DarkOrange are dark. Each one is registered as a ThemeVariant with the same name.
+Built-in palettes (see `CitrusDefaultPalettes`): Citrus, Candy, Magma, Lime, Grapefruit and Orange are light, Rust, Sea, DarkLime, DarkGrapefruit and DarkOrange are dark. Each one is registered as a ThemeVariant with the same name, inheriting `ThemeVariant.Light` or `ThemeVariant.Dark`, so the native window title bar matches the palette.
 
 ### Overriding implicit ThemeVariant values
 
@@ -114,6 +114,13 @@ citrusTheme.RegisterThemeVariant(new CitrusThemeVariantData(
 IList<ThemeVariant> list = citrusTheme.GetRegisteredThemeVariants();
 Application.Current.Styles.Add(citrusTheme);
 Application.Current.SetValue(Application.RequestedThemeVariantProperty, list[list.Count-1]);
+```
+
+A custom dark palette should inherit `ThemeVariant.Dark` like the built-in dark palettes, otherwise windows keep a light native title bar:
+
+```cs
+citrusTheme.RegisterThemeVariant(new CitrusThemeVariantData(
+    "CustomDarkPalette", new Uri("avares://MyApp/Palette/CustomDarkPalette.xaml"), ThemeVariant.Dark));
 ```
 
 
