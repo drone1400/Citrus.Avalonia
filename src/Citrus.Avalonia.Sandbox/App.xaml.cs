@@ -94,8 +94,7 @@ namespace Citrus.Avalonia.Sandbox
             if (this.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktopLifetime)
             {
                 this._mainWindowViewModel = new MainWindowViewModel();
-                ThemeVariant actualVariant = this.GetValue(Application.ActualThemeVariantProperty);
-                this._mainWindowViewModel.Title = $"Sandbox - Citrus Theme - {actualVariant.Key}";
+                this.UpdateTitle();
                 
                 desktopLifetime.MainWindow = new MainWindow() {
                     DataContext = this._mainWindowViewModel,
@@ -113,10 +112,20 @@ namespace Citrus.Avalonia.Sandbox
                 this.SetValue(Application.RequestedThemeVariantProperty, variant);
             }
 
-            ThemeVariant actualVariant = this.GetValue(Application.ActualThemeVariantProperty);
-            
+            this.UpdateTitle();
+        }
+
+        private void UpdateTitle() {
             if (this._mainWindowViewModel == null) return;
-            this._mainWindowViewModel.Title = $"Sandbox - Citrus Theme - {actualVariant.Key}";
+
+            string themeName = "Citrus";
+            if (ReferenceEquals(this._currentThemeObj, this._fluentTheme)) {
+                themeName = "Fluent";
+            } else if (ReferenceEquals(this._currentThemeObj, this._simpleTheme)) {
+                themeName = "Simple";
+            }
+            ThemeVariant actualVariant = this.GetValue(Application.ActualThemeVariantProperty);
+            this._mainWindowViewModel.Title = $"Sandbox - {themeName} Theme - {actualVariant.Key}";
         }
 
         public IList<ThemeVariant> GetThemeVariants() {
@@ -167,7 +176,6 @@ namespace Citrus.Avalonia.Sandbox
                 if (actualVariant.Key.ToString() != "Light" && actualVariant.Key.ToString() != "Dark") {
                     this.SetThemeVariant(ThemeVariant.Default);
                 }
-                this._mainWindowViewModel.Title = $"Sandbox - Fluent Theme - {actualVariant.Key}";
             } else if (ReferenceEquals(this._currentThemeObj, this._fluentTheme) && this._simpleTheme != null && this._resDataGridSimple != null) {
                 this._styles[0] = this._simpleTheme;
                 this._styles[1] = this._resDataGridSimple;
@@ -175,13 +183,12 @@ namespace Citrus.Avalonia.Sandbox
                 if (actualVariant.Key.ToString() != "Light" && actualVariant.Key.ToString() != "Dark") {
                     this.SetThemeVariant(ThemeVariant.Default);
                 }
-                this._mainWindowViewModel.Title = $"Sandbox - Simple Theme - {actualVariant.Key}";
             } else if (this._citrusTheme != null && this._resDataGridCitrus != null) {
                 this._styles[0] = this._citrusTheme;
                 this._styles[1] = this._resDataGridCitrus;
                 this._currentThemeObj = this._citrusTheme;
-                this._mainWindowViewModel.Title = $"Sandbox - Citrus Theme - {actualVariant.Key}";
             }
+            this.UpdateTitle();
 
             if (this.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktopLifetime) {
                 Window? oldWindow = desktopLifetime.MainWindow;
