@@ -49,6 +49,7 @@
                     <Label Classes="Heading"
                            Content="{Binding #listBox.SelectedItem.Key}" />
 
+                    <TextBlock Text="Plain TextBlock, uses the selected palette's foreground" />
                     <Button Content="Button 1" />
                     <Button Content="Button 2" Classes="Primary" />
                     <CheckBox IsChecked="False" Content="A checkbox" />

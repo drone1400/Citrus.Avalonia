@@ -20,11 +20,11 @@ Carousel
         DatePicker
         DateTimePickerShared
 DropDownButton
-EmbeddableControlRoot
+        EmbeddableControlRoot
         Expander
         FlyoutPresenter
         GridSplitter
-HeaderedContentControl
+        HeaderedContentControl
 HyperlinkButton
         ItemsControl
         Label
@@ -38,7 +38,7 @@ HyperlinkButton
 NotificationCard
         NumericUpDown
         OverlayPopupHost
-PathIcon
+        PathIcon
         PopupRoot
         ProgressBar
         RadioButton
@@ -47,7 +47,7 @@ RefreshVisualizer
         RepeatButton
         ScrollBar
         ScrollViewer
-SelectableTextBlock
+        SelectableTextBlock
         Separator
         Slider
 SplitButton
@@ -57,14 +57,14 @@ SplitView
         TabStrip
         TabStripItem
         TextBox
-TextSelectionHandle
-ThemeVariantScope
+        TextSelectionHandle
+        ThemeVariantScope
         TimePicker
         TitleBar
         ToggleButton
 ToggleSwitch
         ToolTip
-TransitioningContentControl
+        TransitioningContentControl
         TreeView
         TreeViewItem
         Window

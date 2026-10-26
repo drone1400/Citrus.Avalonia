@@ -1,0 +1,25 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <SelectableTextBlock Text="Preview" />
+    </Design.PreviewWith>
+
+    <MenuFlyout x:Key="SelectableTextBlockContextFlyout" Placement="Bottom">
+        <MenuItem x:Name="SelectableTextBlockContextFlyoutCopyItem" Header="{DynamicResource StringTextFlyoutCopyText}" Command="{Binding $parent[SelectableTextBlock].Copy}"
+                  IsEnabled="{Binding $parent[SelectableTextBlock].CanCopy}" InputGesture="{x:Static TextBox.CopyGesture}" />
+    </MenuFlyout>
+
+    <ControlTheme x:Key="{x:Type SelectableTextBlock}"
+                  TargetType="SelectableTextBlock">
+        <!-- NOTE: same as the TextBlock theme, foreground, font size and family are inherited -->
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource HighlightBrush}" />
+        <!-- same selection colors as the TextBox theme -->
+        <Setter Property="SelectionForegroundBrush" Value="{DynamicResource HighlightForegroundBrush}" />
+
+        <Style Selector="^[IsEnabled=True]">
+            <Setter Property="Cursor" Value="IBeam" />
+            <Setter Property="ContextFlyout" Value="{StaticResource SelectableTextBlockContextFlyout}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

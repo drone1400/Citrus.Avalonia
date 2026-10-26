@@ -39,6 +39,33 @@
                 
                 <Separator />
                 
+                <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">
+                    <StackPanel Grid.Row="0" Grid.Column="0" Spacing="10">
+                        <Label Classes="Heading" Content="PathIcon"/>
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <PathIcon Data="M 2,12 L 9,19 L 22,6 L 19,3 L 9,13 L 5,9 Z" />
+                            <PathIcon Data="M 12,2 L 22,22 L 2,22 Z"
+                                      Foreground="{DynamicResource ThemeAccentBrush}" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="0" Grid.Column="1" Spacing="10">
+                        <Label Classes="Heading" Content="SelectableTextBlock"/>
+                        <SelectableTextBlock Text="Select and copy this text"
+                                             SelectionStart="0" SelectionEnd="6" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Grid.Column="0" Spacing="10">
+                        <Label Classes="Heading" Content="HeaderedContentControl"/>
+                        <HeaderedContentControl Header="Header" Content="Content" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Grid.Column="1" Spacing="10">
+                        <Label Classes="Heading" Content="TransitioningContentControl"/>
+                        <TransitioningContentControl Content="Content" />
+                    </StackPanel>
+                </Grid>
+
             </StackPanel>
         </Border>
         
