@@ -1,8 +1,8 @@
 // NOTE - items that are tabbed are more or less done, rest need to be implemented....
-// NOTE: should also implement DataGrid at some point soon...
+// NOTE: the DataGrid themes are in the Citrus.Avalonia.DataGrid project
 
         AdornerLayer
-AutoCompleteBox
+        AutoCompleteBox
         Button
         ButtonSpinner
         Calendar
@@ -16,14 +16,14 @@ Carousel
         ComboBox
         ComboBoxItem
         ContextMenu
-        DataValidatioNErrors
+        DataValidationErrors
         DatePicker
         DateTimePickerShared
 DropDownButton
 EmbeddableControlRoot
         Expander
         FlyoutPresenter
-GridSplitter
+        GridSplitter
 HeaderedContentControl
 HyperlinkButton
         ItemsControl

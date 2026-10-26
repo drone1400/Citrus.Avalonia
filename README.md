@@ -46,7 +46,7 @@ The texts used by the controls (TextBox context menu, DatePicker/TimePicker plac
 
 Now implements ThemeVariants! The default Light theme is Citrus, the default Dark theme is Sea, and the Default fallback is also Citrus.
 
-This means you can use `RequestedThemeVariant="Default"` in your application and Citrus will use the  Light or Dark variant automagically.
+This means you can use `RequestedThemeVariant="Default"` in your application and Citrus will use the Light or Dark variant automagically.
 
 Built-in palettes (see `CitrusDefaultPalettes`): Citrus, Candy, Magma, Lime, Grapefruit and Orange are light, Rust, Sea, DarkLime, DarkGrapefruit and DarkOrange are dark. Each one is registered as a ThemeVariant with the same name.
 
@@ -99,7 +99,7 @@ Application.Current.Styles.Add(citrusTheme);
 
 ### Using a custom ThemeVariant
 
-Other than the `Default`, `Light`, `Dark` ThemeVariants, you can of course use a custom ThemeVariant. the `CitrusTheme` object has some helper properties to facilitate this. 
+Other than the `Default`, `Light`, `Dark` ThemeVariants, you can of course use a custom ThemeVariant. The `CitrusTheme` object has some helper properties to facilitate this. 
 
 You can use the `RegisterThemeVariant` method to register a custom ThemeVariant with the `CitrusTheme` style object. This effectively adds the ThemeVariant to the `CitrusTheme` style object's ThemeDictionaries.
 
@@ -121,7 +121,7 @@ Application.Current.SetValue(Application.RequestedThemeVariantProperty, list[lis
 ```cs
 CitrusTheme citrusTheme = new CitrusTheme();
 Uri uri = new Uri("avares://Citrus.Avalonia.Sandbox/Palette/CustomPalette.xaml");
-_citrusTheme.DesiredLightThemeVariant = new ResourceInclude(uri) { Source = uri };
+citrusTheme.DesiredLightThemeVariant = new ResourceInclude(uri) { Source = uri };
 Application.Current.Styles.Add(citrusTheme);
 ```
 

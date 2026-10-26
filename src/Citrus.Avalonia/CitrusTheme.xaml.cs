@@ -127,7 +127,7 @@ public class CitrusTheme : Styles {
     /// <summary>
     /// Gets a list of all the currently registered Palettes
     /// </summary>
-    /// <returns>List of <see cref="CitrusThemeVariantData"/></returns>
+    /// <returns>List of the registered <see cref="ThemeVariant"/> keys</returns>
     public List<ThemeVariant> GetRegisteredThemeVariants() {
         List<ThemeVariant> palettes = new List<ThemeVariant>();
         foreach (var palette in this._palettes) {
