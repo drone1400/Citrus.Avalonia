@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Chrome;
+using Avalonia.Controls.Embedding;
 using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Templates;
 using Avalonia.Dialogs;
@@ -77,6 +78,7 @@ internal sealed class SandboxAudit {
         this.CheckTabs(window);
         this.CheckThemeVariants(app, window, variants);
         this.CheckRuntimePaletteSwitch(app, window);
+        this.CheckThemeVariantScope(app);
         this.CheckEditableComboBox();
         this.CheckManagedFileChooser();
         this.CheckAccessKeys();
@@ -133,6 +135,13 @@ internal sealed class SandboxAudit {
             typeof(TitleBar),
             typeof(CaptionButtons),
             typeof(ManagedFileChooser),
+            typeof(EmbeddableControlRoot),
+            typeof(HeaderedContentControl),
+            typeof(PathIcon),
+            typeof(SelectableTextBlock),
+            typeof(TextSelectionHandle),
+            typeof(ThemeVariantScope),
+            typeof(TransitioningContentControl),
         };
         foreach (Type type in required) {
             bool found = window.TryFindResource(type, out object? theme) && theme is ControlTheme;
@@ -501,6 +510,29 @@ internal sealed class SandboxAudit {
         app.SetDesiredDarkThemeSea();
         app.SetThemeVariant(ThemeVariant.Default);
         Pump();
+    }
+
+    /// <summary>
+    /// Plain text inside a ThemeVariantScope must use the scope's palette, not the foreground inherited from outside
+    /// </summary>
+    private void CheckThemeVariantScope(App app) {
+        this._sink.Phase = "theme-variant-scope";
+        ThemeVariant rust = app.GetThemeVariants().First(v => Equals(v.Key, CitrusDefaultPalettes.Rust.ToString()));
+        TextBlock text = new TextBlock { Text = "Plain TextBlock in a Rust ThemeVariantScope" };
+        Border background = new Border { Padding = new Thickness(10), Child = text };
+        background.Bind(Border.BackgroundProperty, background.GetResourceObservable("ThemeBackgroundBrush"));
+        ThemeVariantScope scope = new ThemeVariantScope { RequestedThemeVariant = rust, Child = background };
+        Window host = new Window { Width = 400, Height = 100, Content = scope };
+        host.Show();
+        Pump();
+        Color? expected = scope.TryFindResource("ThemeForegroundBrush", scope.ActualThemeVariant, out object? value)
+            ? (value as ISolidColorBrush)?.Color
+            : null;
+        Color? actual = (text.Foreground as ISolidColorBrush)?.Color;
+        this._report.Check(expected != null && actual == expected,
+            $"ThemeVariantScope: plain text uses the scope's ThemeForegroundBrush (expected {expected}, got {actual})");
+        this.SaveScreenshot(host, "theme_variant_scope");
+        host.Close();
     }
 
     // ---------------------------------------------------------------- standalone controls
