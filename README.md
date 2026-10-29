@@ -165,11 +165,30 @@ dotnet run --project Citrus.Avalonia.Audit -c Release -- --compare <output folde
 - <a href="https://github.com/reactiveui/reactiveui.validation">ReactiveUI.Validation</a> for `INotifyDataErrorInfo` validations
 - <a href="https://www.jetbrains.com/rider/">JetBrains Rider</a> cross-platform C# IDE
 
-### Example pictures
+### Screenshots
 
-|                         |                       |
-|-------------------------|-----------------------|
-| ![](doc/picture1.png)   | ![](doc/picture2.png) |
-| ![](doc/picture3.png)   | ![](doc/picture4.png) |
-| ![](doc/picture5.png)   | ![](doc/picture6.png) |
-| ![](doc/picture7.png)   | ![](doc/picture8.png) |
+These are screenshots of the `Citrus.Avalonia.Sandbox` taken by the audit tool. To update them, run the audit and copy its `tab*.png` files (except the disabled page) and the `variant_*.png` files of the built-in palettes into `doc/`.
+
+#### Sandbox tabs
+
+|  |  |
+|--|--|
+| **Common Controls**<br>![](doc/tab00_Common_Controls.png) | **Spinner Controls**<br>![](doc/tab01_Spinner_Controls.png) |
+| **Text Controls**<br>![](doc/tab02_Text_Controls.png) | **Slider and Progress**<br>![](doc/tab03_Slider_and_Progress.png) |
+| **Lists and Trees**<br>![](doc/tab04_Lists_and_Trees.png) | **Expanders**<br>![](doc/tab05_Expanders.png) |
+| **Misc**<br>![](doc/tab06_Misc.png) | **Date/Time Controls**<br>![](doc/tab07_Date_Time_Controls.png) |
+| **Data Grid**<br>![](doc/tab08_Data_Grid.png) | **Theme Variants**<br>![](doc/tab09_Theme_Variants.png) |
+| **More Controls**<br>![](doc/tab10_More_Controls.png) |  |
+
+#### Palettes
+
+The Common Controls tab in each built-in palette.
+
+|  |  |
+|--|--|
+| **Citrus** (light, the default Light)<br>![](doc/variant_Citrus.png) | **Candy** (light)<br>![](doc/variant_Candy.png) |
+| **Magma** (light)<br>![](doc/variant_Magma.png) | **Lime** (light)<br>![](doc/variant_Lime.png) |
+| **Grapefruit** (light)<br>![](doc/variant_Grapefruit.png) | **Orange** (light)<br>![](doc/variant_Orange.png) |
+| **Rust** (dark)<br>![](doc/variant_Rust.png) | **Sea** (dark, the default Dark)<br>![](doc/variant_Sea.png) |
+| **DarkLime** (dark)<br>![](doc/variant_DarkLime.png) | **DarkGrapefruit** (dark)<br>![](doc/variant_DarkGrapefruit.png) |
+| **DarkOrange** (dark)<br>![](doc/variant_DarkOrange.png) |  |
