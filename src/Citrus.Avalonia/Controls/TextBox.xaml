@@ -50,6 +50,11 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
+        <!-- only shown inside a TextBox, which already fades when disabled -->
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="1" />
+        </Style>
     </ControlTheme>
 
     <ControlTheme x:Key="SimplePasswordBoxRevealButtonTheme"
@@ -104,6 +109,11 @@
         </Style>
         <Style Selector="^:checked /template/ Path#PART_GlyphElement_Reveal">
             <Setter Property="IsVisible" Value="False" />
+        </Style>
+
+        <!-- only shown inside a TextBox, which already fades when disabled -->
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="1" />
         </Style>
     </ControlTheme>
 
@@ -283,6 +293,10 @@
         </Style>
         <Style Selector="^:focus /template/ Border#PART_BorderElement">
             <Setter Property="Background" Value="Transparent" />
+        </Style>
+        <!-- the ComboBox already fades when disabled -->
+        <Style Selector="^:disabled /template/ Border#PART_BorderElement">
+            <Setter Property="Opacity" Value="1" />
         </Style>
     </ControlTheme>
 </ResourceDictionary>

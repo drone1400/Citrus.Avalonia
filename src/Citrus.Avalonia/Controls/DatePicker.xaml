@@ -110,9 +110,7 @@
         <Style Selector="^/template/ Button#PART_FlyoutButton:pressed">
             <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
         </Style>
-        <Style Selector="^:disabled">
-            <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
-        </Style>
+        <!-- NOTE: when disabled, PART_FlyoutButton fades itself like any Button, the validation message stays readable -->
         <Style Selector="^:error">
             <Setter Property="BorderBrush" Value="{DynamicResource ErrorBrush}" />
         </Style>

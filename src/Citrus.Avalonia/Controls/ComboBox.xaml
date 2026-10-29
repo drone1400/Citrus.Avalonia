@@ -127,6 +127,10 @@
         <Style Selector="^:disabled /template/ Border#border">
             <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
         </Style>
+        <!-- the border above fades the drop down button too, it must not fade a second time -->
+        <Style Selector="^:disabled /template/ ToggleButton#PART_ToggleButton">
+            <Setter Property="Opacity" Value="1" />
+        </Style>
 
         <Style Selector="^[IsEditable=true]">
             <Setter Property="IsTabStop" Value="False" />

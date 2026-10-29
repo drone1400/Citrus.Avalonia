@@ -13,4 +13,9 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Styles.Resources>
+
+    <!-- a disabled DataGrid fades as a whole, the CheckBox of a DataGridCheckBoxColumn must not fade a second time -->
+    <Style Selector="DataGrid:disabled DataGridCell CheckBox">
+        <Setter Property="Opacity" Value="1" />
+    </Style>
 </Styles>
