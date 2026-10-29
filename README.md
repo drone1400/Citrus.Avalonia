@@ -42,7 +42,7 @@ git submodule add https://github.com/drone1400/Citrus.Avalonia ./citrus
 
 ```
 
-The texts used by the controls (TextBox context menu, DatePicker/TimePicker placeholders, managed file dialog) use the same resource keys as Avalonia's own themes, for example `StringTextFlyoutCutText` or `StringDatePickerDayText`. Define them in your application resources to localize them.
+The texts used by the controls (TextBox context menu, DatePicker/TimePicker placeholders, managed file dialog) use the same resource keys as Avalonia's own themes, for example `StringTextFlyoutCutText` or `StringDatePickerDayText`. Define them in your application resources to localize them. The tooltips of the TextBox reveal password button use Citrus's own keys, `StringTextBoxShowPasswordText` and `StringTextBoxHidePasswordText`, because Avalonia's themes have no keys for them.
 
 ### Theme Variants
 

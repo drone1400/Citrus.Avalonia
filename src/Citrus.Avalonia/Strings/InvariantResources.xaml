@@ -29,4 +29,10 @@
     <x:String x:Key="StringManagedFileChooserOverwritePromptFileAlreadyExistsText">{0} already exists. Do you want to replace it?</x:String>
     <x:String x:Key="StringManagedFileChooserOverwritePromptConfirmText">Yes</x:String>
     <x:String x:Key="StringManagedFileChooserOverwritePromptCancelText">No</x:String>
+
+    <!-- Citrus only, Avalonia's themes have no keys for these texts -->
+
+    <!-- TextBox reveal password button tooltips (RevealPasswordButton class) -->
+    <x:String x:Key="StringTextBoxShowPasswordText">Show Password</x:String>
+    <x:String x:Key="StringTextBoxHidePasswordText">Hide Password</x:String>
 </ResourceDictionary>

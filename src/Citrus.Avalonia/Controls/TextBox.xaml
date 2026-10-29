@@ -256,8 +256,7 @@
                             <Style Selector="ToggleButton[IsChecked=True]">
                                 <Setter Property="(ToolTip.Tip)">
                                     <Template>
-                                        <!-- TODO localize the tooltips... -->
-                                        <TextBlock  Text="Hide Password" 
+                                        <TextBlock  Text="{DynamicResource StringTextBoxHidePasswordText}" 
                                                     Foreground="{DynamicResource ThemeForegroundBrush}"/>
                                     </Template>
                                 </Setter>
@@ -265,8 +264,7 @@
                             <Style Selector="ToggleButton[IsChecked=False]">
                                 <Setter Property="(ToolTip.Tip)">
                                     <Template>
-                                        <!-- TODO localize the tooltips... -->
-                                        <TextBlock  Text="Show Password" 
+                                        <TextBlock  Text="{DynamicResource StringTextBoxShowPasswordText}" 
                                                     Foreground="{DynamicResource ThemeForegroundBrush}"/>
                                     </Template>
                                 </Setter>
