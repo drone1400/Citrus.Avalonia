@@ -131,6 +131,17 @@
                                         FirstDayOfWeek="Monday" />
                 </Grid>
 
+                <!-- the days outside the range are disabled, and so are the previous/next buttons at its ends -->
+                <Grid ColumnDefinitions="*,10,*"
+                      RowDefinitions="Auto,Auto">
+                    <Label Grid.Row="0" Grid.Column="0" Content="Range: 10 - 24 April 2025" />
+                    <Calendar Grid.Row="1" Grid.Column="0"
+                              FirstDayOfWeek="Monday"
+                              DisplayDateStart="2025-04-10"
+                              DisplayDateEnd="2025-04-24"
+                              SelectedDate="2025-04-18" />
+                </Grid>
+
             </StackPanel>
         </Border>
     </Grid>
