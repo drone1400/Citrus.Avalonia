@@ -1,0 +1,156 @@
+﻿<UserControl x:Class="Citrus.Avalonia.Sandbox.Views.MoreControls"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:Citrus.Avalonia.Sandbox.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             Background="{DynamicResource ThemeBackgroundBrush}">
+
+    <Design.DesignStyle>
+        <SimpleTheme />
+    </Design.DesignStyle>
+
+    <Design.DataContext>
+        <viewModels:MainWindowViewModel />
+    </Design.DataContext>
+
+    <Grid ColumnDefinitions="*,*">
+        <Border Classes="Card" Grid.Column="0">
+            <StackPanel Spacing="10">
+                <!-- ToggleSwitch -->
+                <Label Classes="Heading" Content="ToggleSwitch"/>
+                <Grid ColumnDefinitions="*,*,*">
+                    <ToggleSwitch Grid.Column="0"
+                                  Content="Unchecked" />
+                    <ToggleSwitch Grid.Column="1"
+                                  IsChecked="True"
+                                  Content="Checked" />
+                    <ToggleSwitch Grid.Column="2"
+                                  Classes="Primary"
+                                  IsChecked="True"
+                                  Content="Checked Primary" />
+                </Grid>
+                <Grid ColumnDefinitions="*,*,*">
+                    <ToggleSwitch Grid.Column="0"
+                                  IsEnabled="False"
+                                  Content="Disabled" />
+                    <ToggleSwitch Grid.Column="1"
+                                  IsEnabled="False"
+                                  IsChecked="True"
+                                  Content="Disabled" />
+                    <ToggleSwitch Grid.Column="2"
+                                  IsEnabled="False"
+                                  Classes="Primary"
+                                  IsChecked="True"
+                                  Content="Disabled" />
+                </Grid>
+
+                <!-- DropDownButton -->
+                <Label Classes="Heading" Content="DropDownButton"/>
+                <Grid ColumnDefinitions="*,10,*,10,*">
+                    <DropDownButton Grid.Column="0"
+                                    Content="DropDownButton">
+                        <DropDownButton.Flyout>
+                            <MenuFlyout>
+                                <MenuItem Header="Option 1"/>
+                                <MenuItem Header="Option 2"/>
+                                <MenuItem Header="Option 3"/>
+                            </MenuFlyout>
+                        </DropDownButton.Flyout>
+                    </DropDownButton>
+                    <DropDownButton Grid.Column="2"
+                                    Classes="Primary"
+                                    Content="Primary">
+                        <DropDownButton.Flyout>
+                            <MenuFlyout>
+                                <MenuItem Header="Option 1"/>
+                                <MenuItem Header="Option 2"/>
+                                <MenuItem Header="Option 3"/>
+                            </MenuFlyout>
+                        </DropDownButton.Flyout>
+                    </DropDownButton>
+                    <DropDownButton Grid.Column="4"
+                                    IsEnabled="False"
+                                    Content="Disabled" />
+                </Grid>
+
+                <!-- SplitButton -->
+                <Label Classes="Heading" Content="SplitButton and ToggleSplitButton"/>
+                <Grid ColumnDefinitions="*,10,*,10,*">
+                    <SplitButton Grid.Column="0"
+                                 Content="SplitButton">
+                        <SplitButton.Flyout>
+                            <MenuFlyout>
+                                <MenuItem Header="Option 1"/>
+                                <MenuItem Header="Option 2"/>
+                                <MenuItem Header="Option 3"/>
+                            </MenuFlyout>
+                        </SplitButton.Flyout>
+                    </SplitButton>
+                    <SplitButton Grid.Column="2"
+                                 Classes="Primary"
+                                 Content="Primary">
+                        <SplitButton.Flyout>
+                            <MenuFlyout>
+                                <MenuItem Header="Option 1"/>
+                                <MenuItem Header="Option 2"/>
+                                <MenuItem Header="Option 3"/>
+                            </MenuFlyout>
+                        </SplitButton.Flyout>
+                    </SplitButton>
+                    <SplitButton Grid.Column="4"
+                                 IsEnabled="False"
+                                 Content="Disabled" />
+                </Grid>
+                <Grid ColumnDefinitions="*,10,*,10,*">
+                    <ToggleSplitButton Grid.Column="0"
+                                       Content="Unchecked">
+                        <ToggleSplitButton.Flyout>
+                            <MenuFlyout>
+                                <MenuItem Header="Option 1"/>
+                                <MenuItem Header="Option 2"/>
+                            </MenuFlyout>
+                        </ToggleSplitButton.Flyout>
+                    </ToggleSplitButton>
+                    <ToggleSplitButton Grid.Column="2"
+                                       IsChecked="True"
+                                       Content="Checked">
+                        <ToggleSplitButton.Flyout>
+                            <MenuFlyout>
+                                <MenuItem Header="Option 1"/>
+                                <MenuItem Header="Option 2"/>
+                            </MenuFlyout>
+                        </ToggleSplitButton.Flyout>
+                    </ToggleSplitButton>
+                    <ToggleSplitButton Grid.Column="4"
+                                       Classes="Primary"
+                                       IsChecked="True"
+                                       Content="Checked Primary">
+                        <ToggleSplitButton.Flyout>
+                            <MenuFlyout>
+                                <MenuItem Header="Option 1"/>
+                                <MenuItem Header="Option 2"/>
+                            </MenuFlyout>
+                        </ToggleSplitButton.Flyout>
+                    </ToggleSplitButton>
+                </Grid>
+
+                <!-- HyperlinkButton -->
+                <Label Classes="Heading" Content="HyperlinkButton"/>
+                <Grid ColumnDefinitions="*,*,*">
+                    <HyperlinkButton Grid.Column="0"
+                                     NavigateUri="https://github.com/drone1400/Citrus.Avalonia"
+                                     Content="Citrus.Avalonia on GitHub" />
+                    <HyperlinkButton Grid.Column="1"
+                                     NavigateUri="https://github.com/drone1400/Citrus.Avalonia"
+                                     IsVisited="True"
+                                     Content="Visited link" />
+                    <HyperlinkButton Grid.Column="2"
+                                     IsEnabled="False"
+                                     Content="Disabled link" />
+                </Grid>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,62 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20" Width="300">
+            <StackPanel Spacing="20">
+                <DropDownButton Content="Sample" />
+
+                <DropDownButton Content="Sample"
+                                Classes="Primary" />
+
+                <DropDownButton Content="Sample"
+                                IsEnabled="False" />
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- NOTE: based on the Button theme, so it has the same colors, Primary class and disabled look -->
+    <ControlTheme x:Key="{x:Type DropDownButton}"
+                  TargetType="DropDownButton"
+                  BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Name="RootBorder"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <ContentPresenter Name="PART_ContentPresenter"
+                                          Grid.Column="0"
+                                          Padding="{TemplateBinding Padding}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          TextElement.Foreground="{TemplateBinding Foreground}" />
+
+                        <!-- same arrow as the ComboBox -->
+                        <Path Name="DropDownGlyph"
+                              Grid.Column="1"
+                              Width="8"
+                              Height="4"
+                              Margin="0,0,10,0"
+                              HorizontalAlignment="Right"
+                              VerticalAlignment="Center"
+                              Data="F1 M 301.14,-189.041L 311.57,-189.041L 306.355,-182.942L 301.14,-189.041 Z"
+                              Fill="{TemplateBinding Foreground}"
+                              IsHitTestVisible="False"
+                              Stretch="Uniform" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^:flyout-open">
+            <Setter Property="Background" Value="{DynamicResource HighlightHoverBrush}" />
+        </Style>
+        <Style Selector="^.Primary:flyout-open">
+            <Setter Property="Background" Value="{DynamicResource ThemeAccentHoverBrush}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

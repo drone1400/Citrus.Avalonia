@@ -119,6 +119,9 @@
             <TabItem Header="Theme Variants">
                 <views:ThemeVariants/>
             </TabItem>
+            <TabItem Header="More Controls">
+                <views:MoreControls />
+            </TabItem>
             <TabItem Header="Disabled page" IsEnabled="False">
             </TabItem>
         </TabControl>

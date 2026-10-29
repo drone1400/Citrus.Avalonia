@@ -1,0 +1,159 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20" Width="300">
+            <StackPanel Spacing="20">
+                <SplitButton Content="Sample" />
+
+                <SplitButton Content="Sample"
+                             Classes="Primary" />
+
+                <SplitButton Content="Sample"
+                             IsEnabled="False" />
+
+                <ToggleSplitButton Content="Sample (checked)"
+                                   IsChecked="True" />
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- the two parts of the SplitButton, transparent so the SplitButton's own background shows through -->
+    <ControlTheme x:Key="CitrusSplitButtonComponent"
+                  TargetType="Button">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <ContentPresenter Name="PART_ContentPresenter"
+                                  Padding="{TemplateBinding Padding}"
+                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                  Background="{TemplateBinding Background}"
+                                  Content="{TemplateBinding Content}"
+                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                  TextElement.Foreground="{TemplateBinding Foreground}" />
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="RecognizesAccessKey" Value="True" />
+        </Style>
+    </ControlTheme>
+
+    <!-- NOTE: ToggleSplitButton uses this theme too (StyleKeyOverride), while unchecked it looks like a SplitButton -->
+    <ControlTheme x:Key="{x:Type SplitButton}"
+                  TargetType="SplitButton">
+        <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="KeyboardNavigation.IsTabStop" Value="True" />
+        <Setter Property="Focusable" Value="True" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <!-- the border clips the parts' hover backgrounds to the rounded corners -->
+                <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        ClipToBounds="True">
+                    <Grid ColumnDefinitions="*,Auto,Auto">
+                        <Button x:Name="PART_PrimaryButton"
+                                Grid.Column="0"
+                                Theme="{StaticResource CitrusSplitButtonComponent}"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Padding="{TemplateBinding Padding}"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Foreground="{TemplateBinding Foreground}"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                Command="{TemplateBinding Command}"
+                                CommandParameter="{TemplateBinding CommandParameter}"
+                                Focusable="False"
+                                KeyboardNavigation.IsTabStop="False" />
+
+                        <Border x:Name="SeparatorBorder"
+                                Grid.Column="1"
+                                Width="1"
+                                Margin="0,6"
+                                Background="{TemplateBinding Foreground}"
+                                Opacity="0.5" />
+
+                        <Button x:Name="PART_SecondaryButton"
+                                Grid.Column="2"
+                                Theme="{StaticResource CitrusSplitButtonComponent}"
+                                MinWidth="32"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Padding="0"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                Foreground="{TemplateBinding Foreground}"
+                                Focusable="False"
+                                KeyboardNavigation.IsTabStop="False">
+                            <!-- same arrow as the ComboBox -->
+                            <Path Width="8"
+                                  Height="4"
+                                  Data="F1 M 301.14,-189.041L 311.57,-189.041L 306.355,-182.942L 301.14,-189.041 Z"
+                                  Fill="{TemplateBinding Foreground}"
+                                  Stretch="Uniform" />
+                        </Button>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!-- hover and open flyout, painted on the part under the pointer -->
+        <Style Selector="^ /template/ Button:pointerover">
+            <Setter Property="Background" Value="{DynamicResource HighlightHoverBrush}" />
+        </Style>
+        <Style Selector="^:flyout-open /template/ Button#PART_SecondaryButton">
+            <Setter Property="Background" Value="{DynamicResource HighlightHoverBrush}" />
+        </Style>
+
+        <!-- Primary split button -->
+        <Style Selector="^.Primary">
+            <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush}" />
+        </Style>
+        <Style Selector="^.Primary /template/ Button:pointerover">
+            <Setter Property="Background" Value="{DynamicResource ThemeAccentHoverBrush}" />
+        </Style>
+        <Style Selector="^.Primary:flyout-open /template/ Button#PART_SecondaryButton">
+            <Setter Property="Background" Value="{DynamicResource ThemeAccentHoverBrush}" />
+        </Style>
+
+        <!-- checked ToggleSplitButton, swaps the Highlight and Accent colors -->
+        <Style Selector="^:checked">
+            <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush}" />
+        </Style>
+        <Style Selector="^:checked /template/ Button:pointerover">
+            <Setter Property="Background" Value="{DynamicResource ThemeAccentHoverBrush}" />
+        </Style>
+        <Style Selector="^:checked:flyout-open /template/ Button#PART_SecondaryButton">
+            <Setter Property="Background" Value="{DynamicResource ThemeAccentHoverBrush}" />
+        </Style>
+        <Style Selector="^.Primary:checked">
+            <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
+        </Style>
+        <Style Selector="^.Primary:checked /template/ Button:pointerover">
+            <Setter Property="Background" Value="{DynamicResource HighlightHoverBrush}" />
+        </Style>
+        <Style Selector="^.Primary:checked:flyout-open /template/ Button#PART_SecondaryButton">
+            <Setter Property="Background" Value="{DynamicResource HighlightHoverBrush}" />
+        </Style>
+
+        <!-- like the Button theme, a pressed part shows the normal color, this comes after the hover styles to win over them -->
+        <Style Selector="^ /template/ Button:pressed">
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

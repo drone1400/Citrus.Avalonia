@@ -19,13 +19,13 @@ Carousel
         DataValidationErrors
         DatePicker
         DateTimePickerShared
-DropDownButton
+        DropDownButton
         EmbeddableControlRoot
         Expander
         FlyoutPresenter
         GridSplitter
         HeaderedContentControl
-HyperlinkButton
+        HyperlinkButton
         ItemsControl
         Label
         ListBox
@@ -50,7 +50,7 @@ RefreshVisualizer
         SelectableTextBlock
         Separator
         Slider
-SplitButton
+        SplitButton
 SplitView
         TabControl
         TabItem
@@ -62,7 +62,7 @@ SplitView
         TimePicker
         TitleBar
         ToggleButton
-ToggleSwitch
+        ToggleSwitch
         ToolTip
         TransitioningContentControl
         TreeView

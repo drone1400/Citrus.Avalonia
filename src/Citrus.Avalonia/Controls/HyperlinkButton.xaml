@@ -1,0 +1,61 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20" Width="300">
+            <StackPanel Spacing="20">
+                <HyperlinkButton Content="Sample" />
+
+                <HyperlinkButton Content="Sample (visited)"
+                                 IsVisited="True" />
+
+                <HyperlinkButton Content="Sample (disabled)"
+                                 IsEnabled="False" />
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="{x:Type HyperlinkButton}"
+                  TargetType="HyperlinkButton">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BackgroundSizing" Value="OuterBorderEdge" />
+        <!-- same color as the Accent class Label -->
+        <Setter Property="Foreground" Value="{DynamicResource HighlightBrush}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="3" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="TextBlock.TextDecorations" Value="Underline" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <ContentPresenter Name="PART_ContentPresenter"
+                                  Padding="{TemplateBinding Padding}"
+                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                  Background="{TemplateBinding Background}"
+                                  BackgroundSizing="{TemplateBinding BackgroundSizing}"
+                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                  BorderThickness="{TemplateBinding BorderThickness}"
+                                  Content="{TemplateBinding Content}"
+                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                  CornerRadius="{TemplateBinding CornerRadius}"
+                                  TextElement.Foreground="{TemplateBinding Foreground}" />
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="RecognizesAccessKey" Value="True" />
+        </Style>
+
+        <Style Selector="^:pointerover">
+            <Setter Property="Foreground" Value="{DynamicResource HighlightHoverBrush}" />
+        </Style>
+        <Style Selector="^:visited">
+            <Setter Property="Foreground" Value="{DynamicResource HighlightHoverBrush}" />
+        </Style>
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

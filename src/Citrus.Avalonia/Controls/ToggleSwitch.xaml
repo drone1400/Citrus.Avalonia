@@ -1,0 +1,166 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20" Width="300">
+            <StackPanel Spacing="20">
+                <ToggleSwitch Content="Off" />
+
+                <ToggleSwitch Content="On"
+                              IsChecked="True" />
+
+                <ToggleSwitch Content="Primary On"
+                              Classes="Primary"
+                              IsChecked="True" />
+
+                <ToggleSwitch Content="On (disabled)"
+                              IsChecked="True"
+                              IsEnabled="False" />
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <Thickness x:Key="ToggleSwitchTopHeaderMargin">0,0,0,6</Thickness>
+    <GridLength x:Key="ToggleSwitchPreContentMargin">6</GridLength>
+    <GridLength x:Key="ToggleSwitchPostContentMargin">6</GridLength>
+
+    <ControlTheme x:Key="{x:Type ToggleSwitch}"
+                  TargetType="ToggleSwitch">
+        <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="KnobTransitions">
+            <Transitions>
+                <DoubleTransition Easing="CubicEaseOut"
+                                  Property="Canvas.Left"
+                                  Duration="0:0:0.2" />
+            </Transitions>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid Background="{TemplateBinding Background}"
+                      RowDefinitions="Auto,*">
+
+                    <ContentPresenter x:Name="PART_ContentPresenter"
+                                      Grid.Row="0"
+                                      Margin="{DynamicResource ToggleSwitchTopHeaderMargin}"
+                                      VerticalAlignment="Top"
+                                      Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}" />
+
+                    <Grid Grid.Row="1"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="{DynamicResource ToggleSwitchPreContentMargin}" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="{DynamicResource ToggleSwitchPostContentMargin}" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid x:Name="SwitchAreaGrid"
+                              Grid.RowSpan="3"
+                              Grid.ColumnSpan="3"
+                              Margin="0,5"
+                              Background="Transparent"
+                              TemplatedControl.IsTemplateFocusTarget="True" />
+
+                        <ContentPresenter x:Name="PART_OffContentPresenter"
+                                          Grid.RowSpan="3"
+                                          Grid.Column="2"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Content="{TemplateBinding OffContent}"
+                                          ContentTemplate="{TemplateBinding OffContentTemplate}" />
+
+                        <ContentPresenter x:Name="PART_OnContentPresenter"
+                                          Grid.RowSpan="3"
+                                          Grid.Column="2"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Content="{TemplateBinding OnContent}"
+                                          ContentTemplate="{TemplateBinding OnContentTemplate}" />
+
+                        <!-- the track, OffTrack is shown while unchecked and OnTrack while checked -->
+                        <Border x:Name="OffTrack"
+                                Grid.Row="1"
+                                Width="40"
+                                Height="20"
+                                CornerRadius="10"
+                                Background="{DynamicResource ThemeBorderHighBrush}" />
+
+                        <Border x:Name="OnTrack"
+                                Grid.Row="1"
+                                Width="40"
+                                Height="20"
+                                CornerRadius="10"
+                                Background="{DynamicResource HighlightBrush}" />
+
+                        <Canvas x:Name="PART_SwitchKnob"
+                                Grid.Row="1"
+                                Width="20"
+                                Height="20"
+                                HorizontalAlignment="Left">
+                            <Grid x:Name="PART_MovingKnobs"
+                                  Width="20"
+                                  Height="20">
+                                <Ellipse x:Name="SwitchKnob"
+                                         Width="14"
+                                         Height="14"
+                                         Fill="{DynamicResource HighlightForegroundBrush}" />
+                            </Grid>
+                        </Canvas>
+                    </Grid>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="RecognizesAccessKey" Value="True" />
+        </Style>
+        <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter:empty">
+            <Setter Property="Margin" Value="0" />
+        </Style>
+
+        <!-- unchecked -->
+        <Style Selector="^:unchecked /template/ Border#OnTrack">
+            <Setter Property="Opacity" Value="0" />
+        </Style>
+        <Style Selector="^:unchecked /template/ ContentPresenter#PART_OnContentPresenter">
+            <Setter Property="Opacity" Value="0" />
+        </Style>
+        <Style Selector="^:unchecked:pointerover /template/ Border#OffTrack">
+            <Setter Property="Background" Value="{DynamicResource ThemeControlHighlightHighBrush}" />
+        </Style>
+
+        <!-- checked -->
+        <Style Selector="^:checked /template/ Border#OffTrack">
+            <Setter Property="Opacity" Value="0" />
+        </Style>
+        <Style Selector="^:checked /template/ ContentPresenter#PART_OffContentPresenter">
+            <Setter Property="Opacity" Value="0" />
+        </Style>
+        <Style Selector="^:checked:pointerover /template/ Border#OnTrack">
+            <Setter Property="Background" Value="{DynamicResource HighlightHoverBrush}" />
+        </Style>
+
+        <!-- Primary toggle switch -->
+        <Style Selector="^.Primary /template/ Border#OnTrack">
+            <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush}" />
+        </Style>
+        <Style Selector="^.Primary:checked:pointerover /template/ Border#OnTrack">
+            <Setter Property="Background" Value="{DynamicResource ThemeAccentHoverBrush}" />
+        </Style>
+
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

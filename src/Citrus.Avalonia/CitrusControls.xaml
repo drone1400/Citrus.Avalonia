@@ -21,11 +21,13 @@
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/DataValidationErrors.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/DatePicker.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/DateTimePickerShared.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/DropDownButton.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/EmbeddableControlRoot.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Expander.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/FlyoutPresenter.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/GridSplitter.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/HeaderedContentControl.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/HyperlinkButton.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ItemsControl.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Label.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ListBox.xaml" />
@@ -47,6 +49,7 @@
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/SelectableTextBlock.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Separator.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Slider.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/SplitButton.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TabControl.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TabItem.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TabStrip.xaml" />
@@ -58,6 +61,7 @@
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TimePicker.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TitleBar.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ToggleButton.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ToggleSwitch.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ToolTip.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TransitioningContentControl.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TreeView.xaml" />
