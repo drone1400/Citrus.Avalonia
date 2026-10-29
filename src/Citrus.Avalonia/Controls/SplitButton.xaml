@@ -39,7 +39,9 @@
         </Style>
     </ControlTheme>
 
-    <!-- NOTE: ToggleSplitButton uses this theme too (StyleKeyOverride), while unchecked it looks like a SplitButton -->
+    <!-- NOTE: ToggleSplitButton uses this theme too (StyleKeyOverride), while unchecked it looks like a SplitButton.
+         The Primary class is for SplitButton only, a checked ToggleSplitButton already uses the accent color,
+         so a Primary ToggleSplitButton would look checked all the time -->
     <ControlTheme x:Key="{x:Type SplitButton}"
                   TargetType="SplitButton">
         <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
@@ -127,7 +129,7 @@
             <Setter Property="Background" Value="{DynamicResource ThemeAccentHoverBrush}" />
         </Style>
 
-        <!-- checked ToggleSplitButton, swaps the Highlight and Accent colors -->
+        <!-- checked ToggleSplitButton, in the accent color -->
         <Style Selector="^:checked">
             <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush}" />
         </Style>
@@ -136,15 +138,6 @@
         </Style>
         <Style Selector="^:checked:flyout-open /template/ Button#PART_SecondaryButton">
             <Setter Property="Background" Value="{DynamicResource ThemeAccentHoverBrush}" />
-        </Style>
-        <Style Selector="^.Primary:checked">
-            <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
-        </Style>
-        <Style Selector="^.Primary:checked /template/ Button:pointerover">
-            <Setter Property="Background" Value="{DynamicResource HighlightHoverBrush}" />
-        </Style>
-        <Style Selector="^.Primary:checked:flyout-open /template/ Button#PART_SecondaryButton">
-            <Setter Property="Background" Value="{DynamicResource HighlightHoverBrush}" />
         </Style>
 
         <!-- like the Button theme, a pressed part shows the normal color, this comes after the hover styles to win over them -->

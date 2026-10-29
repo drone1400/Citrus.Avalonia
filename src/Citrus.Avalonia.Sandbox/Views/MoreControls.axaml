@@ -114,16 +114,9 @@
                         </ToggleSplitButton.Flyout>
                     </ToggleSplitButton>
                     <ToggleSplitButton Grid.Column="4"
-                                       Classes="Primary"
+                                       IsEnabled="False"
                                        IsChecked="True"
-                                       Content="Checked Primary">
-                        <ToggleSplitButton.Flyout>
-                            <MenuFlyout>
-                                <MenuItem Header="Option 1"/>
-                                <MenuItem Header="Option 2"/>
-                            </MenuFlyout>
-                        </ToggleSplitButton.Flyout>
-                    </ToggleSplitButton>
+                                       Content="Disabled" />
                 </Grid>
 
                 <!-- HyperlinkButton -->
