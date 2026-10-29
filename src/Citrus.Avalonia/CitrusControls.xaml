@@ -76,4 +76,11 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Styles.Resources>
+
+    <!-- a disabled Calendar fades as a whole, so its days must not fade a second time. The CalendarDayButton theme cannot
+         do this itself: the day buttons are created in code without a templated parent, and days outside the date range
+         are disabled too -->
+    <Style Selector="Calendar:disabled CalendarDayButton /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Opacity" Value="1" />
+    </Style>
 </Styles>

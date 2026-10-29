@@ -143,12 +143,6 @@
                             </Grid>
                         </Border>
                     </Border>
-                    <Rectangle Name="DisabledVisual"
-                               Margin="0,2,0,2"
-                               IsVisible="False"
-                               Fill="{DynamicResource ThemeControlLowBrush}"
-                               Opacity="{DynamicResource ThemeDisabledOpacity}"
-                               Stretch="Fill" />
                 </Panel>
             </ControlTemplate>
         </Setter>
@@ -162,8 +156,9 @@
                            Text="{Binding}" />
             </Template>
         </Setter>
-        <Style Selector="^:calendardisabled /template/ Rectangle#DisabledVisual">
-            <Setter Property="IsVisible" Value="True" />
+        <!-- a disabled Calendar fades as a whole, the header buttons fade themselves only at the ends of the date range -->
+        <Style Selector="^:disabled /template/ Button">
+            <Setter Property="Opacity" Value="1" />
         </Style>
     </ControlTheme>
 </ResourceDictionary>

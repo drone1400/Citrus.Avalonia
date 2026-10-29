@@ -37,6 +37,10 @@
                 </StackPanel>
             </ControlTemplate>
         </Setter>
+
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
+        </Style>
     </ControlTheme>
 
 </ResourceDictionary>
