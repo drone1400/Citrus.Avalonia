@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Chrome;
 using Avalonia.Controls.Embedding;
+using Avalonia.Controls.Notifications;
 using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Templates;
 using Avalonia.Dialogs;
@@ -82,6 +85,7 @@ internal sealed class SandboxAudit {
         this.CheckEditableComboBox();
         this.CheckManagedFileChooser();
         this.CheckAccessKeys();
+        this.CheckNotifications();
         this.CheckLogEvents();
 
         window.Close();
@@ -142,6 +146,16 @@ internal sealed class SandboxAudit {
             typeof(TextSelectionHandle),
             typeof(ThemeVariantScope),
             typeof(TransitioningContentControl),
+            typeof(ToggleSwitch),
+            typeof(DropDownButton),
+            typeof(SplitButton),
+            typeof(HyperlinkButton),
+            typeof(SplitView),
+            typeof(Carousel),
+            typeof(NotificationCard),
+            typeof(WindowNotificationManager),
+            typeof(RefreshContainer),
+            typeof(RefreshVisualizer),
         };
         foreach (Type type in required) {
             bool found = window.TryFindResource(type, out object? theme) && theme is ControlTheme;
@@ -264,6 +278,10 @@ internal sealed class SandboxAudit {
         for (int i = 0; i < flyoutButtons.Count; i++) {
             Button button = flyoutButtons[i];
             this.CheckPopup(window, tab, $"ButtonFlyout{i + 1}", () => button.Flyout!.ShowAt(button));
+        }
+        // SplitButton is not a Button, its flyout is opened from the secondary (arrow) part
+        if (visuals.OfType<SplitButton>().FirstOrDefault(b => b.Flyout != null && b.IsEffectivelyEnabled) is { } splitButton) {
+            this.CheckPopup(window, tab, "SplitButtonFlyout", () => splitButton.Flyout!.ShowAt(splitButton));
         }
         if (visuals.OfType<ComboBox>().FirstOrDefault() is { } comboBox) {
             this.CheckPopup(window, tab, "ComboBox", () => comboBox.IsDropDownOpen = true);
@@ -590,21 +608,63 @@ internal sealed class SandboxAudit {
             new Label { Content = "_Label" },
             new TabStrip { ItemsSource = new[] { new TabStripItem { Content = "_TabStripItem" } } },
             new TabControl { ItemsSource = new[] { new TabItem { Header = "_TabItem" } } },
+            new ToggleSwitch { Content = "_ToggleSwitch" },
+            new DropDownButton { Content = "_DropDownButton" },
+            new SplitButton { Content = "_SplitButton" },
+            new HyperlinkButton { Content = "_HyperlinkButton" },
         };
         StackPanel panel = new StackPanel();
         panel.Children.AddRange(controls);
         Window host = new Window { Width = 300, Height = 500, Content = panel };
-        host.Show();
-        Pump();
-        List<string> missing = controls
-            .Where(c => !c.GetVisualDescendants().OfType<AccessText>().Any())
-            .Select(c => c.GetType().Name)
-            .ToList();
-        this._report.Check(missing.Count == 0,
-            $"Access keys are recognized in {controls.Length} control types" +
-            (missing.Count > 0 ? $" (missing in: {string.Join(", ", missing)})" : ""));
-        this.SaveScreenshot(host, "access_keys");
-        host.Close();
+        // a control without a theme can throw while it is laid out (ToggleSwitch requires PART_MovingKnobs)
+        try {
+            host.Show();
+            Pump();
+            List<string> missing = controls
+                .Where(c => !c.GetVisualDescendants().OfType<AccessText>().Any())
+                .Select(c => c.GetType().Name)
+                .ToList();
+            this._report.Check(missing.Count == 0,
+                $"Access keys are recognized in {controls.Length} control types" +
+                (missing.Count > 0 ? $" (missing in: {string.Join(", ", missing)})" : ""));
+            this.SaveScreenshot(host, "access_keys");
+        } catch (Exception ex) {
+            this._report.Fail($"Access keys: {ex.GetType().Name}: {ex.Message}");
+        } finally {
+            host.Close();
+        }
+    }
+
+    /// <summary>
+    /// One notification of every type, shown through a WindowNotificationManager in the window's adorner layer
+    /// </summary>
+    private void CheckNotifications() {
+        this._sink.Phase = "notifications";
+        Window host = new Window { Width = 400, Height = 700 };
+        try {
+            host.Show();
+            Pump();
+            WindowNotificationManager manager = new WindowNotificationManager(host) {
+                Position = NotificationPosition.TopLeft,
+                MaxItems = 4,
+            };
+            Pump();
+            NotificationType[] types = Enum.GetValues<NotificationType>();
+            foreach (NotificationType type in types) {
+                manager.Show(new Notification(type.ToString(), $"A notification of type {type}", type));
+            }
+            // the cards fade in with an animation, wait until it has finished so the screenshot is stable
+            Settle(TimeSpan.FromMilliseconds(600));
+            List<NotificationCard> cards = host.GetVisualDescendants().OfType<NotificationCard>().ToList();
+            int rendered = cards.Count(c => c.Template != null && c.Bounds.Width > 0 && c.Bounds.Height > 0 && c.Background is ISolidColorBrush);
+            this._report.Check(manager.Template != null && rendered == types.Length,
+                $"WindowNotificationManager shows a rendered card for each of the {types.Length} notification types ({rendered} rendered)");
+            this.SaveScreenshot(host, "notifications");
+        } catch (Exception ex) {
+            this._report.Fail($"Notifications: {ex.GetType().Name}: {ex.Message}");
+        } finally {
+            host.Close();
+        }
     }
 
     private void CheckLogEvents() {
@@ -626,6 +686,17 @@ internal sealed class SandboxAudit {
             AvaloniaHeadlessPlatform.ForceRenderTimerTick();
         }
         Dispatcher.UIThread.RunJobs();
+    }
+
+    /// <summary>
+    /// The headless render clock runs in real time, so animations and transitions need real time to finish
+    /// </summary>
+    private static void Settle(TimeSpan duration) {
+        Stopwatch stopwatch = Stopwatch.StartNew();
+        while (stopwatch.Elapsed < duration) {
+            Thread.Sleep(20);
+            Pump();
+        }
     }
 
     private void SaveScreenshot(TopLevel topLevel, string name) {
