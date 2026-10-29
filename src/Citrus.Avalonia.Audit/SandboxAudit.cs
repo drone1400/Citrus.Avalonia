@@ -289,16 +289,17 @@ internal sealed class SandboxAudit {
             // watermarks are faded on purpose, with TextControlPlaceholderOpacity
             if (string.IsNullOrWhiteSpace(text) || content.IsEffectivelyEnabled || !content.IsEffectivelyVisible || content.Name == "PART_Watermark") continue;
             List<Visual> chain = content.GetSelfAndVisualAncestors().TakeWhile(v => v is not TopLevel).ToList();
-            // the Calendar covers itself with a disabled overlay instead, and validation messages are not part of the control
-            if (chain.Any(v => v is Calendar) || IsValidationMessage(chain)) continue;
+            // validation messages are not part of the control
+            if (IsValidationMessage(chain)) continue;
             double opacity = chain.Aggregate(1.0, (product, v) => product * v.Opacity);
             if (opacity == 0 || Math.Abs(opacity - disabledOpacity) < 0.01) continue;
 
             // the outermost control that is disabled itself, which is the control the Sandbox disabled
             string owner = chain.OfType<InputElement>().Last(e => !e.IsEnabled).GetType().Name;
-            string problem = opacity > disabledOpacity
-                ? $"Disabled {owner} draws {(text == "(glyph)" ? "a glyph" : "its text")} at opacity {opacity:0.##}, not faded"
-                : $"Disabled {owner} draws {(text == "(glyph)" ? "a glyph" : "its text")} at opacity {opacity:0.##}, faded twice";
+            string how = opacity > disabledOpacity ? "not faded"
+                : Math.Abs(opacity - disabledOpacity * disabledOpacity) < 0.01 ? "faded twice"
+                : "faded too much";
+            string problem = $"Disabled {owner} draws {(text == "(glyph)" ? "a glyph" : "its text")} at opacity {opacity:0.##}, {how}";
             if (!wrong.TryGetValue(problem, out List<string>? tabNames)) {
                 tabNames = new List<string>();
                 wrong.Add(problem, tabNames);
