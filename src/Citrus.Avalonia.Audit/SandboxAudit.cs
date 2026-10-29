@@ -10,6 +10,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.Chrome;
 using Avalonia.Controls.Embedding;
 using Avalonia.Controls.Notifications;
+using Avalonia.Controls.Presenters;
 using Avalonia.Controls.Primitives;
 using Avalonia.Controls.Templates;
 using Avalonia.Dialogs;
@@ -28,6 +29,7 @@ using Avalonia.VisualTree;
 using Citrus.Avalonia.Sandbox;
 using Citrus.Avalonia.Sandbox.ViewModels;
 using Citrus.Avalonia.Sandbox.Views;
+using PathShape = Avalonia.Controls.Shapes.Path;
 using Shape = Avalonia.Controls.Shapes.Shape;
 
 namespace Citrus.Avalonia.Audit;
@@ -227,6 +229,7 @@ internal sealed class SandboxAudit {
         TabControl tabs = window.GetVisualDescendants().OfType<TabControl>().First();
         List<TabItem> tabItems = tabs.Items.OfType<TabItem>().ToList();
         Dictionary<string, List<string>> untemplated = new Dictionary<string, List<string>>();
+        Dictionary<string, List<string>> wrongDisabledOpacity = new Dictionary<string, List<string>>();
 
         for (int i = 0; i < tabItems.Count; i++) {
             string header = tabItems[i].Header?.ToString() ?? $"Tab {i}";
@@ -245,6 +248,7 @@ internal sealed class SandboxAudit {
             }
 
             this.SaveScreenshot(window, $"tab{i:00}_{FileNamePart(header)}");
+            CollectDisabledOpacity(window, header, wrongDisabledOpacity);
             this.CheckTabPopups(window, header);
             if (header == "Data Grid") {
                 this.CheckDataGridEditing(window);
@@ -260,6 +264,52 @@ internal sealed class SandboxAudit {
         if (untemplated.Count == 0) {
             this._report.Pass($"Every templated control in all {tabItems.Count} tabs has a template");
         }
+
+        foreach (KeyValuePair<string, List<string>> entry in wrongDisabledOpacity) {
+            this._report.Fail($"{entry.Key} (tabs: {string.Join(", ", entry.Value)})");
+        }
+        if (wrongDisabledOpacity.Count == 0) {
+            this._report.Pass($"Disabled controls in all {tabItems.Count} tabs draw their text and glyphs at ThemeDisabledOpacity, once");
+        }
+    }
+
+    /// <summary>
+    /// Text and glyphs of a disabled control must be drawn at ThemeDisabledOpacity: not at full opacity, and not faded twice
+    /// by a control that fades as a whole around a part that fades itself again
+    /// </summary>
+    private static void CollectDisabledOpacity(Window window, string tab, Dictionary<string, List<string>> wrong) {
+        double disabledOpacity = window.TryFindResource("ThemeDisabledOpacity", out object? resource) && resource is double value ? value : 0.5;
+        foreach (Control content in window.GetVisualDescendants().OfType<Control>()) {
+            string? text = content switch {
+                TextBlock textBlock => textBlock.Text,
+                TextPresenter textPresenter => textPresenter.Text,
+                PathShape => "(glyph)",
+                _ => null,
+            };
+            // watermarks are faded on purpose, with TextControlPlaceholderOpacity
+            if (string.IsNullOrWhiteSpace(text) || content.IsEffectivelyEnabled || !content.IsEffectivelyVisible || content.Name == "PART_Watermark") continue;
+            List<Visual> chain = content.GetSelfAndVisualAncestors().TakeWhile(v => v is not TopLevel).ToList();
+            // the Calendar covers itself with a disabled overlay instead, and validation messages are not part of the control
+            if (chain.Any(v => v is Calendar) || IsValidationMessage(chain)) continue;
+            double opacity = chain.Aggregate(1.0, (product, v) => product * v.Opacity);
+            if (opacity == 0 || Math.Abs(opacity - disabledOpacity) < 0.01) continue;
+
+            // the outermost control that is disabled itself, which is the control the Sandbox disabled
+            string owner = chain.OfType<InputElement>().Last(e => !e.IsEnabled).GetType().Name;
+            string problem = opacity > disabledOpacity
+                ? $"Disabled {owner} draws {(text == "(glyph)" ? "a glyph" : "its text")} at opacity {opacity:0.##}, not faded"
+                : $"Disabled {owner} draws {(text == "(glyph)" ? "a glyph" : "its text")} at opacity {opacity:0.##}, faded twice";
+            if (!wrong.TryGetValue(problem, out List<string>? tabNames)) {
+                tabNames = new List<string>();
+                wrong.Add(problem, tabNames);
+            }
+            if (!tabNames.Contains(tab)) tabNames.Add(tab);
+        }
+    }
+
+    private static bool IsValidationMessage(List<Visual> chain) {
+        DataValidationErrors? errors = chain.OfType<DataValidationErrors>().FirstOrDefault();
+        return errors != null && !(errors.Content is Visual control && chain.Contains(control));
     }
 
     private void CheckTabPopups(Window window, string tab) {
