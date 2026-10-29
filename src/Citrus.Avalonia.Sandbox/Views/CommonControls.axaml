@@ -20,16 +20,23 @@
         <Border Classes="Card" Grid.Column="0">
             <StackPanel Spacing="10">
                 <!-- Label -->
-                <Label Classes="Heading"
-                       Content="Heading class Label" />
-                <Label Classes="Caption"
-                       Content="Caption class Label" />
-                <Label Classes="Accent"
-                       Content="Accent class Label" />
+                <Label Classes="Heading" Content="Label"/>
+                <Grid ColumnDefinitions="*,*,*,*">
+                    <Label Grid.Column="0"
+                           Classes="Heading"
+                           Content="Heading class" />
+                    <Label Grid.Column="1"
+                           Classes="Caption"
+                           Content="Caption class" />
+                    <Label Grid.Column="2"
+                           Classes="Accent"
+                           Content="Accent class" />
+                    <Label Grid.Column="3"
+                           IsEnabled="False"
+                           Content="Disabled" />
+                </Grid>
                 <Label Content="Hi, I'm a tooltip Label! Please, hover over me."
                        ToolTip.Tip="Hello, this is magic!" />
-                <Label IsEnabled="False"
-                       Content="A disabled Label" />
                 <Label Content="A Label with a context menu?! Right click me!">
                     <Label.ContextMenu>
                         <ContextMenu>
@@ -45,78 +52,78 @@
                         </ContextMenu>
                     </Label.ContextMenu>
                 </Label>
-                
-                <!-- RadioButton -->
-                <Grid ColumnDefinitions="*,*,*">
-                    <RadioButton Grid.Row="0" Grid.Column="0"
-                                 IsChecked="False"
-                                 Content="RadioButton 1" />
-                    <RadioButton Grid.Row="0" Grid.Column="1"
-                                 IsChecked="True"
-                                 Content="RadioButton 2" />
-                    <RadioButton Grid.Row="0" Grid.Column="2"
-                                 IsChecked="False"
-                                 Content="RadioButton 3" />
-                </Grid>
 
+                <!-- RadioButton -->
+                <Label Classes="Heading" Content="RadioButton"/>
                 <Grid ColumnDefinitions="*,*,*">
-                    <RadioButton Grid.Row="0" Grid.Column="0"
+                    <RadioButton Grid.Column="0"
+                                 IsChecked="False"
+                                 Content="Option 1" />
+                    <RadioButton Grid.Column="1"
+                                 IsChecked="True"
+                                 Content="Option 2" />
+                    <RadioButton Grid.Column="2"
+                                 IsChecked="False"
+                                 Content="Option 3" />
+                </Grid>
+                <Grid ColumnDefinitions="*,*,*">
+                    <RadioButton Grid.Column="0"
                                  IsEnabled="False"
-                                 Content="RadioButton 1, Disabled" />
-                    <RadioButton Grid.Row="0" Grid.Column="1"
+                                 Content="Disabled 1" />
+                    <RadioButton Grid.Column="1"
                                  IsEnabled="False"
                                  IsChecked="True"
-                                 Content="RadioButton 2, Disabled" />
-                    <RadioButton Grid.Row="0" Grid.Column="2"
+                                 Content="Disabled 2" />
+                    <RadioButton Grid.Column="2"
                                  IsEnabled="False"
-                                 Content="RadioButton 3, Disabled" />
+                                 Content="Disabled 3" />
                 </Grid>
 
                 <!-- CheckBox -->
+                <Label Classes="Heading" Content="CheckBox"/>
                 <Grid ColumnDefinitions="*,*,*">
-                    <CheckBox Grid.Row="0" Grid.Column="0"
+                    <CheckBox Grid.Column="0"
                               IsChecked="False"
-                              Content="CheckBox Unchecked" />
-                    <CheckBox Grid.Row="0" Grid.Column="1"
+                              Content="Unchecked" />
+                    <CheckBox Grid.Column="1"
                               IsChecked="{x:Null}"
-                              Content="CheckBox Indeterminate" />
-                    <CheckBox Grid.Row="0" Grid.Column="2"
+                              Content="Indeterminate" />
+                    <CheckBox Grid.Column="2"
                               IsChecked="True"
-                              Content="CheckBox Checked" />
+                              Content="Checked" />
                 </Grid>
                 <Grid ColumnDefinitions="*,*,*">
-                    <CheckBox Grid.Row="0" Grid.Column="0"
+                    <CheckBox Grid.Column="0"
                               IsEnabled="False"
                               IsChecked="False"
-                              Content="CheckBox Unchecked" />
-                    <CheckBox Grid.Row="0" Grid.Column="1"
+                              Content="Disabled Unchecked" />
+                    <CheckBox Grid.Column="1"
                               IsEnabled="False"
                               IsChecked="{x:Null}"
-                              Content="CheckBox Indeterminate" />
-                    <CheckBox Grid.Row="0" Grid.Column="2"
+                              Content="Disabled Indeterminate" />
+                    <CheckBox Grid.Column="2"
                               IsEnabled="False"
                               IsChecked="True"
-                              Content="CheckBox Checked" />
+                              Content="Disabled Checked" />
                 </Grid>
-                
-                <!-- ComboBox -->
+
+                <!-- ComboBox, the second row is editable (IsEditable) -->
+                <Label Classes="Heading" Content="ComboBox"/>
                 <Grid ColumnDefinitions="*,10,*">
-                    <ComboBox Grid.Column="0" 
+                    <ComboBox Grid.Column="0"
                               SelectedIndex="0">
                         <ComboBoxItem Content="First option" />
                         <ComboBoxItem Content="Second option" />
                         <ComboBoxItem Content="Third option" />
                     </ComboBox>
-                    <ComboBox Grid.Column="2" 
-                              SelectedIndex="0" 
+                    <ComboBox Grid.Column="2"
+                              SelectedIndex="0"
                               IsEnabled="False">
                         <ComboBoxItem Content="First option" />
                         <ComboBoxItem Content="Second option" />
                         <ComboBoxItem Content="Third option" />
                     </ComboBox>
                 </Grid>
-
-                <!-- Editable ComboBox -->
                 <Grid ColumnDefinitions="*,10,*">
                     <ComboBox Grid.Column="0"
                               IsEditable="True"
@@ -133,91 +140,27 @@
 
         <Border Classes="Card" Grid.Column="1">
             <StackPanel Spacing="10">
-                
-                
-                <!-- Buttons -->
+                <!-- Button -->
+                <Label Classes="Heading" Content="Button"/>
                 <Grid ColumnDefinitions="*,10,*">
                     <Button Grid.Column="0"
-                            Content="Enabled Button" />
+                            Content="Button" />
                     <Button Grid.Column="2"
                             IsEnabled="False"
-                            Content="Disabled Button" />
+                            Content="Disabled" />
                 </Grid>
                 <Grid ColumnDefinitions="*,10,*">
                     <Button Grid.Column="0"
                             Classes="Primary"
-                            Content="Enabled Primary Button" />
+                            Content="Primary" />
                     <Button Grid.Column="2"
                             IsEnabled="False"
                             Classes="Primary"
-                            Content="Disabled Primary Button" />
-                </Grid>
-                <!-- ToggleButtons -->
-                <Grid ColumnDefinitions="*,10,*">
-                    <ToggleButton Grid.Column="0"
-                                  Content="Enabled Toggle Button" />
-                    <ToggleButton Grid.Column="2"
-                                  IsEnabled="False"
-                                  Content="Disabled Toggle Button" />
+                            Content="Disabled Primary" />
                 </Grid>
                 <Grid ColumnDefinitions="*,10,*">
-                    <ToggleButton Grid.Column="0"
-                                  IsChecked="True"
-                                  Content="Enabled Toggle Button" />
-                    <ToggleButton Grid.Column="2"
-                                  IsEnabled="False"
-                                  IsChecked="True"
-                                  Content="Disabled Toggle Button" />
-                </Grid>
-                <Grid ColumnDefinitions="*,10,*">
-                    <ToggleButton Grid.Column="0"
-                                  Classes="Primary"
-                                  Content="Enabled Toggle Primary Button" />
-                    <ToggleButton Grid.Column="2"
-                                  IsEnabled="False"
-                                  Classes="Primary"
-                                  Content="Disabled Toggle Primary Button" />
-                </Grid>
-                <Grid ColumnDefinitions="*,10,*">
-                    <ToggleButton Grid.Column="0"
-                                  Classes="Primary"
-                                  IsChecked="True"
-                                  Content="Enabled Toggle Primary Button" />
-                    <ToggleButton Grid.Column="2"
-                                  IsEnabled="False"
-                                  Classes="Primary"
-                                  IsChecked="True"
-                                  Content="Disabled Toggle Primary Button" />
-                </Grid>
-                
-                <!-- RepeatButtons -->
-                <Grid ColumnDefinitions="*,10,*">
-                    <RepeatButton Grid.Column="0"
-                                  Content="Enabled Repeat Button" />
-                    <RepeatButton Grid.Column="2"
-                                  IsEnabled="False"
-                                  Content="Disabled Repeat Button" />
-                </Grid>
-                <Grid ColumnDefinitions="*,10,*">
-                    <RepeatButton Grid.Column="0"
-                                  Classes="Primary"
-                                  Content="Enabled Repeat Primary Button" />
-                    <RepeatButton Grid.Column="2"
-                                  IsEnabled="False"
-                                  Classes="Primary"
-                                  Content="Disabled Repeat Primary Button" />
-                </Grid>
-                
-                <Separator />
-                
-                <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*,10,*">
-                    <Label
-                        Grid.Row="0" Grid.Column="0"
-                        Classes="Heading" 
-                        Content="Button with flyout menu"></Label>
-                    <Button 
-                        Grid.Row="1" Grid.Column="0"
-                        Content="Click me">
+                    <Button Grid.Column="0"
+                            Content="With a flyout menu">
                         <Button.Flyout>
                             <MenuFlyout>
                                 <MenuItem Header="Option 1"/>
@@ -232,14 +175,8 @@
                             </MenuFlyout>
                         </Button.Flyout>
                     </Button>
-                
-                    <Label
-                        Grid.Row="0" Grid.Column="2"
-                        Classes="Heading" 
-                        Content="Button with flyout"></Label>
-                    <Button 
-                        Grid.Row="1" Grid.Column="2"
-                        Content="Click me">
+                    <Button Grid.Column="2"
+                            Content="With a flyout">
                         <Button.Flyout>
                             <Flyout>
                                 <StackPanel Spacing="10">
@@ -251,8 +188,64 @@
                         </Button.Flyout>
                     </Button>
                 </Grid>
-                
-                
+
+                <!-- ToggleButton -->
+                <Label Classes="Heading" Content="ToggleButton"/>
+                <Grid ColumnDefinitions="*,10,*">
+                    <ToggleButton Grid.Column="0"
+                                  Content="Unchecked" />
+                    <ToggleButton Grid.Column="2"
+                                  IsEnabled="False"
+                                  Content="Disabled Unchecked" />
+                </Grid>
+                <Grid ColumnDefinitions="*,10,*">
+                    <ToggleButton Grid.Column="0"
+                                  IsChecked="True"
+                                  Content="Checked" />
+                    <ToggleButton Grid.Column="2"
+                                  IsEnabled="False"
+                                  IsChecked="True"
+                                  Content="Disabled Checked" />
+                </Grid>
+                <Grid ColumnDefinitions="*,10,*">
+                    <ToggleButton Grid.Column="0"
+                                  Classes="Primary"
+                                  Content="Unchecked Primary" />
+                    <ToggleButton Grid.Column="2"
+                                  IsEnabled="False"
+                                  Classes="Primary"
+                                  Content="Disabled Unchecked Primary" />
+                </Grid>
+                <Grid ColumnDefinitions="*,10,*">
+                    <ToggleButton Grid.Column="0"
+                                  Classes="Primary"
+                                  IsChecked="True"
+                                  Content="Checked Primary" />
+                    <ToggleButton Grid.Column="2"
+                                  IsEnabled="False"
+                                  Classes="Primary"
+                                  IsChecked="True"
+                                  Content="Disabled Checked Primary" />
+                </Grid>
+
+                <!-- RepeatButton -->
+                <Label Classes="Heading" Content="RepeatButton"/>
+                <Grid ColumnDefinitions="*,10,*">
+                    <RepeatButton Grid.Column="0"
+                                  Content="RepeatButton" />
+                    <RepeatButton Grid.Column="2"
+                                  IsEnabled="False"
+                                  Content="Disabled" />
+                </Grid>
+                <Grid ColumnDefinitions="*,10,*">
+                    <RepeatButton Grid.Column="0"
+                                  Classes="Primary"
+                                  Content="Primary" />
+                    <RepeatButton Grid.Column="2"
+                                  IsEnabled="False"
+                                  Classes="Primary"
+                                  Content="Disabled Primary" />
+                </Grid>
             </StackPanel>
         </Border>
     </Grid>
