@@ -169,6 +169,7 @@ dotnet run --project Citrus.Avalonia.Audit -c Release -- --compare <output folde
 - <a href="https://github.com/reactiveui/ReactiveUI">ReactiveUI.Avalonia</a> for MVVM implementation in the sandbox project
 - <a href="https://github.com/reactiveui/reactiveui.validation">ReactiveUI.Validation</a> for `INotifyDataErrorInfo` validations
 - <a href="https://www.jetbrains.com/rider/">JetBrains Rider</a> cross-platform C# IDE
+- <a href="https://claude.com/claude-code">Claude Code</a> AI coding assistant by Anthropic, used for parts of the development: control themes, fixes, the audit tool and Sandbox updates
 
 ### Screenshots
 
