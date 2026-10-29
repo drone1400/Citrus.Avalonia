@@ -156,6 +156,18 @@ namespace Citrus.Avalonia.Sandbox
             this.SetThemeVariant(this._themePalettes[this._selectedPaletteIndex]);
         }
 
+        public void LoadCitrusThemeVariant(ThemeVariant variant) {
+            if (this._citrusTheme == null || 
+                this._themePalettes == null || 
+                ReferenceEquals(this._currentThemeObj, this._citrusTheme) == false)
+                return;
+
+            // "Set Next Registered" goes on from the loaded palette
+            int index = this._themePalettes.IndexOf(variant);
+            if (index >= 0) this._selectedPaletteIndex = index;
+            this.SetThemeVariant(variant);
+        }
+
         public async Task OpenFileDialog() {
             if (this.ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime { MainWindow: { } window }) return;
             await window.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions {

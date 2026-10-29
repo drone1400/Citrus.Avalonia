@@ -46,8 +46,17 @@
             RequestedThemeVariant="{Binding #listBox.SelectedItem}">
             <Border Classes="Card">
                 <StackPanel Orientation="Vertical" Spacing="10">
-                    <Label Classes="Heading"
-                           Content="{Binding #listBox.SelectedItem.Key}" />
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Grid.Column="0"
+                               Classes="Heading"
+                               Content="{Binding #listBox.SelectedItem.Key}" />
+                        <Button Grid.Column="1"
+                                Classes="Primary"
+                                Content="Load this theme variant"
+                                Command="{Binding CommandLoadThemeVariant}"
+                                CommandParameter="{Binding #listBox.SelectedItem}"
+                                IsEnabled="{Binding #listBox.SelectedItem, Converter={x:Static ObjectConverters.IsNotNull}}" />
+                    </Grid>
 
                     <TextBlock Text="Plain TextBlock, uses the selected palette's foreground" />
                     <Button Content="Button 1" />

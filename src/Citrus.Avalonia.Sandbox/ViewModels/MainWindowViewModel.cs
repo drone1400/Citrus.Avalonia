@@ -111,6 +111,12 @@ namespace Citrus.Avalonia.Sandbox.ViewModels
         });
         private ReactiveCommand<Unit, Unit>? _commandSwitchNextRegisteredThemeVariant = null;
 
+        public ReactiveCommand<ThemeVariant?, Unit> CommandLoadThemeVariant => this._commandLoadThemeVariant ??= ReactiveCommand.Create<ThemeVariant?>(variant => {
+            if (Application.Current is not App app || variant == null) return;
+            app.LoadCitrusThemeVariant(variant);
+        });
+        private ReactiveCommand<ThemeVariant?, Unit>? _commandLoadThemeVariant = null;
+
         public ReactiveCommand<Unit, Unit> CommandSwitchLightThemeVariant => this._commandSwitchLightThemeVariant ??= ReactiveCommand.Create(() => {
             if (Application.Current is not App app) return;
             app.SetThemeVariant(ThemeVariant.Light);
