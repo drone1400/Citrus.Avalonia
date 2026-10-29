@@ -324,6 +324,9 @@ internal sealed class SandboxAudit {
                 Pump();
                 ((MenuItem)root.Items[0]!).IsSubMenuOpen = true;
             });
+            // closing the popups leaves the menu item selected, it would show highlighted in every later screenshot
+            menu.Close();
+            Pump();
         }
         List<Button> flyoutButtons = visuals.OfType<Button>().Where(b => b.Flyout != null && b.IsEffectivelyEnabled).ToList();
         for (int i = 0; i < flyoutButtons.Count; i++) {
