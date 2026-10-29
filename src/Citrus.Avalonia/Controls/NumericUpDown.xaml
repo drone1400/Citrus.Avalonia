@@ -28,6 +28,15 @@
         </Border>
     </Design.PreviewWith>
     
+    <!-- TextBox inside a NumericUpDown, when disabled the ButtonSpinner around it fades it already -->
+    <ControlTheme x:Key="CitrusNumericUpDownTextBox"
+                  TargetType="TextBox"
+                  BasedOn="{StaticResource {x:Type TextBox}}">
+        <Style Selector="^:disabled /template/ Border#PART_BorderElement">
+            <Setter Property="Opacity" Value="1" />
+        </Style>
+    </ControlTheme>
+
     <ControlTheme x:Key="{x:Type NumericUpDown}"
                   TargetType="NumericUpDown">
         <Setter Property="Background" Value="{DynamicResource ThemeBorderLowBrush}" />
@@ -52,6 +61,7 @@
                                    CornerRadius="{TemplateBinding CornerRadius}"
                                    ShowButtonSpinner="{TemplateBinding ShowButtonSpinner}">
                         <TextBox Name="PART_TextBox"
+                                 Theme="{StaticResource CitrusNumericUpDownTextBox}"
                                  MinWidth="20"
                                  Margin="4"
                                  Padding="{TemplateBinding Padding}"

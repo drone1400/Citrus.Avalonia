@@ -238,6 +238,15 @@
         <Style Selector="^:error /template/ Border#PART_Border">
             <Setter Property="BorderBrush" Value="{DynamicResource ErrorBrush}" />
         </Style>
+
+        <!-- a disabled spinner fades as a whole, the validation message outside the border stays readable -->
+        <Style Selector="^:disabled /template/ Border#PART_Border">
+            <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
+        </Style>
+        <!-- the spin buttons fade themselves only while the spinner is enabled (at the end of the range), not twice -->
+        <Style Selector="^:disabled /template/ RepeatButton">
+            <Setter Property="Opacity" Value="1" />
+        </Style>
     </ControlTheme>
 
 </ResourceDictionary>
