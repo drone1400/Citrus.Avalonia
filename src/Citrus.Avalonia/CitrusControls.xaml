@@ -38,6 +38,7 @@
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/MenuFlyoutPresenter.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/MenuItem.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/MenuScrollViewer.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/NotificationCard.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/NumericUpDown.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/OverlayPopupHost.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/PathIcon.xaml" />
@@ -71,6 +72,7 @@
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TreeView.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TreeViewItem.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Window.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/WindowNotificationManager.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Styles.Resources>

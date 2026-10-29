@@ -20,7 +20,7 @@
             <StackPanel Spacing="10">
                 <!-- ToggleSwitch -->
                 <Label Classes="Heading" Content="ToggleSwitch"/>
-                <Grid ColumnDefinitions="*,*,*">
+                <Grid ColumnDefinitions="*,*,*,*">
                     <ToggleSwitch Grid.Column="0"
                                   Content="Unchecked" />
                     <ToggleSwitch Grid.Column="1"
@@ -30,18 +30,8 @@
                                   Classes="Primary"
                                   IsChecked="True"
                                   Content="Checked Primary" />
-                </Grid>
-                <Grid ColumnDefinitions="*,*,*">
-                    <ToggleSwitch Grid.Column="0"
+                    <ToggleSwitch Grid.Column="3"
                                   IsEnabled="False"
-                                  Content="Disabled" />
-                    <ToggleSwitch Grid.Column="1"
-                                  IsEnabled="False"
-                                  IsChecked="True"
-                                  Content="Disabled" />
-                    <ToggleSwitch Grid.Column="2"
-                                  IsEnabled="False"
-                                  Classes="Primary"
                                   IsChecked="True"
                                   Content="Disabled" />
                 </Grid>
@@ -149,6 +139,27 @@
                     <HyperlinkButton Grid.Column="2"
                                      IsEnabled="False"
                                      Content="Disabled link" />
+                </Grid>
+
+                <!-- Notifications, shown in the bottom right corner of the window -->
+                <Label Classes="Heading" Content="NotificationCard and WindowNotificationManager"/>
+                <Grid ColumnDefinitions="*,10,*,10,*,10,*">
+                    <Button Grid.Column="0"
+                            Tag="Information"
+                            Content="Information"
+                            Click="OnShowNotification" />
+                    <Button Grid.Column="2"
+                            Tag="Success"
+                            Content="Success"
+                            Click="OnShowNotification" />
+                    <Button Grid.Column="4"
+                            Tag="Warning"
+                            Content="Warning"
+                            Click="OnShowNotification" />
+                    <Button Grid.Column="6"
+                            Tag="Error"
+                            Content="Error"
+                            Click="OnShowNotification" />
                 </Grid>
             </StackPanel>
         </Border>
