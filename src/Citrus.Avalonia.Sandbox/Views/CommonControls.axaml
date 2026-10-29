@@ -24,7 +24,7 @@
                        Content="Heading class Label" />
                 <Label Classes="Caption"
                        Content="Caption class Label" />
-                <Label Classes="Caption"
+                <Label Classes="Accent"
                        Content="Accent class Label" />
                 <Label Content="Hi, I'm a tooltip Label! Please, hover over me."
                        ToolTip.Tip="Hello, this is magic!" />
@@ -61,11 +61,14 @@
 
                 <Grid ColumnDefinitions="*,*,*">
                     <RadioButton Grid.Row="0" Grid.Column="0"
+                                 IsEnabled="False"
                                  Content="RadioButton 1, Disabled" />
                     <RadioButton Grid.Row="0" Grid.Column="1"
+                                 IsEnabled="False"
                                  IsChecked="True"
                                  Content="RadioButton 2, Disabled" />
                     <RadioButton Grid.Row="0" Grid.Column="2"
+                                 IsEnabled="False"
                                  Content="RadioButton 3, Disabled" />
                 </Grid>
 
