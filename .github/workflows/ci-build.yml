@@ -2,9 +2,9 @@ name: Build
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, develop, avalonia-11 ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main, develop, avalonia-11 ]
 
 env:
   configuration: Release
