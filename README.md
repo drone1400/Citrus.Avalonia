@@ -6,11 +6,13 @@ This is a heavily modified fork for my own custom use.
 
 It was completely reworked to use Avalonia's new ControlTheme system instead of just plain old styles.
 
-Since I am developing it to use it in my Martridge project, I also added some missing controls like the DataGrid which I needed there. I may further add other missing controls later on...
+Since I am developing it to use it in my Martridge project, I also added some missing controls like the DataGrid which I needed there. Every control of Avalonia's core package now has a Citrus theme (see `src/Citrus.Avalonia/ControlListTodo`).
 
 ### Getting Started
 
 Since this is not the official distribution, the NuGet package is not available.
+
+The theme is built for Avalonia 11.3 (tested with 11.3.22).
 
 If you want to use this theme, the way to do it is to add this repo as a [submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules) to your existing git repository:
 
@@ -25,7 +27,7 @@ git submodule add https://github.com/drone1400/Citrus.Avalonia ./citrus
 #### Simple way to use the theme
 
 ```xml
-<Application x:Class="Citrus.Avalonia.Sandbox.App"
+<Application x:Class="MyApp.App"
              xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              RequestedThemeVariant="Default">
@@ -54,12 +56,12 @@ Built-in palettes (see `CitrusDefaultPalettes`): Citrus, Candy, Magma, Lime, Gra
 
 You can customize what Light, Dark or even Default variants are used through the `CitrusTheme` style's properties: `DesiredLightThemeVariant`, `DesiredDarkThemeVariant` or `DesiredDefaultThemeVariant`. Setting one of them to `null` restores the built-in palette (Citrus for Light and Default, Sea for Dark).
 
-**NOTE:** the `IThemeVariantProvider` object use must not be included in another ThemeDictionary elsewhere, or you will get an exception: `System.InvalidOperationException: The ResourceDictionary already has a parent.`
+**NOTE:** the `IThemeVariantProvider` object used must not be included in another ThemeDictionary elsewhere, or you will get an exception: `System.InvalidOperationException: The ResourceDictionary already has a parent.`
 
 #### Example implementation (xaml only)
 
 ```xml
-<Application x:Class="Citrus.Avalonia.Sandbox.App"
+<Application x:Class="MyApp.App"
              xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:avalonia="clr-namespace:Citrus.Avalonia;assembly=Citrus.Avalonia"
@@ -83,7 +85,7 @@ You can customize what Light, Dark or even Default variants are used through the
 #### Example implementation from codebehind
 
 ```xml
-<Application x:Class="Citrus.Avalonia.Sandbox.App"
+<Application x:Class="MyApp.App"
              xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              RequestedThemeVariant="Default">
@@ -99,7 +101,7 @@ Application.Current.Styles.Add(citrusTheme);
 
 ### Using a custom ThemeVariant
 
-Other than the `Default`, `Light`, `Dark` ThemeVariants, you can of course use a custom ThemeVariant. The `CitrusTheme` object has some helper properties to facilitate this. 
+Other than the `Default`, `Light`, `Dark` ThemeVariants, you can of course use a custom ThemeVariant. The `CitrusTheme` object has some helper methods to facilitate this. 
 
 You can use the `RegisterThemeVariant` method to register a custom ThemeVariant with the `CitrusTheme` style object. This effectively adds the ThemeVariant to the `CitrusTheme` style object's ThemeDictionaries.
 
@@ -133,6 +135,9 @@ Application.Current.Styles.Add(citrusTheme);
 ```
 
 #### Example overriding the Light ThemeVariant from local file
+
+`AvaloniaRuntimeXamlLoader` is in the `Avalonia.Markup.Xaml.Loader` package.
+
 ```cs
 CitrusTheme citrusTheme = new CitrusTheme();
 using FileStream fileStream = new FileStream("MyTheme.axaml", FileMode.Open, FileAccess.Read); 
@@ -148,7 +153,7 @@ For more examples check out the `Citrus.Avalonia.Sandbox` project!
 
 ### Audit tool
 
-The `Citrus.Avalonia.Audit` project renders the Sandbox headlessly (every tab, every registered theme variant, the popups, a few standalone controls) and checks the themes for missing templates, resource keys that do not resolve, empty texts, broken popups and Avalonia warnings. It saves a screenshot of everything it renders, and its exit code is the number of failed checks. CI runs it after every build.
+The `Citrus.Avalonia.Audit` project renders the Sandbox headlessly (every tab, every registered theme variant, the popups, a few standalone controls) and checks the themes for missing templates, resource keys that do not resolve, empty texts, broken popups, access keys, notification cards, disabled controls that do not fade (or fade twice), dark palettes giving windows a light title bar and Avalonia warnings. It saves a screenshot of everything it renders, and its exit code is the number of failed checks. CI runs it after every build.
 
 ```sh
 cd src
