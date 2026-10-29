@@ -152,5 +152,94 @@
                 </Grid>
             </StackPanel>
         </Border>
+
+        <Border Classes="Card" Grid.Column="1">
+            <StackPanel Spacing="10">
+                <!-- SplitView, the compact pane is as wide as the icons with their margin -->
+                <Label Classes="Heading" Content="SplitView"/>
+                <SplitView x:Name="splitView"
+                           Height="150"
+                           DisplayMode="CompactInline"
+                           IsPaneOpen="True"
+                           OpenPaneLength="160"
+                           Background="{DynamicResource ThemeBackgroundBrush}">
+                    <SplitView.Pane>
+                        <StackPanel Margin="14,10" Spacing="10">
+                            <StackPanel Orientation="Horizontal" Spacing="14">
+                                <PathIcon Data="M 12,3 L 2,12 L 5,12 L 5,21 L 19,21 L 19,12 L 22,12 Z" />
+                                <TextBlock Text="Home" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Spacing="14">
+                                <PathIcon Data="M 12,2 L 15,9 L 22,9 L 16.5,13.5 L 18.5,21 L 12,16.5 L 5.5,21 L 7.5,13.5 L 2,9 L 9,9 Z" />
+                                <TextBlock Text="Favorites" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Spacing="14">
+                                <PathIcon Data="M 2,12 L 9,19 L 22,6 L 19,3 L 9,13 L 5,9 Z" />
+                                <TextBlock Text="Done" />
+                            </StackPanel>
+                        </StackPanel>
+                    </SplitView.Pane>
+                    <StackPanel Margin="10" Spacing="10">
+                        <ToggleButton HorizontalAlignment="Left"
+                                      IsChecked="{Binding #splitView.IsPaneOpen}"
+                                      Content="Open pane" />
+                        <TextBlock Text="Content next to the pane" />
+                    </StackPanel>
+                </SplitView>
+
+                <!-- Carousel -->
+                <Label Classes="Heading" Content="Carousel"/>
+                <Grid ColumnDefinitions="Auto,10,*,10,Auto">
+                    <Button Grid.Column="0"
+                            VerticalAlignment="Center"
+                            Content="Previous"
+                            Click="OnCarouselPrevious" />
+                    <Carousel Grid.Column="2"
+                              x:Name="carousel"
+                              Height="80"
+                              WrapSelection="True">
+                        <Carousel.PageTransition>
+                            <PageSlide Duration="0:0:0.25" Orientation="Horizontal" />
+                        </Carousel.PageTransition>
+                        <Border CornerRadius="5" Background="{DynamicResource ThemeAccentBrush}">
+                            <TextBlock HorizontalAlignment="Center"
+                                       Foreground="{DynamicResource HighlightForegroundBrush}"
+                                       Text="Page 1" />
+                        </Border>
+                        <Border CornerRadius="5" Background="{DynamicResource ThemeBorderHighBrush}">
+                            <TextBlock HorizontalAlignment="Center"
+                                       Foreground="{DynamicResource HighlightForegroundBrush}"
+                                       Text="Page 2" />
+                        </Border>
+                        <Border CornerRadius="5" Background="{DynamicResource HighlightBrush}">
+                            <TextBlock HorizontalAlignment="Center"
+                                       Foreground="{DynamicResource HighlightForegroundBrush}"
+                                       Text="Page 3" />
+                        </Border>
+                    </Carousel>
+                    <Button Grid.Column="4"
+                            VerticalAlignment="Center"
+                            Content="Next"
+                            Click="OnCarouselNext" />
+                </Grid>
+
+                <!-- RefreshContainer, pull to refresh only works with touch or a pen, the button works with a mouse -->
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Grid.Column="0"
+                           Classes="Heading"
+                           Content="RefreshContainer" />
+                    <Button Grid.Column="1"
+                            Content="Refresh"
+                            Click="OnRefresh" />
+                </Grid>
+                <Label Classes="Caption"
+                       Content="Pull the list down with touch or a pen, or click Refresh" />
+                <RefreshContainer x:Name="refreshContainer"
+                                  Height="120"
+                                  RefreshRequested="OnRefreshRequested">
+                    <ListBox x:Name="refreshList" />
+                </RefreshContainer>
+            </StackPanel>
+        </Border>
     </Grid>
 </UserControl>

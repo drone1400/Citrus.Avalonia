@@ -14,6 +14,7 @@
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/CalendarDayButton.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/CalendarItem.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/CaptionButtons.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Carousel.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/CheckBox.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ComboBox.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ComboBoxItem.xaml" />
@@ -43,6 +44,8 @@
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/PopupRoot.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ProgressBar.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/RadioButton.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/RefreshContainer.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/RefreshVisualizer.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/RepeatButton.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ScrollBar.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/ScrollViewer.xaml" />
@@ -50,6 +53,7 @@
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Separator.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/Slider.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/SplitButton.xaml" />
+                <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/SplitView.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TabControl.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TabItem.xaml" />
                 <MergeResourceInclude Source="avares://Citrus.Avalonia/Controls/TabStrip.xaml" />

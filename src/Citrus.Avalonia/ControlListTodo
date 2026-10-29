@@ -11,7 +11,7 @@
         CalendarDayButton
         CalendarItem
         CaptionButtons
-Carousel
+        Carousel
         CheckBox
         ComboBox
         ComboBoxItem
@@ -42,8 +42,8 @@ NotificationCard
         PopupRoot
         ProgressBar
         RadioButton
-RefreshContainer
-RefreshVisualizer
+        RefreshContainer
+        RefreshVisualizer
         RepeatButton
         ScrollBar
         ScrollViewer
@@ -51,7 +51,7 @@ RefreshVisualizer
         Separator
         Slider
         SplitButton
-SplitView
+        SplitView
         TabControl
         TabItem
         TabStrip
