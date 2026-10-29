@@ -48,10 +48,12 @@
             <Setter Property="RecognizesAccessKey" Value="True" />
         </Style>
 
-        <Style Selector="^:pointerover">
-            <Setter Property="Foreground" Value="{DynamicResource HighlightHoverBrush}" />
-        </Style>
+        <!-- visited links use the accent color, like the Primary class of the buttons -->
         <Style Selector="^:visited">
+            <Setter Property="Foreground" Value="{DynamicResource ThemeAccentBrush}" />
+        </Style>
+        <!-- after :visited, so visited links get the same hover color (ThemeAccentHoverBrush is too dark on some dark palettes) -->
+        <Style Selector="^:pointerover">
             <Setter Property="Foreground" Value="{DynamicResource HighlightHoverBrush}" />
         </Style>
         <Style Selector="^:disabled">
